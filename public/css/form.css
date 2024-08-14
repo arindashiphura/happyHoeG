@@ -1,0 +1,49 @@
+body{
+    border: 10px;
+    /* background-image: url(../img/grains3.jpg); */
+    }
+  .form-section {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.308);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    
+    .form-section h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .form-section form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-section form label {
+      margin: 10px 0 5px;
+    }
+    
+    .form-section form input,
+    .form-section form select {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .form-section button {
+      padding: 10px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .form-section button:hover {
+      background-color: #0056b3;
+    }
+  

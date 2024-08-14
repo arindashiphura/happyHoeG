@@ -1,0 +1,11 @@
+doctype html
+head
+  title Signup
+  link(rel="stylesheet", href="/css/signup.css")
+h1 Sign Up
+form(action='/addUser' method='POST')
+  label(for='email') Email:
+  input(type='email' name='email' required='')
+  label(for='password') Password:
+  input(type='password' name='password' required='')
+  button(type='submit') Sign Up

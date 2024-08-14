@@ -1,0 +1,17 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='/css/form.css')
+main.form-section(style='background-color: rgb(24, 210, 24);')
+  h2 Login
+  form#login-form(action="/login" method="POST")
+    label(for='email') Email:
+    input#email(type='email' name='email' placeholder='enter email' required='')
+    label(for='password') Password:
+    input#password(type='password' name='password' placeholder='enter Password' required='')
+    a(href='forgot-password.html') Forgot Password?
+    br
+    input.btn.btn-primary.custom-button(type='submit' value='Login')
+    p
