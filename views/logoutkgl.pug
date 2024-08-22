@@ -1,0 +1,16 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='css/loginkgl.css')
+video.video-background(autoplay='' muted='' loop='')
+  source(src='https://dm0qx8t0i9gc9.cloudfront.net/watermarks/video/4Xw4byPvl/shopping-cart-rolling-through-the-produce-section-of-a-grocery-store_bd-0sqyh__c71e1bf4364d7feb54cd32891a485d79__P360.mp4' type='video/mp4')
+  |         Your browser does not support the video tag.
+form(action='/logoutkgl' method='POST')
+  .container
+    h1 Welcome
+    h4 You have successfully logged out.
+    p Thank you for visiting. You will be redirected to the login page shortly.
+    button.logout-btn Logout
+script(src='/js/login.js')

@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title Edit User
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/form.css')
+  body
+    video.video-background(autoplay muted loop)
+      source(src='https://media.gettyimages.com/id/1972673543/video/happy-little-girl-choosing-a-cereal-from-the-shelf-helping-her-mom-shop-for-groceries-at-the.mp4?s=mp4-640x640-gi&k=20&c=XoaIU-pxxRhiEHgrNuVzzgS2qdkbvpnx0jxY0vspryg=' type='video/mp4')
+      | Your browser does not support the video tag.
+      
+    main.form-section
+      h1 Edit User
+      form#edit-form(action='/edit_users?id=' + user._id method='POST' name='edituser')
+        label(for='username') Username:
+        select#username(type='text' name='username')
+         option(value="" selected=user.userename === "") Select user
+         option(value="Arinda Edson" selected=user.username === "Arinda Edson ") Arinda Edson
+         option(value="Andinda Amos" selected=user.username === "Andinda Amos") Andinda Amos
+         option(value="Arinda Shiphura" selected=user.username === "Arinda Shiphura") Arinda Shiphura
+         option(value="Arinda Favor" selected=user.username === "Arinda Favor") Arinda Favor
+         option(value="Kiconco Fortunate" selected=user.username === "Kiconco Fortunate") Kiconco Fortunate 
+         option(value="Ahimbisibwe Athur" selected=user.username === "Ahimbisibwe Athur") Ahimbisibwe Athur               
+        br
+        label(for='email') Email:
+        input#email(type='email' name='email' value=user.email placeholder='Enter Email' required)
+        br
+        label(for='password') New Password:
+        input#password(type='password' name='password' placeholder='Enter New Password')
+        br
+        label(for='confirm-password') Confirm New Password:
+        input#confirm-password(type='password' name='confirm-password' placeholder='Confirm New Password')
+        span#passwordError.error
+        br
+        label(for='branch') Branch:
+        select#branch(name='branch' required)
+          option(value='maganjo' selected=user.branch === 'maganjo') Maganjo
+          option(value='matuga' selected=user.branch === 'matuga') Matuga
+        br
+        label(for='role') Role:
+        select#role(name='role' required)
+          option(value='manager' selected=user.role === 'manager') Manager
+          option(value='sales_agent' selected=user.role === 'sales_agent') Sales Agent
+        br
+        input.btn.btn-primary.custom-button(type='submit' value='Save Changes')
+        p
+          | Want to go back? 
+          a(href='/userlist') Back to User List

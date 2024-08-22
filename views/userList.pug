@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title User List
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/userList.css') // Adjust the stylesheet path as needed
+  body
+    video.video-background(autoplay muted loop)
+      source(src='https://media.gettyimages.com/id/1972673543/video/happy-little-girl-choosing-a-cereal-from-the-shelf-helping-her-mom-shop-for-groceries-at-the.mp4?s=mp4-640x640-gi&k=20&c=XoaIU-pxxRhiEHgrNuVzzgS2qdkbvpnx0jxY0vspryg=' type='video/mp4')
+      | Your browser does not support the video tag.
+
+    main.user-list-section
+      h1 All Users
+      table
+        thead
+          tr
+            th Username
+            th Email
+            th Branch
+            th Role
+            th Actions
+        tbody
+          if users.length
+            each user in users
+              tr
+                td= user.username
+                td= user.email
+                td= user.branch
+                td= user.role
+                td
+                  a.btn.btn-primary.btn-sm(href=`/edit_users/${user._id}`) Edit
+                  form(method='post' action='/delete_users' style='display:inline;')
+                    input(type='hidden' name='_id' value=user._id)
+                    button.btn.btn-danger.btn-sm(type='submit') Delete
+          else
+            tr
+              td(colspan='5') No users found
+      p
+        a(href='/addusers') Add New User

@@ -1,0 +1,80 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Edit Produce
+  link(rel='stylesheet' href='/css/edit-produce.css')
+main.container
+  h1 Edit Produce
+  form#add-book-form(action='/edit_produce?id=' + produce._id method='POST' name='editProduce')
+    label(for='name') Name of Produce:
+    select#name(type='text' name='producename')
+      option(value="" selected=produce.producename === "") Select Produce
+      option(value="Beans" selected=produce.producename === "Beans") Beans
+      option(value="CowPeas" selected=produce.producename === "CowPeas") Cow Peas
+      option(value="GrainMaize" selected=produce.producename === "GrainMaize") Grain Maize
+      option(value="GroundNuts" selected=produce.producename === "GroundNuts") Ground Nuts
+      option(value="SoyaBeans" selected=produce.producename === "SoyaBeans") Soya Beans
+      option(value="Peas" selected=produce.producename === "Peas") Peas
+    small#pnameErr
+
+    label(for='type') Type of Produce:
+    select#type(type='text' name='producetype')
+      option(value="" selected=produce.producetype === "") Select Produce Type
+      option(value="legume" selected=produce.producetype === "legume") Legume
+      option(value="cereals" selected=produce.producetype === "cereals") Cereals
+    small#ptypeErr
+
+    label(for='date') Date of Purchase:
+    input#date(type='date' name='dateofpurchase' value=produce.dateofpurchase)
+    small#pdateofpurchaseErr
+
+    label(for='time') Time:
+    input#time(type='time' name='timeofpurchase' value=produce.timeofpurchase)
+    small#ptimeofpurchaseErr
+
+    label(for='tonnage') Tonnage (kg):
+    input#tonnage(type='number' name='tonnage' value=produce.tonnage)
+    small#ptonnageErr
+
+    label(for='cost') Cost of Produce per kg (UgX):
+    input#cost(type='number' name='producecostperkg' value=produce.producecostperkg)
+    small#pcostErr
+    
+    label(for='totalcost') Total Cost (UgX):
+    input#totalcost(type='number' name='totalcost' value=produce.totalcost)
+    small#ptotalcostErr
+
+    label(for='source') Source of Produce:
+    select#source(type='text' name='sourceofproduce')
+      option(value="" selected=produce.sourceofproduce === "") Select Produce Source
+      option(value="localfarm" selected=produce.sourceofproduce === "localfarm") Local Farm
+      option(value="dealers" selected=produce.sourceofproduce === "dealers") Dealers
+      option(value="matugafarm" selected=produce.sourceofproduce === "matugafarm") Matuga Farm
+      option(value="othercompany" selected=produce.sourceofproduce === "othercompany") Other Company
+    small#psourceofproduceErr
+
+    label(for='dealer') Dealer's Name (if applicable):
+    input#dealer(type='text' name='dealersname' value=produce.dealersname)
+
+    label(for='company') Company's Name (if applicable):
+    input#company(type='text' name='companyname' value=produce.companyname)
+
+    label(for='branch') Branch of Storage:
+    select#branch(type='text' name='storebranch')
+      option(value="" selected=produce.storebranch === "") Select Store Branch
+      option(value="maganjo" selected=produce.storebranch === "maganjo") Maganjo Store
+      option(value="matuga" selected=produce.storebranch === "matuga") Matuga Store
+    small#pbranchErr
+
+    label(for='contact') Source Contact:
+    input#contact(type='tel' name='contact' value=produce.contact)
+    small#pcontactErr
+
+    label(for='price') Price to be Sold At per kg (UGX):
+    input#price(type='number' name='sellingpriceperkg' value=produce.sellingprice)
+    small#ppriceErr
+
+    button.btn.btn-primary(type='submit') Update Produce
+
+script(src='js/add-produce.js')

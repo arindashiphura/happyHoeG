@@ -25,7 +25,7 @@ router.post("/login",
 );
 
 // Logout route
-router.get("/logout", (req, res) => {
+router.get("/logout", (req, res) => {//logout
     if (req.session) {
     req.session.destroy((err) => {
     if (err) {

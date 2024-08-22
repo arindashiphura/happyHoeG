@@ -1,45 +1,114 @@
 const express = require('express');
+const passport = require('passport'); // Ensure you require passport
 const router = express.Router();
-const User = require('../Models/user'); // Adjust path according to your project structure
 
-// Route to serve the registration page
-router.get('/register', (req, res) => {
-  res.render('register'); // Assumes you are using a view engine like Pug
+
+
+const register = require("../Models/register");
+//
+router.get("/newuser", (req, res) => {
+    res.render("register");
 });
 
-// Route to handle registration form submission
-router.post('/register', async (req, res) => {
-  try {
-    // Extract user data from the request body
-    const { username, email, password, confirmPassword, branch, role } = req.body;
-
-    // Basic validation
-    if (!username || !email || !password || !confirmPassword || !branch || !role) {
-      return res.status(400).send('All fields are required');
+//add new user
+router.post("/newuser", async (req, res) => {
+    try{
+        const newUser = new register(req.body);
+        console.log("print all details from signup",newUser)
+        await newUser.save();
+        
+        res.redirect("/userList");
+    }catch(err){
+        res.status(400).render("register",{title:"A"} );
+        console.log("Register user error", err);
     }
+    
 
-    if (password !== confirmPassword) {
-      return res.status(400).send('Passwords do not match');
-    }
-
-    // Create a new user
-    const newUser = new User({
-      username,
-      email,
-      password, // In a real application, hash this password before saving
-      branch,
-      role
-    });
-
-    // Save the user to the database
-    await newUser.save();
-
-    // Redirect or send a success response
-    res.redirect('/login');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
+    
 });
+
+
+// Route to handle login
+router.post("/loginkgl", 
+    passport.authenticate("local", { failureRedirect: "/loginkgl" }),
+    (req, res) => {
+        req.session.user = req.user; // Assign session to the logged-in user
+        
+        // Redirect based on the user's role
+        if (req.user.role === "manager") {
+            res.redirect("/managerdashboard");
+        } else if (req.user.role === "salesagent") {
+            // res.redirect("/salesdashboard");
+        } else {
+            res.send("User with that role does not exist in the system");
+        }
+    }
+);
+
+// // Logout route
+// router.get("/logout", (req, res) => {//logout
+//     if (req.session) {
+//     req.session.destroy((err) => {
+//     if (err) {
+//     return res.status(500).send("Error logging out");
+//     }
+//     res.redirect("/loginkgl");
+//     });
+//     }else{
+//         res.send('you donot have a session')
+//     }
+//     });
+
+
+
+
+
+    // Get all users from the database
+router.get("/userList", async (req, res) => {
+    try {
+      const users = await User.find().sort({ $natural: -1 }); // Sort users by creation time or other criteria
+      res.render("userList", {
+        title: "User List",
+        users: users
+      });
+    } catch (err) {
+      res.status(400).send("Unable to find users in the database");
+    }
+  });
+
+  // Get user update form
+router.get("/edit_users/:id", async (req, res) => {
+    try {
+      const user = await User.findOne({ _id: req.params.id });
+      res.render("edit_users", {
+        user: user,
+        title: "Update User"
+      });
+    } catch (err) {
+      res.status(400).send("Unable to find user in the database");
+    }
+  });
+
+  // Post updated user
+router.post("/edit_users/:id", async (req, res) => {
+    try {
+      await User.findOneAndUpdate({ _id: req.params.id }, req.body);
+      res.redirect("/userList");
+    } catch (err) {
+      res.status(404).send("Unable to update user in the database");
+    }
+  });
+
+  // Delete user
+router.post("/delete_users", async (req, res) => {
+    try {
+      await User.deleteOne({ _id: req.body.id });
+      res.redirect("back");
+    } catch (err) {
+      res.status(404).send("Unable to delete user in the database");
+    }
+  });
+  
+  
 
 module.exports = router;

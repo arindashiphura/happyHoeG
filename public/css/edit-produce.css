@@ -1,0 +1,83 @@
+body{
+  top: 50px;
+ bottom: 20px;
+}
+/* Container styles */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #7a7272;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  form{
+    padding: 50px;
+  }
+  /* Form title */
+  h1 {
+    text-align: center;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Label styles */
+  label {
+    display: block;
+    margin: 10px 0 5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* Input and Select styles */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  input[type="tel"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    color: #0b0f15;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Button styles */
+  button.btn.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #2bd41c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.btn.btn-primary:hover {
+    background-color: #2bc117;
+  }
+  
+  /* Error message styles */
+  small {
+    color: red;
+    display: none;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;
+    }
+  
+    button.btn.btn-primary {
+      font-size: 14px;
+    }
+  }
+  

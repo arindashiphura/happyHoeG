@@ -1,0 +1,46 @@
+html
+  head
+   link(rel="stylesheet" href="/css/table-list.css")
+  body
+    .container
+      h2.text-center.mt-5.mb-4 Produce List
+      table.table.table-striped
+        thead
+          tr
+            th(scope='col') Store Branch
+            th(scope='col') Produce Name
+            th(scope='col') Produce Type
+            th(scope='col') Date of Purchase 
+            th(scope='col') Tonnage (Kg)
+            th(scope='col') Produce Cost per kg (UGX)
+            th(scope='col') Selling Price per kg (UGX)
+            th(scope='col') Source of Produce
+            th(scope='col') Total Cost  (UGX)  
+            th(scope='col') Contact
+            th(scope='col') Action
+            th
+            th
+        tbody
+          if produces.length
+            each produce in produces
+              tr
+                td #{produce.storebranch}
+                td #{produce.producename}
+                td #{produce.producetype}
+                td #{produce.dateofpurchase}  
+                td #{produce.tonnage}
+                td #{produce.producecostperkg}
+                td #{produce.sellingpriceperkg}
+                td #{produce.sourceofproduce}
+                td #{produce.totalcost}
+                td #{produce.contact}
+                td
+                  a.btn.btn-primary.btn-sm(href='/addSale/'+produce._id) Make Sale
+                td
+                  a.btn.btn-primary.btn-sm(href='/edit_Produce/' + produce._id) Update
+                td
+                  form(method="post" action='/deleteProduce')
+                    input(type="hidden", name="id", value=produce._id)
+                    button.btn.btn-danger.btn-sm(type="submit") Delete
+          else
+            p No produce yet :(

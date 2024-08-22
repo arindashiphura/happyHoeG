@@ -25,7 +25,7 @@ router.post("/addUser", async (req, res) => {
     res.redirect("/login");
     });
     } catch (err) {
-    res.status(400).render("signup", { tittle: "Signup" });
+    res.status(400).render("login", { tittle: "Signup" });
     console.log("Signup user error", err);
     }
     });

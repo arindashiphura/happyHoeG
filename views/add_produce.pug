@@ -1,0 +1,80 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Add New Produce
+  link(rel='stylesheet' href='css/add-produce.css')
+main.container
+  h1 Add New Produce
+  form#add-produce-form(action="produce" method="POST")
+    label(for='name') Name of Produce:
+    select#name(type='text' name='producename')
+      option(value="") select Produce
+      option(value="Beans") Beans
+      option(value="CowPeas") CowPeas 
+      option(value="GrainMaize") GrainMaize
+      option(value="GroundNuts") GroundNuts
+      option(value="SoyaBeans") SoyaBeans
+      option(value="Peas") Peas
+    small#pnameErr
+
+    label(for='type') Type of Produce:
+    select#type(type='text' name='producetype')
+      option(value="") select Produce type
+      option(value="legume") Legume
+      option(value="cereals") Cereals
+    small#ptypeErr
+
+    label(for='date') Date of purchase:
+    input#date(type='date' name='dateofpurchase')
+    small#pdateofpurchaseErr
+
+    label(for='time') Time:
+    input#time(type='time' name='timeofpurchase')
+    small#ptimeofpurchaseErr
+
+    label(for='tonnage') Tonnage (kg):
+    input#tonnage(type='number' name='tonnage')
+    small#ptonnageErr
+
+    label(for='cost') Cost of produce per kg (UgX):
+    input#cost(type='number' name='producecostperkg')
+    small#pcostErr
+    
+    label(for='totalcost') Total Cost (UgX):
+    input#totalcost(type='number' name='totalcost')
+    small#ptotalcostErr
+
+    label(for='source') Source of produce:
+    select#source(type='text' name='sourceofproduce')
+      option(value="") select Produce source
+      option(value="localfarm") Local Farm
+      option(value="dealers") Dealers 
+      option(value="matugafarm") Matuga Farm
+      option(value="othercompany") Other Company
+    small#psourceofproduceErr
+
+    label(for='dealer') Dealer's name (if applicable):
+    input#dealer(type='text' name='dealersname')
+
+    label(for='company') Company's name (if applicable):
+    input#company(type='text' name='companyname')
+
+    label(for='branch') Branch of storage:
+    select#branch(type='text' name='storebranch')
+      option(value="") Select Store Branch
+      option(value="maganjo") Maganjo Store
+      option(value="matuga") Matuga Store
+    small#pbranchErr
+
+    label(for='contact') Source Contact:
+    input#contact(type='tel' name='contact')
+    small#pcontactErr
+
+    label(for='price') Price to be Sold At per kg in (UGX)
+    input#price(type='number' name='sellingpriceperkg')
+    small#ppriceErr
+
+    button.btn.btn-primary(type='submit') Add Produce
+
+script(src='js/add-produce.js')

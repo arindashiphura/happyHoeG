@@ -2,6 +2,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const moment = require("moment");
 
 
 
@@ -18,12 +19,23 @@ saveUninitialized: false//the session didnot start donot save
 require("dotenv").config();
 
 const Signup = require('./Models/signup');
+const Signupkgl = require('./Models/signupkgl');
+const register = require('./Models/register');
+const produce = require('./Models/produce'); // import routes
+
+
+
 
 //import models
 //importing routes
 const signupRoutes = require("./Routes/signupRoutes"); // import routes
 const loginRoutes = require("./Routes/loginRoutes"); // import routes
+// const registersRoutes = require("./Routes/registersRoutes"); // import routes
+const loginkglRoutes = require("./Routes/loginkglRoutes"); // import routes
 const registerRoutes = require("./Routes/registerRoutes"); // import routes
+const signupkglRoutes = require("./Routes/signupkglRoutes"); // import routes
+const add_produceRoutes = require("./Routes/add_produceRoutes"); // import routes
+
 
 
 
@@ -54,6 +66,7 @@ mongoose.connection
 
 
 //set view engine to pug
+app.locals.moment = moment; //use moment.js in pug templates
 app.set("view engine", "pug"); //specify the view engine
 app.set("views", path.join(__dirname, "views")); //specify the views directory
 
@@ -84,12 +97,17 @@ passport.deserializeUser(Signup.deserializeUser());// the serial number is destr
 
 
 
+
 //routes
 //use routes/ use imported routes
 
 app.use("/", signupRoutes); // add signup route here
 app.use("/", loginRoutes);
+// app.use("/", registersRoutes);
+app.use("/", loginkglRoutes);
 app.use("/", registerRoutes);
+app.use("/", signupkglRoutes);
+app.use("/", add_produceRoutes); // add produce route here
 
 // app.use("/", registerRoutes);
 

@@ -1,0 +1,18 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Full-Screen Background Video
+  link(rel='stylesheet' href='/css/loginkgl.css')
+video.video-background(autoplay muted loop)
+  source(src='https://media.gettyimages.com/id/1972673543/video/happy-little-girl-choosing-a-cereal-from-the-shelf-helping-her-mom-shop-for-groceries-at-the.mp4?s=mp4-640x640-gi&k=20&c=XoaIU-pxxRhiEHgrNuVzzgS2qdkbvpnx0jxY0vspryg=' type='video/mp4')
+  |         Your browser does not support the video tag.
+.container
+  h1 Login
+  form(action='/loginkgl' method='POST')
+    label(for='email') Email
+    input#email(type='email' name='email' required='')
+    label(for='password') Password
+    input#password(type='password' name='password' required='')
+    button.login-btn(type='submit') Login
+script(src='logout.js')

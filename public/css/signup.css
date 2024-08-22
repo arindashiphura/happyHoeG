@@ -1,73 +1,126 @@
 /* Reset some default styles */
-body, h1, label, input, button, a {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: auto;
-  }
-  
-  label {
-    display: block;
-    margin: 10px 0 5px;
-  }
-  
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
-  a {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
+body, h1, label, input, button, a, select {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Video background */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Send the video to the background */
+  opacity: 0.7; /* Adjust the transparency if needed */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+main.container {
+  position: relative;
+  z-index: 1; /* Ensure the container is above the video */
+  max-width: 600px; /* Adjust width as needed */
+  width: 100%; /* Full width of its parent */
+  padding: 35px; /* Add some padding around the content */
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: auto; /* Center the container */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  width: 48%; /* Each column takes 48% of the width with some gap */
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; /* Add space above the checkbox group */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: auto; /* Set the width to auto */
+  display: block;
+  margin: 20px auto 0; /* Center the button */
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Error message */
+#error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
