@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    link(rel="stylesheet" href="/css/table-list.css")
+  body
+    .container
+      h2.text-center.mt-5.mb-4 Credit List
+      table.table.table-striped
+        thead
+          tr
+            th(scope='col') Name of the Buyer
+            th(scope='col') National ID (NIN)
+            th(scope='col') Location
+            th(scope='col') Contacts 
+            th(scope='col') Amount Due (UGX)
+            th(scope='col') Branch Name
+            th(scope='col') Sales Agent Name
+            th(scope='col') Due Date
+            th(scope='col') Produce Name 
+            th(scope='col') Produce Type
+            th(scope='col') Tonnage
+            th(scope='col') Dispatch Date 
+            th(scope='col') Action
+            th
+            th
+        tbody
+          if credits.length
+            each credit in credits
+              tr
+                td #{credit.buyerName}
+                td #{credit.nationalId}
+                td #{credit.location}
+                td #{credit.contacts}
+                td #{credit.amountDue}
+                td #{credit.branch}
+                td #{credit.salesAgent}
+                td #{credit.dueDate}
+                td #{credit.producename}
+                td #{credit.producetype}
+                td #{credit.tonnage}
+                td #{credit.dispatchDate}
+                td
+                  a.btn.btn-primary.btn-sm(href=`/addCredit/${credit._id}`) Make Credit
+                td
+                  a.btn.btn-primary.btn-sm(href=`/edit_credit/${credit._id}`) Update
+                td
+                  form(method="post" action='/deleteCredit')
+                    input(type="hidden" name="id" value=credit._id)
+                    button.btn.btn-danger.btn-sm(type="submit") Delete
+          else
+            p No produce yet :(

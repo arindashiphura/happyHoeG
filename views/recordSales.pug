@@ -1,47 +1,52 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Record Sales
-  link(rel='stylesheet' href='/css/recordSales.css')
-main.form-section
-  h1 Record Sales
-  form#produceFor(action=`/addSale/${produce._id}` method="POST" name="addSale")
-    div
-      label(for='produceName') Produce Name:
-      Select#produceName(type='text' name='produceName' required='')
-      option(value=produce._id) #{produce.produceName}
-      span#produceNameError.error
-    div
-      label(for='tonnage') Tonnage (in kgs):
-      input#tonnage(type='number' name='saleTonnage' required='')
-      span#tonnageError.error
-    div
-      label(for='amountPaid') Amount Paid (in UGX):
-      input#amountPaid(type='number' name='amountPaid' required='')
-      span#amountPaidError.error
-    div
-      label(for='buyerName') Buyer&apos;s Name:
-      input#buyerName(type='text' name='buyerName' required='')
-      span#buyerNameError.error
-    div
-      label(for='salesAgentName') Sales Agent&apos;s Name:
-      select#salesAgentName(type='text' name='salesAgentName' required='')
-      if agents.length 
-        each agent in agents 
-          option(value=agent._id) #{agent.username}
-      span#salesAgentNameError.error
-    div
-      label(for='dateTime') Date and Time:
-      input#dateTime(type='datetime-local' name='dateTime' required='')
-      span#dateTimeError.error
-    div
-      label(for='branch') Branch Name:
-      select#branch(name='storebranch' required='')
-        option(value='' disabled='' selected='') Select Branch
-        option(value='Matuga') Matuga
-        option(value='Mganju') Mganju
-      span#branchError.error
-    button(type='submit') Make sale
-  a.btn.btn-primary.rounded-pill.py-sm-3.px-sm-5(href='dashboard.html') Homepage
-script(src='recordSales.js')
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Record Sales
+    link(rel='stylesheet' href='/css/recordSales.css')
+  body
+    main.form-section
+      h1 Make Sales
+      form#produceFor(action=`/addSale/${produce._id}` method='POST' name='addSale')
+        div
+          label(for='produceName') Produce Name:
+          select#producename(name='producename' required='')
+            option(value=produce._id) #{produce.producename}
+        div
+          label(for='produceType') Produce Type:
+          input#produceType(name='produceType' )
+          span#produceTypeError.error
+        div
+          label(for='tonnage') Tonnage (in kgs):
+          input#tonnage(type='number' name='saleTonnage' )
+          span#tonnageError.error
+        div
+          label(for='amountPaid') Amount Paid (in UGX):
+          input#amountPaid(type='number' name='amountPaid' )
+          span#amountPaidError.error
+        div
+          label(for='buyerName') Buyer&apos;s Name:
+          input#buyerName(type='text' name='buyerName')
+          span#buyerNameError.error
+        div
+          label(for='salesAgent') Sales Agent&apos;s Name:
+          select#salesAgentName(name='salesAgent' )
+            if agents.length 
+              each agent in agents 
+                option(value=agent._id) #{agent.username}
+          span#salesAgentNameError.error
+        div
+          label(for='Salesdate') Date and Time:
+          input#dateTime(type='datetime-local' name='Salesdate' )
+          span#dateTimeError.error
+        div
+          label(for='branch') Branch Name:
+          select#branch(name='storebranch' required='')
+            option(value='' disabled='' selected='') Select Branch
+            option(value='Matuga') Matuga
+            option(value='Mganjo') Mganjo
+          span#branchError.error
+        button(type='submit') Make sale
+      a.btn.btn-primary.rounded-pill.py-sm-3.px-sm-5(href='/dashboard.html') Homepage
+    script(src='/js/recordSales.js')

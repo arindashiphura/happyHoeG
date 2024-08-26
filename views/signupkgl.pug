@@ -5,6 +5,8 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Sign Up - Happy Hoe Grocery
     link(rel="stylesheet" href="css/signup.css")
+    
+      
   body
     // Video Background
     video.video-background(autoplay muted loop)
@@ -12,9 +14,11 @@ html(lang="en")
       | Your browser does not support the video tag.
 
     main.container
+      h2 Welcome to Happy Hoe Grocery
+      p.motivational-text "Join us today and be a part of the family that brings the freshest produce to our community. We value trust, quality, and your satisfaction."
       .signup-container
         h2 Create an Account
-        form#signup-form(action="/addusers" method="POST")
+        form#signup-form(action="addusers" method="POST")
           .form-row
             .form-group.left
               label(for='username') Username:
@@ -29,7 +33,7 @@ html(lang="en")
               label(for="role") Select Your Role:
               select#role(name="role" required)
                 option(value="" disabled selected)
-                option(value="manager") Admin
+                option(value="admin") Admin
                 option(value="manager") Manager
                 option(value="sales-agent") Sales Agent
             .form-group.right
@@ -40,9 +44,8 @@ html(lang="en")
                 option(value="matuga") Matuga
             .form-group.right.checkbox-group
               input#terms(type="checkbox" name="terms" required)
-              label(for="terms")
-                | I agree to the 
-                a(href="#") Terms and Conditions
+              label(for="terms") I agree to the 
           button(type="submit") Sign Up
-        #error-message
+        a(href="loginkgl") Already have an account? Login here
+      #error-message
     script(src="signupkgl.js")

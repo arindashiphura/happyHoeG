@@ -1,0 +1,110 @@
+/* General page styles */
+body {
+  background-image: url("/dash/img/signup.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure background image covers the entire page */
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Form section */
+.form-section {
+  background-color: rgba(132, 139, 132, 0.8); /* Slight transparency for a modern look */
+  color: #333; /* Darker text for better readability */
+  padding: 2rem;
+  border-radius: 10px; /* Slightly more rounded corners */
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
+
+/* Form title */
+.form-section h1 {
+  margin: 0 0 1.5rem 0;
+  font-size: 2.5rem; /* Larger font size for the title */
+  color: #12151a; /* Bright blue color for the title */
+  text-align: center;
+}
+
+/* Form styles */
+form {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+  margin-bottom: 1.5rem; /* Increased spacing for form elements */
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333; /* Darker label color for readability */
+}
+
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+input:focus, select:focus {
+  border-color: #06080a; /* Change border color on focus */
+  outline: none;
+}
+
+button {
+  background-color: #1bc918; /* Bright blue color for buttons */
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and scaling effect */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+/* Links */
+a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button for homepage */
+.btn-primary {
+  display: inline-block;
+  background-color: #16c716; /* Consistent with button color */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s; /* Consistent transition effects */
+}
+
+.btn-primary:hover {
+  background-color: #dadcdf;
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}

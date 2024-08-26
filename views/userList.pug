@@ -24,10 +24,10 @@ html
           if users.length
             each user in users
               tr
-                td= user.username
-                td= user.email
-                td= user.branch
-                td= user.role
+                td #{user.username}
+                td #{user.email}
+                td #{user.branch}
+                td #{user.role}
                 td
                   a.btn.btn-primary.btn-sm(href=`/edit_users/${user._id}`) Edit
                   form(method='post' action='/delete_users' style='display:inline;')

@@ -1,0 +1,39 @@
+head
+  link(rel="stylesheet" href="/css/table-list.css")
+body
+  .container
+    h2.text-center.mt-5.mb-4 Sales List
+    table.table.table-striped
+      thead
+        tr
+          th(scope='col') Produce Name
+          th(scope='col') Produce Type
+          th(scope='col') Tonnage (Kg)
+          th(scope='col') Amount Paid (UGX)
+          th(scope='col') Buyers Name
+          th(scope='col') Sales Agent's Name
+          th(scope='col') Date and Time
+          th(scope='col') Branch Name
+          th(scope='col') Action
+          th
+          th
+      tbody
+        if sales.length
+          each sale in sales
+            tr
+              td #{sale.producename.producename}  // Assuming producename is populated with an object containing a producename field
+              td #{sale.saleTonnage}  // Ensure this matches the field name in the schema
+              td #{sale.amountPaid}  // Ensure this matches the field name in the schema
+              td #{sale.amountPaid}  // Duplicate? Consider removing one of these
+              td #{sale.buyerName}
+              td #{sale.salesAgent.username}  // Assuming salesAgent is populated with an object containing a username field
+              td #{moment(sale.dateTime).format('DD-MM-YYYY')}  // Assuming sale.dateTime is correct
+              td #{sale.storeBranch}  // Ensure this matches the field name in the schema
+              td
+                a.btn.btn-primary.btn-sm(href=`/edit_Sale/${sale._id}`) Update
+              td
+                form(method="post" action='/deleteSale')
+                  input(type="hidden", name="id", value=sale._id)
+                  button.btn.btn-danger.btn-sm(type="submit") Delete
+        else
+          p No sales yet :(

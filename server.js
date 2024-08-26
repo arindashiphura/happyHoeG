@@ -22,7 +22,8 @@ const Signup = require('./Models/signup');
 const Signupkgl = require('./Models/signupkgl');
 const register = require('./Models/register');
 const produce = require('./Models/produce'); // import routes
-
+const Credit = require('./Models/credit');
+const Sales = require('./Models/recordSales');
 
 
 
@@ -35,7 +36,9 @@ const loginkglRoutes = require("./Routes/loginkglRoutes"); // import routes
 const registerRoutes = require("./Routes/registerRoutes"); // import routes
 const signupkglRoutes = require("./Routes/signupkglRoutes"); // import routes
 const add_produceRoutes = require("./Routes/add_produceRoutes"); // import routes
-
+const welcomeRoutes = require("./Routes/welcomeRoutes"); // import routes
+const add_creditsRoutes = require("./Routes/add_creditsRoutes"); // import routes
+const add_salesRoutes = require("./Routes/add_salesRoutes"); // import routes
 
 
 
@@ -107,7 +110,10 @@ app.use("/", loginRoutes);
 app.use("/", loginkglRoutes);
 app.use("/", registerRoutes);
 app.use("/", signupkglRoutes);
-app.use("/", add_produceRoutes); // add produce route here
+app.use("/", add_produceRoutes); 
+app.use("/", welcomeRoutes); 
+app.use("/", add_creditsRoutes);
+app.use("/", add_salesRoutes); //// 
 
 // app.use("/", registerRoutes);
 

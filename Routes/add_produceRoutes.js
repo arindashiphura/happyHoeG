@@ -4,7 +4,9 @@ const router = express.Router();
 
 // Importing models
 const Produce = require('../Models/produce');
-const sales = require('../Models/recordSales');
+// const sales = require('../Models/recordSales');
+
+const Signupkgl = require('../Models/signupkgl');
 
 // Route for rendering the add-produce page
 router.get('/produce', (req, res) => {
@@ -53,16 +55,16 @@ router.get("/edit_produce/:id", async (req, res) => {
     });
 
 
-    // router.get("/edit_produce/:id", async (req, res) => {
-    //     try {
-    //     const item = await Produce.findOne({ _id: req.params.id });
-    //     res.render("edit_produce", {
-    //     title: "Update Produce",
-    //     });
-    //     } catch (err) {
-    //     res.status(400).send("Unable to find item in the database");
-    //     }
-    //     });
+    router.get("/edit_produce/:id", async (req, res) => {
+        try {
+        const item = await Produce.findOne({ _id: req.params.id });
+        res.render("edit_produce", {
+        title: "Update Produce",
+        });
+        } catch (err) {
+        res.status(400).send("Unable to find item in the database");
+        }
+        });
     
 
 
@@ -108,64 +110,6 @@ router.get("/edit_produce/:id", async (req, res) => {
 
 
 
-        //Routes for making sale
-
-// router.get("/addSale/:id", async(req, res) => {
-//     try {
-//     const agents = await Signupkgl.find({ role: "salesagent" });
-//     const produce = await Produce.findOne({ _id: req.params.id })
-//     res.render("recordSales", {
-//     title: "Sale",
-//     agents: agents,
-//     produce: produce
-//     });
-//     } catch (error) {
-//     res.status(400).send("Unable to find sales agents in the database");
-//     }
-//     });
-    
-//     router.post('/addSale/:id', async (req, res) => {
-//     try {
-//     const { saleTonnage } = req.body;
-//     // saleTonnage is the same as req.body.saleTonnage, it's an input name in the add sale pug file
-//     const produce = await Produce.findById({ _id: req.params.id });
-//     if (!produce) {
-//     return res.status(404).send('produce not found');
-//     }
-    
-//     if (produce.tonnage < saleTonnage ) {
-//     return res.status(400).send(`Not enough tones in stock,there are ${produce.tonnage} Kgs in stock`);
-//     }
-//     if (produce && produce.tonnage > 0) {
-//     const newsale = new Sale(req.body);
-//     await newsale.save();
-//     produce.tonnage -= saleTonnage; // short form of what is below
-//     // produce.tonnage = produce.tonnage - saleTonnage // long form of the above
-//     await produce.save();
-//     res.redirect("/salesList");
-//     } else {
-//     return res.status(404).json({ error: 'Produce out of stock' });
-//     }
-//     } catch (error) {
-//     console.error('Error saling produce:', error);
-//     return res.status(500).json({ error: 'Internal server error' });
-//     }
-//     });
-    
-//     // retrieve sales from the database
-//     router.get("/salesList", async (req, res) => {
-//     try {
-//     const sales = await Sale.find()
-//     .sort({$natural:-1})
-//     .populate("produceName", "produceName")
-//     .populate("salesAgent", "username")
-//     res.render("sales_list", {
-//     title: "Sales List",
-//     sales: sales,
-//     });
-//     } catch (error) {
-//     res.status(400).send("Unable to find items in the database");
-//     }
-//     });
+      
 
 module.exports = router;

@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Edit Credit
+    link(rel='stylesheet' href='/css/credit.css')
+  body
+    main.form-section
+      h1 Edit Credit
+      form#editCreditForm(action=`/edit_Credit/${credit._id}` method="POST") 
+        div
+          label(for='buyerName') Name of the Buyer:
+          input#buyerName(type='text' name='buyerName' value=credit.buyerName)
+        div
+          label(for='nationalId') National ID (NIN):
+          input#nationalId(type='text' name='nationalId' value=credit.nationalId)
+        div
+          label(for='location') Location:
+          input#location(type='text' name='location' value=credit.location)
+        div
+          label(for='contacts') Contacts (Phone):
+          input#contacts(type='tel' name='contacts' placeholder='+256XXXXXXXXX' value=credit.contacts)
+        div
+          label(for='branch') Branch Name:
+          select#branch(type="text" name='branch')
+            option(value='') Select Branch
+            option(value='matuga' selected=credit.branch=='matuga') Matuga
+            option(value='maganjo' selected=credit.branch=='maganjo') Maganjo
+        div
+          label(for='salesAgentName') Sales Agent Name:
+          input#salesAgentName(type='text' name='salesAgent' value=credit.salesAgent)
+        div
+          label(for='dueDate') Due Date:
+          input#dueDate(type='date' name='dueDate' value=credit.dueDate)
+        div
+          label(for='produceName') Produce Name:
+          input#produceName(type='text' name='producename' value=credit.producename)
+        div
+          label(for='produceType') Produce Type:
+          input#produceType(type='text' name='producetype' value=credit.producetype)
+        div
+          label(for='tonnage') Tonnage:
+          input#tonnage(type='number' name='tonnage' value=credit.tonnage)
+        div
+          label(for='amountDue') Amount Due (UGX):
+          input#amountDue(type='text' name='amountDue' value=credit.amountDue)
+        div
+          label(for='dispatchDate') Date of Dispatch:
+          input#dispatchDate(type='date' name='dispatchDate' value=credit.dispatchDate)
+        button(type='submit') Update
+      a.btn.btn-primary.rounded-pill.py-sm-3.px-sm-5(href='/dashboard') Homepage
+    script(src='/js/credit.js')

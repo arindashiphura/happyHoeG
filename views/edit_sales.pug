@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Edit Sale
+    link(rel='stylesheet' href='/css/recordSales.css')
+  body
+    main.form-section
+      h1 Edit Sale
+      form#editSale(action=`/edit_sale/${sale._id}` method='POST' name='edit_sale')
+        div
+          label(for='produceName') Produce Name:
+          select#producename(name='producename' required='')
+            option(value=sale.produce._id) #{sale.produce.producename}  
+        div
+          label(for='produceType') Produce Type:
+          input#produceType(name='produceType' value=sale.produceType)  
+          span#produceTypeError.error
+        div
+          label(for='tonnage') Tonnage (in kgs):
+          input#tonnage(type='number' name='saleTonnage' value=sale.tonnage)  
+          span#tonnageError.error
+        div
+          label(for='amountPaid') Amount Paid (in UGX):
+          input#amountPaid(type='number' name='amountPaid' value=sale.amountPaid)  
+          span#amountPaidError.error
+        div
+          label(for='buyerName') Buyer&apos;s Name:
+          input#buyerName(type='text' name='buyerName' value=sale.buyerName)  
+          span#buyerNameError.error
+        div
+          label(for='salesAgent') Sales Agent&apos;s Name:
+          select#salesAgentName(name='salesAgent')
+            if agents.length
+              each agent in agents 
+                option(value=agent._id selected=(agent._id == sale.salesAgent._id) ? 'selected' : '') #{agent.username}
+          span#salesAgentNameError.error
+        div
+          label(for='Salesdate') Date and Time:
+          input#dateTime(type='datetime-local' name='Salesdate' value=sale.Salesdate)  
+          span#dateTimeError.error
+        div
+          label(for='branch') Branch Name:
+          select#branch(name='storebranch' required='')
+            option(value='' disabled='') Select Branch
+            option(value='Matuga' selected=(sale.branch === 'Matuga') ? 'selected' : '') Matuga
+            option(value='Mganjo' selected=(sale.branch === 'Mganjo') ? 'selected' : '') Mganjo
+          span#branchError.error
+        button(type='submit') Update Sale
+      a.btn.btn-primary.rounded-pill.py-sm-3.px-sm-5(href='/dashboard.html') Homepage
+    script(src='/js/recordSales.js')

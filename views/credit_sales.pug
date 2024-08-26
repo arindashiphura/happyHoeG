@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Produce Sold on Credit
+    link(rel='stylesheet' href='/css/credit.css')
+    // Link to your CSS file
+  body
+    main.form-section
+      h1 Produce Sold on Credit
+      form#creditForm(action="credit" method="POST")
+        div
+          label(for='buyerName') Name of the Buyer:
+          input#buyerName(type='text' name='buyerName')
+        div
+          label(for='nationalId') National ID (NIN):
+          input#nationalId(type='text' name='nationalId')
+        div
+          label(for='location') Location:
+          input#location(type='text' name='location')
+        div
+          label(for='contacts') Contacts (Phone):
+          input#contacts(type='tel' name='contacts' placeholder='+256XXXXXXXXX')
+        div
+          label(for='branch') Branch Name:
+          select#branch(type="text" name='branch')
+            option(value='') Select Branch
+            option(value='matuga') Matuga
+            option(value='maganjo') Maganjo
+        div
+          label(for='salesAgentName') Sales Agent Name:
+          input#salesAgentName(type='text' name='salesAgent')
+        div
+          label(for='dueDate') Due Date:
+          input#dueDate(type='date' name='dueDate')
+        div
+          label(for='produceName') Produce Name:
+          input#produceName(type='text' name='producename')
+        div
+          label(for='produceType') Produce Type:
+          input#produceType(type='text' name='producetype')
+        div
+          label(for='tonnage') Tonnage:
+          input#tonnage(type='number' name='tonnage')
+        div
+          label(for='amountDue') Amount Due (UGX):
+          input#amountDue(type='text' name='amountDue')
+        div
+          label(for='dispatchDate') Date of Dispatch:
+          input#dispatchDate(type='date' name='dispatchDate')
+        button(type='submit') Submit
+      a.btn.btn-primary.rounded-pill.py-sm-3.px-sm-5(href='dashboard.html') Homepage
+    script(src='/js/credit.js')
+    // Link to your JavaScript file

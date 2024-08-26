@@ -7,7 +7,7 @@ const router = express.Router();
 const register = require("../Models/register");
 //
 router.get("/newuser", (req, res) => {
-    res.render("register");
+    res.render("register", {title: "New User"});
 });
 
 //add new user
@@ -19,7 +19,7 @@ router.post("/newuser", async (req, res) => {
         
         res.redirect("/userList");
     }catch(err){
-        res.status(400).render("register",{title:"A"} );
+        res.status(400).send("unable to save user in the db");
         console.log("Register user error", err);
     }
     
@@ -81,7 +81,7 @@ router.get("/edit_users/:id", async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.params.id });
       res.render("edit_users", {
-        user: user,
+        register: register,
         title: "Update User"
       });
     } catch (err) {

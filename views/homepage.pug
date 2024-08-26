@@ -1,0 +1,615 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title Happy Hoe Grocery
+  meta(content='width=device-width, initial-scale=1.0' name='viewport')
+  meta(content='' name='keywords')
+  meta(content='' name='description')
+  // Favicon
+  link(href='img/favicon.ico' rel='icon')
+  // Google Web Fonts
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  link(href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Lora:wght@600;700&display=swap' rel='stylesheet')
+  // Icon Font Stylesheet
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css' rel='stylesheet')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css' rel='stylesheet')
+  // Libraries Stylesheet
+  link(href='lib/animate/animate.min.css' rel='stylesheet')
+  link(href='lib/owlcarousel/assets/owl.carousel.min.css' rel='stylesheet')
+  // Customized Bootstrap Stylesheet
+  link(href='css/bootstrap.min.css' rel='stylesheet')
+  // Template Stylesheet
+  link(href='/css/style.css' rel='stylesheet')
+// Navbar Start
+.container-fluid.fixed-top.px-0.wow.fadeIn(data-wow-delay='0.1s' style='background-color: black;color: white;')
+  .top-bar.row.gx-0.align-items-center.d-none.d-lg-flex
+    .col-lg-6.px-5.text-start
+      small
+        i.fa.fa-map-marker-alt.me-2
+        | Kapala-Matuga-Maganjo. Uganda
+      small.ms-4
+        i.fa.fa-envelope.me-2
+        | happyhoegrocery.com
+  nav.navbar.navbar-expand-lg.navbar-light.py-lg-0.px-lg-5.wow.fadeIn(data-wow-delay='0.1s' style='background-color: black; color: white;')
+    a.navbar-brand.ms-4.ms-lg-0(href='index.html')
+      h1.fw-bold.text-primary.m-0
+        | c
+        span.text-secondary ere
+        | als
+// Feature Start
+.container-fluid.bg-light.bg-icon.my-5.py-6
+  .container
+    .section-header.text-center.mx-auto.mb-5.wow.fadeInUp(data-wow-delay='0.1s' style='max-width: 500px;')
+      h1.display-5.mb-3 CURRENT STOCK LEVELS
+      h3 We add stocks every Months
+    .row.g-4
+      .col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.1s')
+        .bg-white.text-center.h-100.p-4.p-xl-5
+          img.img-fluid.mb-4(src='img/grains.jpg' alt='')
+          h4.mb-3 produce in stocks
+          p.mb-4
+            | Best quality
+          a.btn.btn-outline-primary.border-2.py-2.px-4.rounded-pill(href='login.html') Login
+      .col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.3s')
+        .bg-white.text-center.h-100.p-4.p-xl-5
+          img.img-fluid.mb-4(src='img/beans.jpeg' alt='')
+          h4.mb-3 Unique Selling Points
+          p.mb-4 Sales in 1000tones
+          a.btn.btn-outline-primary.border-2.py-2.px-4.rounded-pill(href='register.html') Register
+      .col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.5s')
+        .bg-white.text-center.h-100.p-4.p-xl-5
+          img.img-fluid.mb-4(src='img/beans.jpg' alt='')
+          h4.mb-3 Operational Details
+          p.mb-4
+            | individual dealers and farm operations
+            | .
+          a.btn.btn-outline-primary.border-2.py-2.px-4.rounded-pill(href='welcome.html') Welcome
+// Feature End
+// Product Start
+.container-xxl.py-5
+  .container
+    .row.g-0.gx-5.align-items-end
+      .col-lg-6
+        .section-header.text-start.mb-5.wow.fadeInUp(data-wow-delay='0.1s' style='max-width: 500px;')
+          h1.display-5.mb-3 Our Products
+          p Best cereals.
+      .col-lg-6.text-start.text-lg-end.wow.slideInRight(data-wow-delay='0.1s')
+        ul.nav.nav-pills.d-inline-flex.justify-content-end.mb-5
+          li.nav-item.me-2
+            a.btn.btn-outline-primary.border-2.active(data-bs-toggle='pill' href='#tab-1') Cereals
+          li.nav-item.me-2
+            a.btn.btn-outline-primary.border-2(data-bs-toggle='pill' href='#tab-2') Regumes 
+          li.nav-item.me-0
+            a.btn.btn-outline-primary.border-2(data-bs-toggle='pill' href='#tab-3') Cereals
+    .tab-content
+      #tab-1.tab-pane.fade.show.p-0.active
+        .row.g-4
+          .col-xl-3.col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.1s')
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/riceee.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Rice
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.3s')
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/beans4.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Beans
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.5s')
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maize.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Grian maize
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.7s')
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/groundnuts.jpeg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Ground Nuts
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.1s')
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/Cow pease.webp' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh cowpeas
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.3s')
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/soybean.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Soybeans
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.5s')
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maisss.webp' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh maize
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.7s')
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maize0.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Maize
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-12.text-center.wow.fadeInUp(data-wow-delay='0.1s')
+            a.btn.btn-primary.rounded-pill.py-3.px-5(href='') Browse More Products
+      #tab-2.tab-pane.fade.show.p-0
+        .row.g-4
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/riceee.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Tomato
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/beans4.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Beans
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maize.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Maize
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/groundnuts.jpeg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Ground nuts
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/Cow pease.webp' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Peas
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/soybean.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Soyabeans
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maisss.webp' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Maize
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maize0.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Maize
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-12.text-center
+            a.btn.btn-primary.rounded-pill.py-3.px-5(href='') Browse More Products
+      #tab-3.tab-pane.fade.show.p-0
+        .row.g-4
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/riceee.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Rice
+                span.text-primary.me-1 1000 tones
+                span.text-body.text-decoration-line-through v
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maize.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Maize
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/groundnuts.jpeg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Ground nuts
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/Cow pease.webp' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Cow peas
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/Cow pease.webp' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh peas
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/soybean.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh soybean
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maisss.webp' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Maize
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-xl-3.col-lg-4.col-md-6
+            .product-item
+              .position-relative.bg-light.overflow-hidden
+                img.img-fluid.w-100(src='img/maize0.jpg' alt='')
+                .bg-secondary.rounded.text-white.position-absolute.start-0.top-0.m-4.py-1.px-3 New
+              .text-center.p-4
+                a.d-block.h5.mb-2(href='') Fresh Maize 
+                span.text-primary.me-1 1000 tones
+              .d-flex.border-top
+                small.w-50.text-center.border-end.py-2
+                  a.text-body(href='')
+                    i.fa.fa-eye.text-primary.me-2
+                    | View detail
+                small.w-50.text-center.py-2
+                  a.text-body(href='')
+                    i.fa.fa-shopping-bag.text-primary.me-2
+                    | Add to cart
+          .col-12.text-center
+            a.btn.btn-primary.rounded-pill.py-3.px-5(href='') Browse More Products
+// Product End
+// Firm Visit Start
+.container-fluid.bg-primary.bg-icon.mt-5.py-6
+  .container
+    .row.g-5.align-items-center
+      .col-md-7.wow.fadeIn(data-wow-delay='0.1s')
+        h1.display-5.text-white.mb-3   Login Here!
+        p.text-white.mb-0 Everyday
+      .col-md-5.text-md-end.wow.fadeIn(data-wow-delay='0.5s')
+        a.btn.btn-lg.btn-secondary.rounded-pill.py-3.px-5(href='login.html') Login 
+// Firm Visit End
+// Blog Start
+.container-xxl.py-5
+  .container
+    .section-header.text-center.mx-auto.mb-5.wow.fadeInUp(data-wow-delay='0.1s' style='max-width: 500px;')
+      h1.display-5.mb-3 OUR STOCKS
+      p We add stocks every Months.
+    .row.g-4
+      .col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.1s')
+        img.img-fluid(src='img/stocks.jpg' alt='')
+        .bg-light.p-4
+          a.d-block.h5.lh-base.mb-4(href='')
+            | Available stocks
+          .text-muted.border-top.pt-4
+            small.me-3
+              i.fa.fa-user.text-primary.me-2
+              | Matuga-branch
+            small.me-3
+              i.fa.fa-calendar.text-primary.me-2
+              |  Kampala-Uganda
+      .col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.3s')
+        img.img-fluid(src='img/stock1.jpg' alt='')
+        .bg-light.p-4
+          a.d-block.h5.lh-base.mb-4(href='')
+            | Available stocks
+          .text-muted.border-top.pt-4
+            small.me-3
+              i.fa.fa-user.text-primary.me-2
+              | Maganjo-branch
+            small.me-3
+              i.fa.fa-calendar.text-primary.me-2
+              | Kampala-Uganda
+      .col-lg-4.col-md-6.wow.fadeInUp(data-wow-delay='0.5s')
+        img.img-fluid(src='img/stock2.jpg' alt='')
+        .bg-light.p-4
+          a.d-block.h5.lh-base.mb-4(href='')  Available stocks.
+          .text-muted.border-top.pt-4
+            small.me-3
+              i.fa.fa-user.text-primary.me-2
+              | Maganjo-branch
+            small.me-3
+              i.fa.fa-calendar.text-primary.me-2
+              | Kampala-Uganda
+// Blog End
+// Footer Start
+.container-fluid.bg-dark.footer.mt-5.pt-5.wow.fadeIn(data-wow-delay='0.1s')
+  .container.py-5
+    .row.g-5
+      .col-lg-3.col-md-6
+        h1.fw-bold.text-primary.mb-4
+          | Ce
+          span.text-secondary rea
+          | als
+        p We offer different cereals in high-quality and much quntity, shop with us
+      .col-lg-3.col-md-6
+        h4.text-light.mb-4 Address
+        p
+          i.fa.fa-map-marker-alt.me-3
+          | Kapala-Matuga-Maganjo
+        p
+          i.fa.fa-phone-alt.me-3
+          | +256-7776418
+        p
+          i.fa.fa-envelope.me-3
+          | happyhoegrocery.com
+      .col-lg-3.col-md-6
+        h4.text-light.mb-4 KGL branches
+        a.btn.btn-link(href='') Matuga
+        a.btn.btn-link(href='') Maganjo
+      .col-lg-3.col-md-6
+        h4.text-light.mb-4 Bussiness
+        p KGL Matuga &amp; Maganjo.
+        .position-relative.mx-auto(style='max-width: 400px;')
+          input.form-control.bg-transparent.w-100.py-3.ps-4.pe-5(type='text' placeholder='Your email')
+          button.btn.btn-primary.py-2.position-absolute.top-0.end-0.mt-2.me-2(type='button') SignUp
+  .container-fluid.copyright
+    .container
+      .row
+        .col-md-6.text-center.text-md-start.mb-3.mb-md-0
+          | &copy; 
+          a(href='#') Happy Hoe Grocery (klg)
+          | , All Right Reserved.
+        .col-md-6.text-center.text-md-end
+          // /*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/
+          | Designed By 
+          a(href='https://htmlcodex.com') Arinda shiphura
+// Footer End
+// Back to Top
+a.btn.btn-lg.btn-primary.btn-lg-square.rounded-circle.back-to-top(href='#')
+  i.bi.bi-arrow-up
+// JavaScript Libraries
+script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js')
+script(src='lib/wow/wow.min.js')
+script(src='lib/easing/easing.min.js')
+script(src='lib/waypoints/waypoints.min.js')
+script(src='lib/owlcarousel/owl.carousel.min.js')
+// Template Javascript
+script(src='/js/main.js')

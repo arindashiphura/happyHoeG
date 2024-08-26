@@ -12,16 +12,9 @@ html
       
     main.form-section
       h1 Edit User
-      form#edit-form(action='/edit_users?id=' + user._id method='POST' name='edituser')
+      form#edit-form(action='/edit_users?id=' + signupkgl._id method='POST' name="edituser" )
         label(for='username') Username:
-        select#username(type='text' name='username')
-         option(value="" selected=user.userename === "") Select user
-         option(value="Arinda Edson" selected=user.username === "Arinda Edson ") Arinda Edson
-         option(value="Andinda Amos" selected=user.username === "Andinda Amos") Andinda Amos
-         option(value="Arinda Shiphura" selected=user.username === "Arinda Shiphura") Arinda Shiphura
-         option(value="Arinda Favor" selected=user.username === "Arinda Favor") Arinda Favor
-         option(value="Kiconco Fortunate" selected=user.username === "Kiconco Fortunate") Kiconco Fortunate 
-         option(value="Ahimbisibwe Athur" selected=user.username === "Ahimbisibwe Athur") Ahimbisibwe Athur               
+        input#username(type='text' name='username')              
         br
         label(for='email') Email:
         input#email(type='email' name='email' value=user.email placeholder='Enter Email' required)

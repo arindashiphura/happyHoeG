@@ -1,11 +1,16 @@
-/* Reset some default styles */
-body, h1, label, input, button, a, select {
+body, html {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  padding: 50px;
+  height: 90%;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Video background */
 .video-background {
   position: fixed;
   top: 0;
@@ -13,114 +18,94 @@ body, h1, label, input, button, a, select {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* Send the video to the background */
-  opacity: 0.7; /* Adjust the transparency if needed */
+  z-index: -1;
+  filter: brightness(100%);
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-main.container {
-  position: relative;
-  z-index: 1; /* Ensure the container is above the video */
-  max-width: 600px; /* Adjust width as needed */
-  width: 100%; /* Full width of its parent */
-  padding: 35px; /* Add some padding around the content */
-  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  margin: auto; /* Center the container */
+.container {
+  z-index: 1;
+  padding: 20px;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 h2 {
-  text-align: center;
+  font-size: 2.5rem;
   margin-bottom: 20px;
-}
-
-form {
-  width: 100%;
-  padding: 20px;
-  border-radius: 8px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  animation: slideIn 1.5s ease-in-out;
 }
 
 .form-row {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .form-group {
-  width: 48%; /* Each column takes 48% of the width with some gap */
+  flex-basis: 48%;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  margin-top: 10px; /* Add space above the checkbox group */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select {
+input, select {
   width: 100%;
-  padding: 8px;
-  margin: 5px 0 15px;
+  padding: 10px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-input[type="checkbox"] {
-  margin-right: 10px;
-  vertical-align: middle;
+  font-size: 1rem;
 }
 
 button {
-  background-color: #28a745;
+  width: 100%;
+  padding: 15px;
+  background-color: #4CAF50;
   color: white;
+  font-size: 1.2rem;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  width: auto; /* Set the width to auto */
-  display: block;
-  margin: 20px auto 0; /* Center the button */
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #45a049;
 }
 
 a {
   display: block;
-  text-align: center;
-  margin-top: 20px;
-  color: #007bff;
+  margin-top: 15px;
+  color: #f0f0f0;
   text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #cccccc;
 }
 
-/* Error message */
-#error-message {
-  color: red;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 10px;
+.motivational-text {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  animation: slideIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
