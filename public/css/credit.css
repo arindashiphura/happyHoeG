@@ -1,110 +1,63 @@
-/* General page styles */
-body {
-  background-image: url("/dash/img/signup.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; /* Ensure background image covers the entire page */
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
-
-/* Form section */
+/* Container for centering and setting max-width */
 .form-section {
-  background-color: rgba(132, 139, 132, 0.8); /* Slight transparency for a modern look */
-  color: #333; /* Darker text for better readability */
-  padding: 2rem;
-  border-radius: 10px; /* Slightly more rounded corners */
-  margin: 2rem auto;
   max-width: 800px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  margin: 0 auto;
+  padding: 90px;
+  background-color: rgb(126, 128, 128);
+  border-radius: 5px;
 }
 
-/* Form title */
-.form-section h1 {
-  margin: 0 0 1.5rem 0;
-  font-size: 2.5rem; /* Larger font size for the title */
-  color: #12151a; /* Bright blue color for the title */
-  text-align: center;
+/* Form layout using Flexbox */
+#creditForm {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line */
+  gap: 20px; /* Space between form elements */
 }
 
-/* Form styles */
-form {
-  max-width: 500px;
-  margin: auto;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Flex item styling */
+#creditForm > div {
+  flex: 1 1 45%; /* Flex-grow, flex-shrink, and basis for responsive layout */
+  min-width: 200px; /* Minimum width for small screens */
 }
 
-form div {
-  margin-bottom: 1.5rem; /* Increased spacing for form elements */
-}
-
+/* Style the labels */
 label {
   display: block;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #333; /* Darker label color for readability */
+  margin-bottom: 5px;
 }
 
+/* Style the inputs and selects */
 input, select {
   width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 8px;
   box-sizing: border-box;
-  transition: border-color 0.3s; /* Smooth transition for border color */
 }
 
-input:focus, select:focus {
-  border-color: #06080a; /* Change border color on focus */
-  outline: none;
-}
-
+/* Style the submit button */
 button {
-  background-color: #1bc918; /* Bright blue color for buttons */
-  color: white;
-  border: none;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and scaling effect */
+  border: none;
+  background-color: #4dff00;
+  color: rgb(15, 5, 5);
+  border-radius: 5px;
+  margin-top: 20px; /* Add space above the button */
 }
 
-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: scale(1.05); /* Slight scaling effect on hover */
-}
-
-/* Links */
-a {
-  color: #0d6efd;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Button for homepage */
-.btn-primary {
+/* Style the link button */
+a.btn-primary {
   display: inline-block;
-  background-color: #16c716; /* Consistent with button color */
-  color: white;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
   text-align: center;
+  color: rgb(19, 11, 11);
+  background-color: #14c61a;
   text-decoration: none;
-  transition: background-color 0.3s, transform 0.3s; /* Consistent transition effects */
+  border-radius: 5px;
 }
 
-.btn-primary:hover {
-  background-color: #dadcdf;
-  transform: scale(1.05); /* Slight scaling effect on hover */
+a.btn-primary:hover {
+  background-color: #2cb90c; /* Darker shade on hover */
 }

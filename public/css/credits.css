@@ -1,16 +1,14 @@
 /* Container for centering and setting max-width */
-.container {
-    margin-top: 50px;
+.form-section {
     max-width: 800px;
     margin: 0 auto;
     padding: 80px;
-    background-color: rgb(126, 128, 128);
+    background-color: rgb(141, 139, 137);
     border-radius: 5px;
-
   }
   
   /* Form layout using Flexbox */
-  #add-produce-form {
+  #editCreditForm {
     display: flex;
     flex-wrap: wrap; /* Allows items to wrap onto the next line */
     gap: 20px; /* Space between form elements */
@@ -35,13 +33,6 @@
     box-sizing: border-box;
   }
   
-  /* Style error messages */
-  small {
-    color: red;
-    display: block;
-    margin-top: 5px;
-  }
-  
   /* Style the submit button */
   button {
     width: 100%;
@@ -49,13 +40,21 @@
     font-size: 16px;
     cursor: pointer;
     border: none;
-    background-color: #3ee407;
-    color: white;
+    background-color: #49d31f;
+    color: rgb(36, 17, 17);
     border-radius: 5px;
   }
   
-  /* Additional styling for form errors */
-  .error {
-    color: red;
+  /* Homepage button */
+  a.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: rgb(11, 7, 7);
+    background-color: #1fd619;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
   }
   

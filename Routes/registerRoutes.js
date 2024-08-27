@@ -64,50 +64,50 @@ router.post("/loginkgl",
 
 
     // Get all users from the database
-router.get("/userList", async (req, res) => {
-    try {
-      const users = await User.find().sort({ $natural: -1 }); // Sort users by creation time or other criteria
-      res.render("userList", {
-        title: "User List",
-        users: users
-      });
-    } catch (err) {
-      res.status(400).send("Unable to find users in the database");
-    }
-  });
+// router.get("/userList", async (req, res) => {
+//     try {
+//       const users = await User.find().sort({ $natural: -1 }); // Sort users by creation time or other criteria
+//       res.render("userList", {
+//         title: "User List",
+//         users: users
+//       });
+//     } catch (err) {
+//       res.status(400).send("Unable to find users in the database");
+//     }
+//   });
 
-  // Get user update form
-router.get("/edit_users/:id", async (req, res) => {
-    try {
-      const user = await User.findOne({ _id: req.params.id });
-      res.render("edit_users", {
-        register: register,
-        title: "Update User"
-      });
-    } catch (err) {
-      res.status(400).send("Unable to find user in the database");
-    }
-  });
+//   // Get user update form
+// router.get("/edit_users/:id", async (req, res) => {
+//     try {
+//       const user = await User.findOne({ _id: req.params.id });
+//       res.render("edit_users", {
+//         register: register,
+//         title: "Update User"
+//       });
+//     } catch (err) {
+//       res.status(400).send("Unable to find user in the database");
+//     }
+//   });
 
-  // Post updated user
-router.post("/edit_users/:id", async (req, res) => {
-    try {
-      await User.findOneAndUpdate({ _id: req.params.id }, req.body);
-      res.redirect("/userList");
-    } catch (err) {
-      res.status(404).send("Unable to update user in the database");
-    }
-  });
+//   // Post updated user
+// router.post("/edit_users/:id", async (req, res) => {
+//     try {
+//       await User.findOneAndUpdate({ _id: req.params.id }, req.body);
+//       res.redirect("/userList");
+//     } catch (err) {
+//       res.status(404).send("Unable to update user in the database");
+//     }
+//   });
 
-  // Delete user
-router.post("/delete_users", async (req, res) => {
-    try {
-      await User.deleteOne({ _id: req.body.id });
-      res.redirect("back");
-    } catch (err) {
-      res.status(404).send("Unable to delete user in the database");
-    }
-  });
+//   // Delete user
+// router.post("/delete_users", async (req, res) => {
+//     try {
+//       await User.deleteOne({ _id: req.body.id });
+//       res.redirect("back");
+//     } catch (err) {
+//       res.status(404).send("Unable to delete user in the database");
+//     }
+//   });
   
   
 

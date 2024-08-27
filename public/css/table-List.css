@@ -1,88 +1,109 @@
 /* Container styling */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  max-width: 1200px;
+  height: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(49, 48, 48, 0.1);
+  transition: border-color 0.3s ease;
   
-  /* Table styling */
-  .table {
+  background-color: #807a7a;
+}
+
+/* Centering the heading */
+h2.text-center {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Table styling */
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* Table headers */
+table.table thead {
+  background-color: #616263;
+  color: white;
+}
+
+table.table th {
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Table body rows */
+table.table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table body cells */
+table.table td {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+/* Zebra striping */
+table.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Button styling */
+.btn {
+  padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #1eb523;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+  table.table thead {
+    display: none;
+  }
+  table.table, table.table tbody, table.table tr, table.table td {
+    display: block;
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
   }
-  
-  .table th,
-  .table td {
-    padding: 15px;
+  table.table tr {
+    margin-bottom: 15px;
+  }
+  table.table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+  table.table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
     text-align: left;
+    font-weight: bold;
   }
-  
-  .table th {
-    background-color: #020304;
-    color: #fff;
-  }
-  
-  .table td {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-  }
-  
-  /* Button styling */
-  .btn {
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 4px;
-    text-decoration: none;
-    margin-right: 5px;
-  }
-  
-  .btn-primary {
-    background-color: #18cd0b;
-    color: white;
-    border: none;
-  }
-  
-  .btn-primary:hover {
-    background-color: #1bc50cbf;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-  }
-  
-  .btn-danger:hover {
-    background-color: #c82333;
-  }
-  
-  /* Text alignment */
-  .text-center {
-    text-align: center;
-  }
-  
-  .mt-5 {
-    margin-top: 3rem;
-  }
-  
-  .mb-4 {
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Responsive styling */
-  @media (max-width: 768px) {
-    .container {
-      padding: 10px;
-    }
-  
-    .table th, .table td {
-      padding: 10px;
-    }
-  
-    .btn {
-      font-size: 12px;
-      padding: 6px 10px;
-    }
-  }
-  
+}

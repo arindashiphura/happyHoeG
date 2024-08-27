@@ -1,78 +1,72 @@
-body {
-    background-image: url("/dash/img/signup.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.error {
-    color: red;
-}
-
-form {
-    max-width: 500px;
-    margin: auto;
-    padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 1em;
-    background-color: rgba(112, 108, 108, 0.781);
-    margin-top: 100px;
-}
-
+/* Container for centering and setting max-width */
 .form-section {
-    background-color: rgb(132, 139, 132);
-    color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    margin: 2rem auto;
+    background-color: #8d918d;
     max-width: 800px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    margin: 0 auto;
+    padding: 80px;
+    border-radius: 5px;
 
-div {
-    margin-bottom: 1em;
-}
-
-label {
-    margin-bottom: .5em;
-    color: #333333;
+  }
+  
+  /* Form layout using Flexbox */
+  form#editSale {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    gap: 20px; /* Space between form elements */
+  }
+  
+  /* Flex item styling */
+  div {
+    flex: 1 1 45%; /* Flex-grow, flex-shrink, and basis for responsive layout */
+    min-width: 200px; /* Minimum width for small screens */
+  }
+  
+  /* Style the labels */
+  label {
     display: block;
-}
-
-input,
-select {
-    border: 1px solid #ccc;
-    padding: .5em;
-    font-size: 1em;
-    width: 100%; /* Ensure all input fields take full width */
-    box-sizing: border-box; /* Include padding and border in width */
-}
-
-button {
-    padding: 1em;
-    border: none;
-    background: #12c918;
-    color: white;
-    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  
+  /* Style the inputs and selects */
+  input, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  /* Style error messages */
+  span.error {
+    color: red;
+    display: block;
+    margin-top: 5px;
+  }
+  
+  /* Style the submit button */
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: .25em;
-}
-
-button:disabled {
-    background: #ccc;
-}
-
-.btn-primary {
-    display: inline-block;
-    background-color: #0bc10e;
+    border: none;
+    background-color: #37bc12;
     color: white;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    text-align: center;
+    border-radius: 5px;
+  }
+  
+  /* Style the link button */
+  a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #0b1117;
     text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #08ce15;
-}
+    border: 1px solid #23da16;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  a.btn:hover {
+    background-color: #02080e;
+    color: rgb(42, 198, 21);
+  }
+  

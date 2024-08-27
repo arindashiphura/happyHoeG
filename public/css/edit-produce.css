@@ -1,83 +1,58 @@
-body{
-  top: 50px;
- bottom: 20px;
-}
-/* Container styles */
+/* Container for centering and setting max-width */
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #7a7272;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  form{
-    padding: 50px;
-  }
-  /* Form title */
-  h1 {
-    text-align: center;
-    color: white;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Label styles */
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    color: white;
-    font-weight: bold;
-  }
-  
-  /* Input and Select styles */
-  input[type="text"],
-  input[type="number"],
-  input[type="date"],
-  input[type="time"],
-  input[type="tel"],
-  select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    background-color: #ecf0f1;
-    color: #0b0f15;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Button styles */
-  button.btn.btn-primary {
-    width: 100%;
-    padding: 12px;
-    background-color: #2bd41c;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button.btn.btn-primary:hover {
-    background-color: #2bc117;
-  }
-  
-  /* Error message styles */
-  small {
-    color: red;
-    display: none;
-  }
-  
-  /* Responsive */
-  @media (max-width: 600px) {
-    .container {
-      padding: 15px;
-    }
-  
-    button.btn.btn-primary {
-      font-size: 14px;
-    }
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px;
+  background-color: rgb(141, 139, 137);
+  border-radius: 5px;
+}
+
+/* Form layout using Flexbox */
+#add-book-form {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line */
+  gap: 20px; /* Space between form elements */
+}
+
+/* Flex item styling */
+.form-group {
+  flex: 1 1 45%; /* Flex-grow, flex-shrink, and basis for responsive layout */
+  min-width: 200px; /* Minimum width for small screens */
+}
+
+/* Style the labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style the inputs and selects */
+input, select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* Style error messages */
+small {
+  color: red;
+  display: block;
+  margin-top: 5px;
+}
+
+/* Style the submit button */
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #0dff00;
+  color: rgb(23, 12, 12);
+  border-radius: 5px;
+}
+
+/* Additional styling for form errors */
+.error {
+  color: red;
+}

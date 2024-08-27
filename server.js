@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const moment = require("moment");
+const connectEnsureLogin = require('connect-ensure-login');
+
 
 
 
@@ -27,10 +29,11 @@ const Sales = require('./Models/recordSales');
 
 
 
+
 //import models
 //importing routes
 const signupRoutes = require("./Routes/signupRoutes"); // import routes
-const loginRoutes = require("./Routes/loginRoutes"); // import routes
+// const loginRoutes = require("./Routes/loginRoutes"); // import routes
 // const registersRoutes = require("./Routes/registersRoutes"); // import routes
 const loginkglRoutes = require("./Routes/loginkglRoutes"); // import routes
 const registerRoutes = require("./Routes/registerRoutes"); // import routes
@@ -39,6 +42,9 @@ const add_produceRoutes = require("./Routes/add_produceRoutes"); // import route
 const welcomeRoutes = require("./Routes/welcomeRoutes"); // import routes
 const add_creditsRoutes = require("./Routes/add_creditsRoutes"); // import routes
 const add_salesRoutes = require("./Routes/add_salesRoutes"); // import routes
+const reportsRoutes = require("./Routes/reportsRoutes"); // import routes
+
+
 
 
 
@@ -105,7 +111,7 @@ passport.deserializeUser(Signup.deserializeUser());// the serial number is destr
 //use routes/ use imported routes
 
 app.use("/", signupRoutes); // add signup route here
-app.use("/", loginRoutes);
+// app.use("/", loginRoutes);
 // app.use("/", registersRoutes);
 app.use("/", loginkglRoutes);
 app.use("/", registerRoutes);
@@ -114,6 +120,7 @@ app.use("/", add_produceRoutes);
 app.use("/", welcomeRoutes); 
 app.use("/", add_creditsRoutes);
 app.use("/", add_salesRoutes); //// 
+app.use("/", reportsRoutes); ////
 
 // app.use("/", registerRoutes);
 

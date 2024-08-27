@@ -12,12 +12,12 @@ html
       
     main.form-section
       h1 Edit User
-      form#edit-form(action='/edit_users?id=' + signupkgl._id method='POST' name="edituser" )
+      form#edit-form(action=`/edit_users?id=${signupkgl._id}` method='POST' name='edituser')
         label(for='username') Username:
-        input#username(type='text' name='username')              
+        input#username(type='text' name='username' value=signupkgl.username required)
         br
         label(for='email') Email:
-        input#email(type='email' name='email' value=user.email placeholder='Enter Email' required)
+        input#email(type='email' name='email' value=signupkgl.email placeholder='Enter Email' required)
         br
         label(for='password') New Password:
         input#password(type='password' name='password' placeholder='Enter New Password')
@@ -28,13 +28,13 @@ html
         br
         label(for='branch') Branch:
         select#branch(name='branch' required)
-          option(value='maganjo' selected=user.branch === 'maganjo') Maganjo
-          option(value='matuga' selected=user.branch === 'matuga') Matuga
+          option(value='maganjo' selected=signupkgl.branch === 'maganjo') Maganjo
+          option(value='matuga' selected=signupkgl.branch === 'matuga') Matuga
         br
         label(for='role') Role:
         select#role(name='role' required)
-          option(value='manager' selected=user.role === 'manager') Manager
-          option(value='sales_agent' selected=user.role === 'sales_agent') Sales Agent
+          option(value='manager' selected=signupkgl.role === 'manager') Manager
+          option(value='sales_agent' selected=signupkgl.role === 'sales_agent') Sales Agent
         br
         input.btn.btn-primary.custom-button(type='submit' value='Save Changes')
         p

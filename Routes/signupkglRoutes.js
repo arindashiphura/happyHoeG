@@ -2,7 +2,8 @@ const express = require('express')
 const passport = require("passport");
 const router = express.Router();
 
-const sign = require('../Models/signupkgl')
+// const sign = require('../Models/signupkgl');
+const Signupkgl = require('../Models/signupkgl');
 
 router.get("/addUsers", (req, res) => {
     res.render("signupkgl");
@@ -23,10 +24,10 @@ router.post("/addUsers", async (req, res) => {
     if (err) {
     throw err;
     }
-    res.redirect("/loginkgl");
+    res.redirect("/login");
     });
     } catch (err) {
-    res.status(400).render("signupkgl", { tittle: "Signupkgl" });
+    res.status(400).render("login", { tittle: "Signupkgl" });
     console.log("Signup user error", err);
     }
     });
@@ -56,89 +57,59 @@ router.post("/addUsers", async (req, res) => {
 
         
 
-        // router.get('/userlist', async (req, res) => {
-        //     try {
-        //         const signupItems = await Signup.find().sort({ $natural: -1 }); //this is for sorting the new produce up
-        //         res.render('userlist', {
-        //             title: "user List",
-        //             signups: signupItems,
+        //get all users from the db
+        router.get('/userList', async (req, res) => {
+            try {
+                const signupkglItems = await Signupkgl.find().sort({ $natural: -1 }); //this is for sorting the new produce up
+                res.render('userList', {
+                    title: "user List",
+                    signupkgls: signupkglItems,
           
-        //         });
+                });
           
-        //     } catch (error) {
-        //         res.status(404).send("Unable to find items in the db");
-        //         // console.log("Error fetching produce", error);
+            } catch (error) {
+                res.status(404).send("Unable to find items in the db");
+                // console.log("Error fetching produce", error);
           
-        //     }
-        //   });
-          
-          
-          
+            }
+          });
           
           
-        //   // get produce update form
-        //   router.get("/edituser/:id", async (req, res) => {
-        //       try {
-        //           const item = await Signup.findOne({ _id: req.params.id });
-        //           res.render("userList", {
-        //               title: "edit User",
-        //               signup: item,
-        //           });
-        //       } catch (err) {
-        //           res.status(400).send("Unable to find item in the database");
-        //       }
-        //   });
-          
-        //   router.get("/edituser/:id", async (req, res) => {
-        //       try {
-        //           const item = await Signup.findOne({ _id: req.params.id })
-        //           res.render("edit_users", {
-        //               signup: item,
-        //               title: "Update Produce",
-        //           })
-        //       } catch(error) {
-        //           res.status(400).send("Unable to find item in the database");
-        //       }
-              
-              
-        //   });
           
           
-        //   // post updated produce
-        //   router.post("/edituser", async (req, res) => {
-        //       try {
-        //           await Signup.findOneAndUpdate({ _id: req.query.id }, req.body);
-        //           res.redirect("/userlist");
-        //       } catch (err) {
-        //           res.status(404).send("Unable to update item in the database");
-        //       }
-        //   });
           
-        //   //delete user
-        //   // delete Produce
-        //   router.post("/delete_users", async (req, res) => {
-        //       try {
-        //       await Signup.deleteOne({ _id: req.body.id });
-        //       res.redirect("back");
-        //       } catch (err) {
-        //       res.status(400).send("Unable to delete item in the database");
-        //       }
-        //       });
+          router.get("/edit_users/:id", async (req, res) => {
+              try {
+                  const signupkgl = await Signupkgl.findOne({ _id: req.params.id });
+                  res.render("edit_users", {
+                      title: "edit User",
+                      signupkgl: signupkgl,
+                  });
+              } catch (err) {
+                  res.status(400).send("Unable to find item in the database");
+              }
+          });
+          
+        
+          
+        
+          
+          //delete user
+          // delete Produce
+          router.post("/delete_users", async (req, res) => {
+              try {
+              await Signup.deleteOne({ _id: req.body.id });
+              res.redirect("back");
+              } catch (err) {
+              res.status(400).send("Unable to delete item in the database");
+              }
+              });
 
 
 
 
-        //       //router to get all users from the database
-
-        //       router.get('/allUsers', async (req, res) => {
-        //         try {
-        //             const users = await User.find(); // Fetch all users from the database
-        //             res.render('allUsers', { users }); // Render the Pug template with users data
-        //         } catch (err) {
-        //             res.status(400).send('Error retrieving users');
-        //         }
-        //     });
-          
+       
+        
           
           
           

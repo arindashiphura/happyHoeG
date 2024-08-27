@@ -61,7 +61,7 @@ const Produce = require('../Models/produce');
     // retrieve sales from the database
     router.get("/salesList", async (req, res) => {
     try {
-    const recordsale = await Sale.find()
+    const recordSales = await Sale.find()
     .sort({$natural:-1})
     .populate("producename", "producename")
     .populate("salesAgent", "username")
