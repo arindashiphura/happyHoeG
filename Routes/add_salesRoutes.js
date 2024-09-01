@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Importing models
-const Sale = require('../Models/recordSales');
+const Sale = require('../Models/sale');
 const Signupkgl = require('../Models/signupkgl');
 const Produce = require('../Models/produce');
 
@@ -60,19 +60,25 @@ const Produce = require('../Models/produce');
     
     // retrieve sales from the database
     router.get("/salesList", async (req, res) => {
-    try {
-    const recordSales = await Sale.find()
-    .sort({$natural:-1})
-    .populate("producename", "producename")
-    .populate("salesAgent", "username")
-    res.render("salesList", {
-    title: "Sales List",
-    sales: sales,
+        try {
+            // Fetching the sales data from the database and populating the necessary fields
+            const sales = await Sale.find()
+                .sort({ $natural: -1 }) // Sorting the sales in reverse order of insertion
+                .populate("producename", "producename") // Populating the producename field from the related Produce model
+                .populate("salesAgent", "username"); // Populating the salesAgent field from the related Signupkgl model
+    
+            // Rendering the salesList template and passing the fetched sales data to it
+            res.render("salesList", {
+                title: "Sales List",
+                sales: sales, // Correctly passing the sales data to the template
+            });
+        } catch (error) {
+            // Handling any errors that occur during the process
+            res.status(400).send("Unable to find items in the database");
+            console.log(error); // Logging the error for debugging purposes
+        }
     });
-    } catch (error) {
-    res.status(400).send("Unable to find items in the database");
-    }
-    });
+    
 
 
     
@@ -126,4 +132,13 @@ function formartDate(date) {
     });
 
 
+
+
+
+    // agentsdashboard
+
+
+
+
+    
     module.exports = router;

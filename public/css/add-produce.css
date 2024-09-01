@@ -1,14 +1,5 @@
 /* Container for centering and setting max-width */
-.container {
-    margin-top: 50px;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 80px;
-    background-color: rgb(126, 128, 128);
-    border-radius: 5px;
 
-  }
-  
   /* Form layout using Flexbox */
   #add-produce-form {
     display: flex;

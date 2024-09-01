@@ -9,15 +9,15 @@ router.get("/login", (req, res) => {
 
 // Route to handle login
 router.post("/login", 
-    passport.authenticate("local", { failureRedirect: "/login" }),
+    passport.authenticate("local", { failureRedirect: "/produceList" }),
     (req, res) => {
         req.session.user = req.user; // Assign session to the logged-in user
         
         // Redirect based on the user's role
-        if (req.user.role === "manager") {
-            res.redirect("/reports");
+        if (req.user.role == "manager") {
+            res.redirect("/produceList");
         } else if (req.user.role === "salesagent") {
-            res.redirect("/salesdashboard");
+            res.redirect("/agentsDashboard");
         } else {
             res.send("User with that role does not exist in the system");
         }

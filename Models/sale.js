@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const recordSalesSchema = new mongoose.Schema({
+const saleSchema = new mongoose.Schema({
     producename: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"produce",
+        ref:"Produce",
         trim: true,
     },
     saleTonnage: {
@@ -11,7 +11,8 @@ const recordSalesSchema = new mongoose.Schema({
     },
     amountPaid: {
         type: Number,  // Changed to Number assuming it represents currency
-        trim: true,    },
+        trim: true,    
+    },
     buyerName: {
         type: String,
         trim: true,
@@ -31,4 +32,4 @@ const recordSalesSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Sale', recordSalesSchema);
+module.exports = mongoose.model('Sale', saleSchema);

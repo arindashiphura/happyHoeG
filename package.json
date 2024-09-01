@@ -1,5 +1,5 @@
 {
-  "name": "helloworld",
+  "name": "happyhoegrocery",
   "version": "1.0.0",
   "description": "This is node.js project",
   "main": "server.js",
@@ -8,13 +8,12 @@
     "start": "nodemon server.js"
   },
   "keywords": [
-    "Helloworld",
+    "happyhoegrocery",
     "node.js"
   ],
   "author": "Arinda Shiphura",
   "license": "ISC",
   "dependencies": {
-    "connect-ensure-login": "^0.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-session": "^1.18.0",

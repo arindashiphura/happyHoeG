@@ -1,66 +1,66 @@
-doctype html
-html
-    head
-        title Revenue Reports
-        link(rel='stylesheet', href='/css/reports.css')  // Link to your CSS file
-    body
-        block content
-            .container
-                h2.text-center.mt-5.mb-4 Revenue Reports
-                .row
-                    .col-md-6.mx-auto
-                        h4.mb-4 Cereals Report
-                        .card.card-custom.mb-3
-                            .card-body
-                                h6 Quantity in Stock: #{new Intl.NumberFormat().format(totalcereals.stockQuantity)} Kg
-                                h6 Total Expense: #{new Intl.NumberFormat().format(totalcereals.totalExpense)} UGX
-                                h6 Projected Revenue: #{new Intl.NumberFormat().format(totalcereals.totalProjectedRevenue)} UGX
-                                h6 Projected Profits: #{new Intl.NumberFormat().format(totalcereals.totalProjectedRevenue - totalcereals.totalExpense)} UGX
-                .row
-                    .col-md-6.mx-auto
-                        h4.mb-4 Legumes Report
-                        .card.card-custom.mb-3
-                            .card-body
-                                h6 Quantity in Stock: #{new Intl.NumberFormat().format(totallegumes.stockQuantity)} Kg
-                                h6 Total Expense: #{new Intl.NumberFormat().format(totallegumes.totalExpense)} UGX
-                                h6 Projected Revenue: #{new Intl.NumberFormat().format(totallegumes.totalProjectedRevenue)} UGX
-                                h6 Projected Profits: #{new Intl.NumberFormat().format(totallegumes.totalProjectedRevenue - totallegumes.totalExpense)} UGX
-                .form-row.mt-4
-                    .col-md-12
-                        form.search(action='/reports', method='get')
-                            .form-row
-                                .col-md-8
-                                    select.form-control(name='searchProduce')
-                                        option(value="") Select produce
-                                        option(value="beans") Beans
-                                        option(value="maize") Maize
-                                        option(value="cowpeas") Cowpeas
-                                        option(value="rice") Rice
-                                        option(value="soyabeans") Soya Beans
-                                .col-md-4
-                                    input.btn.btn-primary.btn-block(type="submit", value="Search")
-                table.table.table-striped.mt-4
-                    thead
-                        tr
-                            th(scope='col') Produce Name
-                            th(scope='col') Tonnage (Kg)
-                            th(scope='col') Produce Cost per Kg (UGX)
-                            th(scope='col') Revenue Projected (UGX)
-                            th(scope='col') Profits Projected (UGX)
-                    tbody
-                        if produces.length
-                            each produce in produces
-                                tr
-                                    td #{produce.producename}
-                                    td #{new Intl.NumberFormat().format(produce.tonnage)}
-                                    td #{new Intl.NumberFormat().format(produce.produceCost)}
-                                    td #{new Intl.NumberFormat().format(produce.revenueProjected)}
-                                    td #{new Intl.NumberFormat().format(produce.profitsProjected)}
-                        tr
-                            th Totals
-                            td #{new Intl.NumberFormat().format(totalcrop.stockQuantity)}
-                            td #{new Intl.NumberFormat().format(totalcrop.totalExpense)}
-                            td #{new Intl.NumberFormat().format(totalcrop.totalProjectedRevenue)}
-                            td #{new Intl.NumberFormat().format(totalcrop.totalProjectedRevenue - totalcrop.totalExpense)}
-                        else
-                            p No data available or select a crop.
+//- doctype html
+//- html
+//-     head
+//-         title Revenue Reports
+//-         link(rel='stylesheet', href='/css/reports.css')  // Link to your CSS file
+//-     body
+//-         block content
+//-             .container
+//-                 h2.text-center.mt-5.mb-4 Revenue Reports
+//-                 .row
+//-                     .col-md-6.mx-auto
+//-                         h4.mb-4 Cereals Report
+//-                         .card.card-custom.mb-3
+//-                             .card-body
+//-                                 h6 Quantity in Stock: #{new Intl.NumberFormat().format(totalcereals.stockQuantity)} Kg
+//-                                 h6 Total Expense: #{new Intl.NumberFormat().format(totalcereals.totalExpense)} UGX
+//-                                 h6 Projected Revenue: #{new Intl.NumberFormat().format(totalcereals.totalProjectedRevenue)} UGX
+//-                                 h6 Projected Profits: #{new Intl.NumberFormat().format(totalcereals.totalProjectedRevenue - totalcereals.totalExpense)} UGX
+//-                 .row
+//-                     .col-md-6.mx-auto
+//-                         h4.mb-4 Legumes Report
+//-                         .card.card-custom.mb-3
+//-                             .card-body
+//-                                 h6 Quantity in Stock: #{new Intl.NumberFormat().format(totallegumes.stockQuantity)} Kg
+//-                                 h6 Total Expense: #{new Intl.NumberFormat().format(totallegumes.totalExpense)} UGX
+//-                                 h6 Projected Revenue: #{new Intl.NumberFormat().format(totallegumes.totalProjectedRevenue)} UGX
+//-                                 h6 Projected Profits: #{new Intl.NumberFormat().format(totallegumes.totalProjectedRevenue - totallegumes.totalExpense)} UGX
+//-                 .form-row.mt-4
+//-                     .col-md-12
+//-                         form.search(action='/reports', method='get')
+//-                             .form-row
+//-                                 .col-md-8
+//-                                     select.form-control(name='searchProduce')
+//-                                         option(value="") Select produce
+//-                                         option(value="beans") Beans
+//-                                         option(value="maize") Maize
+//-                                         option(value="cowpeas") Cowpeas
+//-                                         option(value="rice") Rice
+//-                                         option(value="soyabeans") Soya Beans
+//-                                 .col-md-4
+//-                                     input.btn.btn-primary.btn-block(type="submit", value="Search")
+//-                 table.table.table-striped.mt-4
+//-                     thead
+//-                         tr
+//-                             th(scope='col') Produce Name
+//-                             th(scope='col') Tonnage (Kg)
+//-                             th(scope='col') Produce Cost per Kg (UGX)
+//-                             th(scope='col') Revenue Projected (UGX)
+//-                             th(scope='col') Profits Projected (UGX)
+//-                     tbody
+//-                         if produces.length
+//-                             each produce in produces
+//-                                 tr
+//-                                     td #{produce.producename}
+//-                                     td #{new Intl.NumberFormat().format(produce.tonnage)}
+//-                                     td #{new Intl.NumberFormat().format(produce.produceCost)}
+//-                                     td #{new Intl.NumberFormat().format(produce.revenueProjected)}
+//-                                     td #{new Intl.NumberFormat().format(produce.profitsProjected)}
+//-                         tr
+//-                             th Totals
+//-                             td #{new Intl.NumberFormat().format(totalcrop.stockQuantity)}
+//-                             td #{new Intl.NumberFormat().format(totalcrop.totalExpense)}
+//-                             td #{new Intl.NumberFormat().format(totalcrop.totalProjectedRevenue)}
+//-                             td #{new Intl.NumberFormat().format(totalcrop.totalProjectedRevenue - totalcrop.totalExpense)}
+//-                         else
+//-                             p No data available or select a crop.

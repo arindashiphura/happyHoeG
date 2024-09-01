@@ -1,51 +1,124 @@
 doctype html
-html
-  head
-    link(rel="stylesheet" href="/css/table-list.css")
-  body
-    .container
-      h2.text-center.mt-5.mb-4 Credit List
-      table.table.table-striped
-        thead
-          tr
-            th(scope='col') Name of the Buyer
-            th(scope='col') National ID (NIN)
-            th(scope='col') Location
-            th(scope='col') Contacts 
-            th(scope='col') Amount Due (UGX)
-            th(scope='col') Branch Name
-            th(scope='col') Sales Agent Name
-            th(scope='col') Due Date
-            th(scope='col') Produce Name 
-            th(scope='col') Produce Type
-            th(scope='col') Tonnage
-            th(scope='col') Dispatch Date 
-            th(scope='col') Action
-            th
-            th
-        tbody
-          if credits.length
-            each credit in credits
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title Product Page - Admin HTML Template
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
+  // https://fonts.google.com/specimen/Roboto
+  link(rel='stylesheet' href='/css/fontawesome.min.css')
+  // https://fontawesome.com/
+  link(rel='stylesheet' href='/css/bootstrap.min.css')
+  // https://getbootstrap.com/
+  link(rel='stylesheet' href='/css/templatemo-style.css')
+  link(rel='stylesheet' href='./css/style.css')
+  //
+    Product Admin CSS Template
+    https://templatemo.com/tm-524-product-admin
+nav.navbar.navbar-expand-xl
+  .container.h-100
+    a.navbar-brand(href='agentsDashboard')
+      h1.tm-site-title.mb-0 SalesAgents Dashboard
+    button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      i.fas.fa-bars.tm-nav-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mx-auto.h-100
+        li.nav-item
+          a.nav-link(href='agentsDashboard')
+            i.fas.fa-tachometer-alt
+            |  Dashboard
+            span.sr-only (current)
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            i.far.fa-file-alt
+            span
+              | Reports 
+              i.fas.fa-angle-down
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='#') Daily Report
+            a.dropdown-item(href='#') Weekly Report
+            a.dropdown-item(href='#') Yearly Report
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            i.far.fa-file-alt
+            span
+              | Sales 
+              i.fas.fa-angle-down
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='procurements') Procurements 
+            a.dropdown-item(href='credit') make credits
+            a.dropdown-item(href='creditList') creditList
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link.d-block(href='login.html')
+            | Sales, 
+            b Logout
+.container.mt-5
+      .tm-bg-primary-dark.tm-block.tm-block-products
+        .tm-product-table-container
+          h2.tm-block-title Credit List
+          table.table.table-hover.tm-table-small.tm-product-table
+            //- table.table.table-striped
+            thead
               tr
-                td #{credit.buyerName}
-                td #{credit.nationalId}
-                td #{credit.location}
-                td #{credit.contacts}
-                td #{credit.amountDue}
-                td #{credit.branch}
-                td #{credit.salesAgent}
-                td #{credit.dueDate}
-                td #{credit.producename}
-                td #{credit.producetype}
-                td #{credit.tonnage}
-                td #{credit.dispatchDate}
-                td
-                  a.btn.btn-primary.btn-sm(href=`/addCredit/${credit._id}`) Make Credit
-                td
-                  a.btn.btn-primary.btn-sm(href=`/edit_credit/${credit._id}`) Update
-                td
-                  form(method="post" action='/deleteCredit')
-                    input(type="hidden" name="id" value=credit._id)
-                    button.btn.btn-danger.btn-sm(type="submit") Delete
-          else
-            p No produce yet :(
+                th(scope='col') Name of the Buyer
+                th(scope='col') National ID (NIN)
+                th(scope='col') Location
+                th(scope='col') Contacts 
+                th(scope='col') Amount Due (UGX)
+                th(scope='col') Branch Name
+                th(scope='col') Sales Agent Name
+                th(scope='col') Due Date
+                th(scope='col') Produce Name 
+                th(scope='col') Produce Type
+                th(scope='col') Tonnage
+                th(scope='col') Dispatch Date 
+                th(scope='col') Action
+                th
+                th
+            tbody
+              if credits.length
+                each credit in credits
+                  tr
+                    td #{credit.buyerName}
+                    td #{credit.nationalId}
+                    td #{credit.location}
+                    td #{credit.contacts}
+                    td #{credit.amountDue}
+                    td #{credit.branch}
+                    td #{credit.salesAgent}
+                    td #{credit.dueDate}
+                    td #{credit.producename}
+                    td #{credit.producetype}
+                    td #{credit.tonnage}
+                    td #{credit.dispatchDate}
+                    td
+                      a.btn.btn-primary.btn-sm(href=`/addCredit/${credit._id}`) Make Credit
+                    td
+                      a.btn.btn-primary.btn-sm(href=`/edit_credit/${credit._id}`) Update
+                    td
+                      form(method="post" action='/deleteCredit')
+                        input(type="hidden" name="id" value=credit._id)
+                        button.btn.btn-danger.btn-sm(type="submit") Delete
+              else
+                p No produce yet :(
+
+            // table container
+footer.tm-footer.row.tm-mt-small
+  .col-12.font-weight-light
+    p.text-center.text-white.mb-0.px-4.small
+        |Copyright &copy; 
+        b 2018
+          |  All rights reserved. 
+          |           Design: 
+          a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
+    script(src='js/jquery-3.3.1.min.js')
+    // https://jquery.com/download/
+    script(src='js/bootstrap.min.js')
+    // https://getbootstrap.com/
+    script.
+      $(function() {
+      $(".tm-product-name").on("click", function() {
+      window.location.href = "edit-product.html";
+      });
+      });

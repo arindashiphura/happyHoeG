@@ -4,8 +4,6 @@ const router = express.Router();
 
 // Importing models
 const Produce = require('../Models/produce');
-// const sales = require('../Models/recordSales');
-
 const Signupkgl = require('../Models/signupkgl');
 
 // Route for rendering the add-produce page
@@ -54,8 +52,8 @@ router.get("/edit_produce/:id", async (req, res) => {
     }
     });
 
-
-    router.get("/edit_produce/:id", async (req, res) => {
+//route for getting the edit file
+    router.get("/update_produce/:id", async (req, res) => {
         try {
         const item = await Produce.findOne({ _id: req.params.id });
         res.render("edit_produce", {
@@ -70,8 +68,8 @@ router.get("/edit_produce/:id", async (req, res) => {
 
 
     
-    // post updated produce
-    router.post("/edit_produce", async (req, res) => {
+    // route editing produce in the edit file
+    router.post("/update_produce/:id", async (req, res) => {
     try {
     await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
     res.redirect("/produceList");
@@ -81,14 +79,17 @@ router.get("/edit_produce/:id", async (req, res) => {
     });
 
 
-    // router.post("/edit_produce/:id", async (req, res) => {
-    //     try {
-    //         await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
-    //         res.redirect("/produceList");
-    //     } catch (err) {
-    //         res.status(404).send("Unable to update item in the database");
-    //     }
-    // });
+
+
+//route for updating produce
+    router.post("/edit_produce/:id", async (req, res) => {
+        try {
+            await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
+            res.redirect("/produceList");
+        } catch (err) {
+            res.status(404).send("Unable to update item in the database");
+        }
+    });
     
 
 
@@ -108,8 +109,12 @@ router.get("/edit_produce/:id", async (req, res) => {
 
 
 
-
+        
 
       
 
 module.exports = router;
+
+
+
+

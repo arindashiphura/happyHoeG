@@ -1,42 +1,111 @@
 doctype html
-html
-  head
-    title Edit User
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet' href='/css/form.css')
-  body
-    video.video-background(autoplay muted loop)
-      source(src='https://media.gettyimages.com/id/1972673543/video/happy-little-girl-choosing-a-cereal-from-the-shelf-helping-her-mom-shop-for-groceries-at-the.mp4?s=mp4-640x640-gi&k=20&c=XoaIU-pxxRhiEHgrNuVzzgS2qdkbvpnx0jxY0vspryg=' type='video/mp4')
-      | Your browser does not support the video tag.
-      
-    main.form-section
-      h1 Edit User
-      form#edit-form(action=`/edit_users?id=${signupkgl._id}` method='POST' name='edituser')
-        label(for='username') Username:
-        input#username(type='text' name='username' value=signupkgl.username required)
-        br
-        label(for='email') Email:
-        input#email(type='email' name='email' value=signupkgl.email placeholder='Enter Email' required)
-        br
-        label(for='password') New Password:
-        input#password(type='password' name='password' placeholder='Enter New Password')
-        br
-        label(for='confirm-password') Confirm New Password:
-        input#confirm-password(type='password' name='confirm-password' placeholder='Confirm New Password')
-        span#passwordError.error
-        br
-        label(for='branch') Branch:
-        select#branch(name='branch' required)
-          option(value='maganjo' selected=signupkgl.branch === 'maganjo') Maganjo
-          option(value='matuga' selected=signupkgl.branch === 'matuga') Matuga
-        br
-        label(for='role') Role:
-        select#role(name='role' required)
-          option(value='manager' selected=signupkgl.role === 'manager') Manager
-          option(value='sales_agent' selected=signupkgl.role === 'sales_agent') Sales Agent
-        br
-        input.btn.btn-primary.custom-button(type='submit' value='Save Changes')
-        p
-          | Want to go back? 
-          a(href='/userlist') Back to User List
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title Manager
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
+  // https://fonts.google.com/specimen/Roboto
+  link(rel='stylesheet' href='/css/fontawesome.min.css')
+  // https://fontawesome.com/
+  link(rel='stylesheet' href='/jquery-ui-datepicker/jquery-ui.min.css' type='text/css')
+  // http://api.jqueryui.com/datepicker/
+  link(rel='stylesheet' href='/css/bootstrap.min.css')
+  // https://getbootstrap.com/
+  link(rel='stylesheet' href='/css/templatemo-style.css')
+  link(rel='stylesheet' href='/css/add-produce.css')
+  //
+    Product Admin CSS Template
+    https://templatemo.com/tm-524-product-admin
+nav.navbar.navbar-expand-xl
+  .container.h-100
+    a.navbar-brand(href='ProduceList')
+      h1.tm-site-title.mb-0 Mnager Dashboard
+    button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      i.fas.fa-bars.tm-nav-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mx-auto.h-100
+        li.nav-item
+          a.nav-link(href='produceList')
+            i.fas.fa-tachometer-alt
+            |  Dashboard
+            span.sr-only (current)
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            i.far.fa-file-alt
+            span
+              | Reports 
+              i.fas.fa-angle-down
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='#') Daily Report
+            a.dropdown-item(href='#') Weekly Report
+            a.dropdown-item(href='#') Yearly Report
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            i.far.fa-file-alt
+            span
+              | Sales 
+              i.fas.fa-angle-down
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='salesList') Sales List
+            a.dropdown-item(href='Procurements') Procurements
+            a.dropdown-item(href='addSale') Add Sales
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link.d-block(href='login.html')
+            | Manager, 
+            b Logout
+.container.tm-mt-big.tm-mb-big
+    .col-xl-9.col-lg-10.col-md-12.col-sm-12.mx-auto
+      .tm-bg-primary-dark.tm-block.tm-block-h-auto
+        .row
+          .col-12
+            h2.tm-block-title.d-inline-block edit Users
+        // <div class="row tm-edit-product-row">
+        // <div class="col-xl-6 col-lg-6 col-md-12">
+        form#edit-form(action=`/edit_users?id=${signupkgl._id}` method='POST' name='edituser')
+          // <div class="form-group mb-3">
+          label(for='username') Username:
+          input#username(type='text' name='username' value=signupkgl.username required)
+          br
+          label(for='email') Email:
+          input#email(type='email' name='email' value=signupkgl.email placeholder='Enter Email' required)
+          br
+          label(for='branch') Branch:
+          select#branch(name='branch' required)
+            option(value='maganjo' selected=signupkgl.branch === 'maganjo') Maganjo
+            option(value='matuga' selected=signupkgl.branch === 'matuga') Matuga
+          br
+          label(for='role') Role:
+          select#role(name='role' required)
+            option(value='manager' selected=signupkgl.role === 'manager') Manager
+            option(value='sales_agent' selected=signupkgl.role === 'sales_agent') Sales Agent
+          br
+          input.btn.btn-primary.custom-button(type='submit' value='Save Changes')
+          p
+            | Want to go back? 
+            a(href='/userlist') Back to User List
+
+
+
+
+
+footer.tm-footer.row.tm-mt-small
+  .col-12.font-weight-light
+    p.text-center.text-white.mb-0.px-4.small
+        |Copyright &copy; 
+        b 2018
+        |  All rights reserved. 
+        |             Design: 
+        a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
+  script(src='js/jquery-3.3.1.min.js')
+  script(src='js/add-produce.js')
+  // https://jquery.com/download/
+  script(src='jquery-ui-datepicker/jquery-ui.min.js')
+  // https://jqueryui.com/download/
+  script(src='/js/bootstrap.min.js')
+  // https://getbootstrap.com/
+  script.
+    $(function() {
+    $("#expire_date").datepicker();
+    });

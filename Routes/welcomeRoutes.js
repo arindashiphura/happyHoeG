@@ -14,5 +14,10 @@ router.get('/homepage', (req, res) => {
 });
 
 
+router.get('/agentsDashboard', (req, res) => {
+    res.render('agentsDashboard');  // Render 'welcome.pug'
+});
+
+
 
 module.exports = router;

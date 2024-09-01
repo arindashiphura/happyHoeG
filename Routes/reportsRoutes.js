@@ -1,18 +1,15 @@
 
 const express = require('express');
 const router = express.Router();
-const connectEnsureLogin = require('connect-ensure-login');
 
 
 
 
 
 //reports route
-
 // For managers only connectEnsureLogin.ensureLoggedIn(),
-router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async(req, res) => {
+router.get("/reports", async(req, res) => {
 req.session.user = req.user;
-if(req.user.role == 'manager'){
 try {
 
 // instantiate a crop variable you will use to select a crop.
@@ -63,9 +60,6 @@ totalcrop:totalCrop[0],
 } catch (error) {
 res.status(400).send("unable to find items in the database");
 console.log (error)
-}
-}else {
-res.send("This page is only accessed by managers")
 }
 });
 

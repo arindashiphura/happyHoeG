@@ -3,7 +3,6 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const moment = require("moment");
-const connectEnsureLogin = require('connect-ensure-login');
 
 
 
@@ -25,7 +24,7 @@ const Signupkgl = require('./Models/signupkgl');
 const register = require('./Models/register');
 const produce = require('./Models/produce'); // import routes
 const Credit = require('./Models/credit');
-const Sales = require('./Models/recordSales');
+const Sales = require('./Models/sale');
 
 
 
@@ -39,6 +38,7 @@ const loginkglRoutes = require("./Routes/loginkglRoutes"); // import routes
 const registerRoutes = require("./Routes/registerRoutes"); // import routes
 const signupkglRoutes = require("./Routes/signupkglRoutes"); // import routes
 const add_produceRoutes = require("./Routes/add_produceRoutes"); // import routes
+const procurementsRoutes = require("./Routes/procurementsRoutes"); // import routes
 const welcomeRoutes = require("./Routes/welcomeRoutes"); // import routes
 const add_creditsRoutes = require("./Routes/add_creditsRoutes"); // import routes
 const add_salesRoutes = require("./Routes/add_salesRoutes"); // import routes
@@ -117,6 +117,7 @@ app.use("/", loginkglRoutes);
 app.use("/", registerRoutes);
 app.use("/", signupkglRoutes);
 app.use("/", add_produceRoutes); 
+app.use("/", procurementsRoutes);  // add procurements route here
 app.use("/", welcomeRoutes); 
 app.use("/", add_creditsRoutes);
 app.use("/", add_salesRoutes); //// 

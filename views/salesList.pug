@@ -1,39 +1,103 @@
+doctype html
 head
-  link(rel="stylesheet" href="/css/table-list.css")
-body
-  .container
-    h2.text-center.mt-5.mb-4 Sales List
-    table.table.table-striped
-      thead
-        tr
-          th(scope='col') Produce Name
-          th(scope='col') Produce Type
-          th(scope='col') Tonnage (Kg)
-          th(scope='col') Amount Paid (UGX)
-          th(scope='col') Buyers Name
-          th(scope='col') Sales Agent's Name
-          th(scope='col') Date and Time
-          th(scope='col') Branch Name
-          th(scope='col') Action
-          th
-          th
-      tbody
-        if sales.length
-          each sale in sales
-            tr
-              td #{sale.producename.producename}  // Assuming producename is populated with an object containing a producename field
-              td #{sale.saleTonnage}  // Ensure this matches the field name in the schema
-              td #{sale.amountPaid}  // Ensure this matches the field name in the schema
-              td #{sale.amountPaid}  // Duplicate? Consider removing one of these
-              td #{sale.buyerName}
-              td #{sale.salesAgent.username}  // Assuming salesAgent is populated with an object containing a username field
-              td #{moment(sale.dateTime).format('DD-MM-YYYY')}  // Assuming sale.dateTime is correct
-              td #{sale.storeBranch}  // Ensure this matches the field name in the schema
-              td
-                a.btn.btn-primary.btn-sm(href=`/edit_Sale/${sale._id}`) Update
-              td
-                form(method="post" action='/deleteSale')
-                  input(type="hidden", name="id", value=sale._id)
-                  button.btn.btn-danger.btn-sm(type="submit") Delete
-        else
-          p No sales yet :(
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title Product Page - Admin HTML Template
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
+  link(rel='stylesheet' href='css/fontawesome.min.css')
+  link(rel='stylesheet' href='css/bootstrap.min.css')
+  link(rel='stylesheet' href='css/templatemo-style.css')
+  link(rel='stylesheet' href='./css/style.css')
+nav.navbar.navbar-expand-xl
+  .container.h-100
+    a.navbar-brand(href='agentsDashboard')
+      h1.tm-site-title.mb-0 SalesAgents Dashboard
+    button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      i.fas.fa-bars.tm-nav-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mx-auto.h-100
+        li.nav-item
+          a.nav-link(href='agentsDashboard')
+            i.fas.fa-tachometer-alt
+            |  Dashboard
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            i.far.fa-file-alt
+            span Reports 
+              i.fas.fa-angle-down
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='#') Daily Report
+            a.dropdown-item(href='#') Weekly Report
+            a.dropdown-item(href='#') Yearly Report
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            i.far.fa-file-alt
+            span Products 
+              i.fas.fa-angle-down
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='credit') make credit
+            a.dropdown-item(href='Procurements') Procurements
+            a.dropdown-item(href='creditList') Credit List
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link.d-block(href='login.html')
+            | Sales, 
+            b Logout
+.container.mt-5
+  .tm-bg-primary-dark.tm-block.tm-block-products
+    .tm-product-table-container
+      h2.tm-block-title Sales List
+      table.table.table-hover.tm-table-small.tm-product-table
+        thead
+          tr
+            th Produce Name
+            th Tonnage (Kg)
+            th Amount Paid (UGX)
+            th Buyer's Name
+            th Sales Agent's Name
+            th Date and Time
+            th Branch Name
+            th Action
+            th
+            th
+        tbody
+          if sales.length
+            each sale in sales
+              tr
+                td #{sale.producename ? sale.producename.producename : 'N/A'}  
+                td #{sale.saleTonnage} 
+                td #{sale.amountPaid}  
+                td #{sale.buyerName}
+                td #{sale.salesAgent ? sale.salesAgent.username : 'N/A'}  
+                td #{moment(sale.dateTime).format('DD-MM-YYYY')}  
+                td #{sale.storeBranch} 
+                td
+                  a.btn.btn-primary.btn-sm(href=`/edit_Sale/${sale._id}`) Update
+                td
+                  form(method="post" action='/deleteSale')
+                    input(type="hidden", name="id", value=sale._id)
+                    button.btn.btn-danger.btn-sm(type="submit") Delete
+          else
+            p No sales yet :(
+footer.tm-footer.row.tm-mt-small
+  .col-12.font-weight-light
+    p.text-center.text-white.mb-0.px-4.small
+      | Copyright &copy; 
+      b 2018
+      |  All rights reserved. 
+      | Design: 
+      a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
+script(src='js/jquery-3.3.1.min.js')
+script(src='js/bootstrap.min.js')
+script.
+  $(function() {
+    $(".tm-product-name").on("click", function() {
+      window.location.href = "edit-product.html";
+    });
+  });
+
+
+
+
+

@@ -41,10 +41,39 @@ try{
 }
 });
 
+
+//route for making credit
+router.get("/edit_Credit/:id", async (req, res) =>{
+    try{
+        const credit = await Credit.findOne({ _id: req.params.id });
+        res.render("edit_credits", {
+            credit: credit,
+            title: "Update Credit"
+        });
+    } catch(err) {
+        res.status(400).send("Unable to find credit in the database");
+    }
+});
+
+
+// route for posting edit credit
+router.post("/edit_Credit/:id", async (req, res) =>{
+    try{
+        const credit = await Credit.findOne({ _id: req.params.id });
+        res.render("creditList", {
+            credit: credit,
+            title: "Update Credit"
+        });
+    } catch(err) {
+        res.status(400).send("Unable to find credit in the database");
+    }
+});
+
+// routes for updating sales
 router.get("/addCredit/:id", async (req, res) =>{
     try{
         const credit = await Credit.findOne({ _id: req.params.id });
-        res.render("edit_credits", {
+        res.render("credit_sales", {
             credit: credit,
             title: "Update Credit"
         });
@@ -52,9 +81,7 @@ router.get("/addCredit/:id", async (req, res) =>{
         res.status(400).send("Unable to find credit in the database");
     }
 });
-
-
-router.get("/edit_credit/:id", async (req, res) =>{
+router.post("/edit_credit/:id", async (req, res) =>{
     try{
         const credit = await Credit.findOne({ _id: req.params.id });
         res.render("edit_credits", {
@@ -65,7 +92,6 @@ router.get("/edit_credit/:id", async (req, res) =>{
         res.status(400).send("Unable to find credit in the database");
     }
 });
-
 
 
     //delete credits list

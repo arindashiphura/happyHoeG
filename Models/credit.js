@@ -37,7 +37,6 @@ const creditSchema = new mongoose.Schema({
   },
   producetype: {
     type: String,
-    required: true,
     trim: true,
   },
   tonnage: {
