@@ -11,33 +11,23 @@ head
   link(rel='stylesheet' href='css/bootstrap.min.css')
   // https://getbootstrap.com/
   link(rel='stylesheet' href='css/templatemo-style.css')
-  link(rel='stylesheet' href='./css/style.css')
+  link(rel='stylesheet' href='/css/styles.css')
   //
     Product Admin CSS Template
     https://templatemo.com/tm-524-product-admin
 nav.navbar.navbar-expand-xl
   .container.h-100
-    a.navbar-brand(href='produceList')
-      h1.tm-site-title.mb-0 Managers Dashboard
+    a.navbar-brand(href='/')
+      h1.tm-site-title.mb-0 Stocks available
     button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
       i.fas.fa-bars.tm-nav-icon
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.mx-auto.h-100
         li.nav-item
-          a.nav-link(href='produceList')
+          a.nav-link(href='/')
             i.fas.fa-tachometer-alt
-            |  Dashboard
+            |  Welcome
             span.sr-only (current)
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-            i.far.fa-file-alt
-            span
-              | Reports 
-              i.fas.fa-angle-down
-          .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='usersList') UsersList
-            a.dropdown-item(href='#') Weekly Report
-            a.dropdown-item(href='#') Yearly Report
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             i.far.fa-file-alt
@@ -45,47 +35,23 @@ nav.navbar.navbar-expand-xl
               | products 
               i.fas.fa-angle-down
           .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='produce') Add produce
-            a.dropdown-item(href='Procurements') Procurements
-            a.dropdown-item(href='creditList') creditList
+            a.dropdown-item(href='login') Login
+            a.dropdown-item(href='/') BACK
       ul.navbar-nav
         li.nav-item
           a.nav-link.d-block(href='logoutkgl')
             | Admin, 
             b Logout
-.container.mt-5
-      .tm-bg-primary-dark.tm-block.tm-block-products
-        .tm-product-table-container
-          h2.tm-block-title Users List
-          table.table.table-hover.tm-table-small.tm-product-table
-            //- table.table.table-striped
-            thead
-              tr
-                th(scope='col') Username
-                th(scope='col') Email
-                th(scope='col') Role
-                th(scope='col') Branch
-                th(scope='col') Action
-                th 
-                th
-            tbody
-              if signupkgls && signupkgls.length
-                each signupkgl in signupkgls
-                   tr
-
-                    td #{signupkgl.username}
-                    td #{signupkgl.email}
-                    td #{signupkgl.role}
-                    td #{signupkgl.branch}
-                    td
-                      a.btn.btn-primary.btn-sm(href=`/edit_users/${signupkgl._id}`) Edit
-                    td
-                      form(method="post" action="/delete_users")
-                        input(type="hidden" name="id" value=signupkgl._id)
-                        button.btn.btn-danger.btn-sm(type="submit") Delete
-              else
-                  td(colspan="6" class="text-center") No users found
-
+div.stock-container
+      if produces.length
+        each produce in produces
+          div.stock-card
+            h3 #{produce.producename}
+            p Tonnage (Kg): #{produce.tonnage}
+            div.card-actions
+             
+      else
+        p No produce yet :(
 footer.tm-footer.row.tm-mt-small
   .col-12.font-weight-light
     p.text-center.text-white.mb-0.px-4.small

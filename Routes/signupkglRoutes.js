@@ -33,26 +33,22 @@ router.post("/addUsers", async (req, res) => {
     });
 
 
-//login admin page
-    router.post("/login/", passport.authenticate("local",{failureRedirect:"/login"}),
-     (req, res) => {
-        req.session.user = req.user; //assigning asession to a user who has loggedin
-        if(req.user.role==="manager"){
-            res.redirect("/produceList")
-            //res.send)(salesagent dashboard)
-        }else{
-            res.send("use with the roledoes not exist in the system")
+
+    router.post("/login", 
+        passport.authenticate("local", { failureRedirect: "/login" }),
+        (req, res) => {
+            req.session.user = req.user; // Assign session to the logged-in user
+            
+            // Redirect based on the user's role
+            if (req.user.role == "manager") {
+                res.redirect("/produceList");
+            } else if (req.user.role === "sales-agent") {
+                res.redirect("/agentsDashboard");
+            } else {
+                res.send("User with that role does not exist in the system");
+            }
         }
-        
-        });
-
-
-
-
-
-
-
-
+    );
 
 
         
@@ -124,16 +120,19 @@ router.post("/addUsers", async (req, res) => {
           
           
           
-          // Logout route
-          // router.get("/logout", (req, res) => {
-          //   if (req.session) {
-          //   req.session.destroy((err) => {
-          //   if (err) {
-          //   return res.status(500).send("Error logging out");
-          //   }
-          //   res.redirect("/");
-          //   });
-          //   }
-          //   });
+        //   Logout route
+          router.get("/logoutkgl", (req, res) => {
+            if (req.session) {
+            req.session.destroy((err) => {
+            if (err) {
+            return res.status(500).send("Error logging out");
+            }
+            res.redirect("login");
+            });
+            }
+            });
+
+
+         
 
 module.exports = router;

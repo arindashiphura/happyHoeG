@@ -52,7 +52,7 @@ nav.navbar.navbar-expand-xl
             a.dropdown-item(href='creditList') creditList
       ul.navbar-nav
         li.nav-item
-          a.nav-link.d-block(href='login.html')
+          a.nav-link.d-block(href='logoutkgl')
             | Manager, 
             b Logout
 .container.tm-mt-big.tm-mb-big
@@ -60,7 +60,7 @@ nav.navbar.navbar-expand-xl
       .tm-bg-primary-dark.tm-block.tm-block-h-auto
         h2.tm-block-title.d-inline-block Edit Product
         // <div class="col-xl-6 col-lg-6 col-md-12">
-        form#add-book-form.tm-edit-product-form(action='/update_produce/:id' method='POST' name='editProduce')
+        form#add-book-form.tm-edit-product-form(action='/edit_produce/' + produce._id method='POST' name='editProduce')
           .form-group
             label(for='name') Name of Produce:
             select#name(name='producename')
@@ -139,7 +139,7 @@ nav.navbar.navbar-expand-xl
 
           .form-group
             label(for='price') Price to be Sold At per kg (UGX):
-            input#price(type='number' name='sellingpriceperkg' value=produce.sellingprice)
+            input#price(type='number' name='sellingpriceperkg' value=produce.sellingpriceperkg)
             small#ppriceErr.error
             button.btn.btn-primary(type='submit') Update Produce
         // </div>

@@ -12,9 +12,38 @@ const Signupkgl = require('../Models/signupkgl');
 router.get("/procurements", async (req, res)=>{
     try{
         const produceItems = await Produce.find().sort({$natural: -1}); //this line is for sorting  the new produce
+        
+
+        // let totalGrainMaize = await Produce.aggregate([
+        //     { $match: { producename: "GrainMaize" } }, // Match documents with producename = GrainMaize
+        //     { 
+        //         $group: {
+        //             _id: null, // Group all matching documents together
+        //             totalQuantity: { $sum: "$tonnage" }, // Sum the tonnage field
+        //             totalSelling: { $sum: "$sellingpriceperkg" } // Sum the sellingpriceperkg field
+        //         }
+        //     }
+        // ]);
+        
+
+
+        // let totalGrainMaizeSell = await Sale.aggregate([
+        //     { $match: { producename: "GrainMaize" } }, // Match documents with producename = GrainMaize
+        //     { 
+        //         $group: {
+        //             _id: null, // Group all matching documents together
+        //             totalQuantity: { $sum: "$tonnage" } // Sum the tonnage field
+        //         }
+        //     }
+        // ]);
+        
         res.render("procurements",{
             title: "produce List",
-            produces: produceItems
+            produces: produceItems,
+
+            // TotalProduce: totalGrainMaize[0], 
+            // TotalSell: totalGrainMaizeSell[0]
+
         });
     }catch(err){
         res.status(400).send("Unable to find items in the database");
@@ -93,6 +122,48 @@ router.get("/edit_produce/:id", async (req, res) => {
 
 
         
+
+
+
+
+
+        
+
+
+
+
+
+
+
+router.get("/branch", async (req, res) => {
+    try {
+        const produceItems = await Produce.find().sort({$natural: -1}); // Fetch all produce items
+
+        // Aggregate the total produce for each branch
+        let totalProduceByBranch = await Produce.aggregate([
+          {
+            $group: {
+              _id: "$storebranch", // Group by branchName
+              totalTonnage: { $sum: "$tonnage" }, // Sum the tonnage for each branch
+              totalSellingPrice: { $sum: "$sellingpriceperkg" }, // Sum the selling price per kg for each branch
+              totalItems: { $sum: 1 } // Count the number of produce entries for each branch
+            }
+          }
+        ]);
+
+        // Render the procurement page with the aggregated data
+        res.render("branch", {
+            title: "Produce List",
+            produces: produceItems,
+            totalProduceByBranch: totalProduceByBranch // Pass the aggregated data to the view
+        });
+    } catch (err) {
+        console.error("Error fetching procurements:", err);
+        res.status(400).send("Unable to find items in the database");
+    }
+});
+
+
 
       
 

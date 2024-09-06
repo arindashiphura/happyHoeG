@@ -39,6 +39,20 @@ router.get("/produceList", async (req, res)=>{
 });
 
 
+//stock
+router.get('/stock', async (req, res) => {
+    try {
+        let produces = await Produce.find(); // Fetch procurement data
+        // Ensure there are exactly six items
+        produces = produces.slice(0, 6); // Limit to six items if necessary
+        res.render('stock', { produces });
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+
+
 // get produce update form
 router.get("/edit_produce/:id", async (req, res) => {
     try {
@@ -52,28 +66,29 @@ router.get("/edit_produce/:id", async (req, res) => {
     }
     });
 
-//route for getting the edit file
-    router.get("/update_produce/:id", async (req, res) => {
-        try {
-        const item = await Produce.findOne({ _id: req.params.id });
-        res.render("edit_produce", {
-        title: "Update Produce",
-        });
-        } catch (err) {
-        res.status(400).send("Unable to find item in the database");
-        }
-        });
+// //route for getting the edit file
+//     router.get("/update_produce/:id", async (req, res) => {
+//         try {
+//         const item = await Produce.findOne({ _id: req.params.id });
+//         res.render("edit_produce", {
+//         title: "Update Produce",
+//         });
+//         } catch (err) {
+//         res.status(400).send("Unable to find item in the database");
+//         }
+//         });
     
 
 
 
     
     // route editing produce in the edit file
-    router.post("/update_produce/:id", async (req, res) => {
+    router.post("/edit_produce/:id", async (req, res) => {
     try {
-    await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
+    await Produce.findOneAndUpdate({ _id: req.params.id }, req.body);
     res.redirect("/produceList");
     } catch (err) {
+        console.error(err); // Log the error for debugging
     res.status(404).send("Unable to update item in the database");
     }
     });
@@ -81,15 +96,7 @@ router.get("/edit_produce/:id", async (req, res) => {
 
 
 
-//route for updating produce
-    router.post("/edit_produce/:id", async (req, res) => {
-        try {
-            await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
-            res.redirect("/produceList");
-        } catch (err) {
-            res.status(404).send("Unable to update item in the database");
-        }
-    });
+
     
 
 

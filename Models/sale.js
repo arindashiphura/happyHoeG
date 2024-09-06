@@ -5,6 +5,10 @@ const saleSchema = new mongoose.Schema({
         ref:"Produce",
         trim: true,
     },
+    produceType:{
+        type: String,
+        trim: true,  // Added trim to remove leading/trailing spaces
+    },
     saleTonnage: {
         type: String, // If you mean weight in tons or kg, this might be better as a Number
         trim: true,

@@ -19,7 +19,7 @@ const creditSchema = new mongoose.Schema({
   amountDue: {
     type: Number,
   },
-  salesAgent: {
+  salesAgentName: {
     type: String,
     trim: true,
   },
@@ -31,11 +31,11 @@ const creditSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  producename: {
+  produceName: {
     type: String,
     trim: true,
   },
-  producetype: {
+  produceType: {
     type: String,
     trim: true,
   },

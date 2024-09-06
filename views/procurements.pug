@@ -50,7 +50,7 @@ nav.navbar.navbar-expand-xl
             a.dropdown-item(href='creditList') creditList
       ul.navbar-nav
         li.nav-item
-          a.nav-link.d-block(href='login.html')
+          a.nav-link.d-block(href='logoutkgl')
             | Admin, 
             b Logout
 .container.mt-5
@@ -91,7 +91,7 @@ nav.navbar.navbar-expand-xl
                     td
                       a.btn.btn-primary.btn-sm(href='/addSale/'+produce._id) Make Sale
                     td
-                      a.btn.btn-primary.btn-sm(href='/edit_Produce/' + produce._id) Update
+                      a.btn.btn-primary.btn-sm(href='/edit_produce/' + produce._id) Update
                     td
                       form(method="post" action='/deleteProduce')
                         input(type="hidden", name="id", value=produce._id)

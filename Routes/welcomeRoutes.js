@@ -20,4 +20,7 @@ router.get('/agentsDashboard', (req, res) => {
 
 
 
+// router.get('/branch', (req, res) => {
+//     res.render('branch');  // Render 'report
+// });
 module.exports = router;

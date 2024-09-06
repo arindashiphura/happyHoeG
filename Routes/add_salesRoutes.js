@@ -65,12 +65,26 @@ const Produce = require('../Models/produce');
             const sales = await Sale.find()
                 .sort({ $natural: -1 }) // Sorting the sales in reverse order of insertion
                 .populate("producename", "producename") // Populating the producename field from the related Produce model
-                .populate("salesAgent", "username"); // Populating the salesAgent field from the related Signupkgl model
+                .populate("salesAgent", "username") // Populating the salesAgent field from the related Signupkgl model
+
+
+                // Calculating the total sales amount by aggregating the 'amountPaid' field
+                let totalSales = await Sale.aggregate([
+                    {
+                      $group: {
+                        _id: null,  // Grouping by null will aggregate all documents together
+                        total: { $sum: "$amountPaid" }  // Ensure "amountPaid" is the correct field name
+                      }
+                    }
+                  ]);
+                  
     
             // Rendering the salesList template and passing the fetched sales data to it
             res.render("salesList", {
                 title: "Sales List",
                 sales: sales, // Correctly passing the sales data to the template
+
+                Totalpay: totalSales[0], 
             });
         } catch (error) {
             // Handling any errors that occur during the process
@@ -85,24 +99,40 @@ const Produce = require('../Models/produce');
 
 
 
-//finction to formart the date
-function formartDate(date) {
-    return date.toISOString().splint("T")[0];
-}
-//get sale update form
-    router.get("/edit_sale/:id", async (req, res) => {
-    try {
-    const sale = await sale.findOne({ _id: req.params.id })
-    .populate("producename", "producename")
-    const formarttedDate = formartDate(sale.saledate);
-    res.render("edit_sale", {
-        sale,
-        formattedDate,
-        title: "Update Sale",
-    })
-}catch (err) {
-    res.status(400).send("Unable to find item in the database");
-}
+    function formatDate(date) {
+        return date.toISOString().slice(0, 16); // Format to 'YYYY-MM-DDTHH:MM'
+    }
+    
+    // Route to get the sale edit form
+    router.get('/edit_sale/:id', async (req, res) => {
+        try {
+            // Fetch sale by ID
+            const sale = await Sale.findById(req.params.id)
+                .populate('producename', 'producename')
+                .populate('salesAgent', 'username') // Ensure you have 'salesAgent' populated
+    
+            if (!sale) {
+                return res.status(404).send('Sale not found');
+            }
+    
+            // Fetch agents for the dropdown
+            const agents = await Signupkgl.find();
+    
+            // Format date for the input field
+            const formattedDate = formatDate(sale.dateTime);
+    
+            // Render the edit form with the sale data and agents
+            res.render('edit_sales', {
+                sale,
+                formattedDate,
+                agents,
+                title: 'Update Sale',
+            });
+        } catch (err) {
+            console.log(Sale); // Verify that sale.storeBranch is present and contains the expected value
+            console.error('Error fetching sale:', err);
+            res.status(500).send('Unable to fetch sale details');
+        }
     });
 
 
@@ -110,9 +140,9 @@ function formartDate(date) {
 
 
     // post updated sale
-    router.post("/edit_sale", async(req, res) => {
+    router.post("/edit_sale/:id", async(req, res) => {
         try {
-            await sale.findOneAndUpdate({ _id: req.query.id},req.body);
+            await Sale.findOneAndUpdate({ _id: req.params.id},req.body);
             res.redirect("/salesList");
         }catch (err) {
             res.status(404).send("Unable to update item in the database");
@@ -124,7 +154,7 @@ function formartDate(date) {
     //delete sale
     router.post("/deleteSale", async (req, res) => {
         try {
-            await sale.deleteOne({ _id: req.body.id });
+            await Sale.deleteOne({ _id: req.body.id });
             res.redirect("back");
         } catch (err) {
             res.status(404).send("Unable to delete item in the database");
@@ -135,7 +165,38 @@ function formartDate(date) {
 
 
 
-    // agentsdashboard
+    // sales receipt
+    router.get('/receipt/:id', async (req, res) => {
+        try {
+            // Fetch sale by ID
+            const sale = await Sale.findById(req.params.id)
+                .populate('producename', 'producename')
+                .populate('salesAgent', 'username') // Ensure you have 'salesAgent' populated
+
+    
+            if (!sale) {
+                return res.status(404).send('Sale not found');
+            }
+    
+            // Fetch agents for the dropdown
+            const agents = await Signupkgl.find();
+    
+            // Format date for the input field
+            const formattedDate = formatDate(sale.dateTime);
+    
+            // Render the edit form with the sale data and agents
+            res.render('salesReceipt', {
+                sale,
+                formattedDate,
+                agents,
+                title: 'Receipt',
+            });
+        } catch (err) {
+            console.log(Sale); // Verify that sale.storeBranch is present and contains the expected value
+            console.error('Error fetching sale:', err);
+            res.status(500).send('Unable to fetch sale details');
+        }
+    });
 
 
 

@@ -19,7 +19,6 @@ saveUninitialized: false//the session didnot start donot save
 
 require("dotenv").config();
 
-const Signup = require('./Models/signup');
 const Signupkgl = require('./Models/signupkgl');
 const register = require('./Models/register');
 const produce = require('./Models/produce'); // import routes
@@ -99,9 +98,9 @@ app.use(passport.initialize());//intialize passport
 app.use(passport.session());//use passport session
 
 // passport configs
-passport.use(Signup.createStrategy());// use the local strategy
-passport.serializeUser(Signup.serializeUser());// assign a serial number to a user in the system
-passport.deserializeUser(Signup.deserializeUser());// the serial number is destroyed on log out
+passport.use(Signupkgl.createStrategy());// use the local strategy
+passport.serializeUser(Signupkgl.serializeUser());// assign a serial number to a user in the system
+passport.deserializeUser(Signupkgl.deserializeUser());// the serial number is destroyed on log out
 
 
 

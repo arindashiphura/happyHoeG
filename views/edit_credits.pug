@@ -52,7 +52,7 @@ nav.navbar.navbar-expand-xl
             a.dropdown-item(href='creditList') creditList
       ul.navbar-nav
         li.nav-item
-          a.nav-link.d-block(href='login.html')
+          a.nav-link.d-block(href='logoutkgl')
             | Sales, 
             b Logout
 .container.tm-mt-big.tm-mb-big
@@ -63,7 +63,7 @@ nav.navbar.navbar-expand-xl
             h2.tm-block-title.d-inline-block edit credits
         // <div class="row tm-edit-product-row">
         // <div class="col-xl-6 col-lg-6 col-md-12">
-        form#editCreditForm(action=`/edit_Credit/${credit._id}` method="POST") 
+        form#editCreditForm(action=`/edit_credit/${credit._id}` method="POST") 
           // <div class="form-group mb-3">
           .form-group
             label(for='buyerName') Name of the Buyer:
@@ -85,16 +85,16 @@ nav.navbar.navbar-expand-xl
               option(value='maganjo' selected=credit.branch=='maganjo') Maganjo
           .form-group
             label(for='salesAgentName') Sales Agent Name:
-            input#salesAgentName(type='text' name='salesAgent' value=credit.salesAgent)
+            input#salesAgentName(type='text' name='salesAgent' value=credit.salesAgentName)
           .form-group
             label(for='dueDate') Due Date:
             input#dueDate(type='date' name='dueDate' value=credit.dueDate)
           .form-group
             label(for='produceName') Produce Name:
-            input#produceName(type='text' name='producename' value=credit.producename)
+            input#produceName(type='text' name='producename' value=credit.produceName)
           .form-group
             label(for='produceType') Produce Type:
-            input#produceType(type='text' name='producetype' value=credit.producetype)
+            input#produceType(type='text' name='producetype' value=credit.produceType)
           .form-group
             label(for='tonnage') Tonnage:
             input#tonnage(type='number' name='tonnage' value=credit.tonnage)

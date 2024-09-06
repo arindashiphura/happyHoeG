@@ -17,7 +17,7 @@ router.get('/credit', (req, res)=>{
 router.post('/credit', async (req, res)=>{
     try {
         const newCredit = new Credit(req.body);
-        await newCredit.save();
+        await newCredit.save();                 
         res.redirect("/creditList");
           // 'Credit' should be capitalized to match the model
 }catch (err) {
@@ -42,8 +42,14 @@ try{
 });
 
 
-//route for making credit
-router.get("/edit_Credit/:id", async (req, res) =>{
+
+
+
+
+
+
+//route for editing credit
+router.get("/edit_credit/:id", async (req, res) =>{
     try{
         const credit = await Credit.findOne({ _id: req.params.id });
         res.render("edit_credits", {
@@ -57,41 +63,23 @@ router.get("/edit_Credit/:id", async (req, res) =>{
 
 
 // route for posting edit credit
-router.post("/edit_Credit/:id", async (req, res) =>{
-    try{
-        const credit = await Credit.findOne({ _id: req.params.id });
-        res.render("creditList", {
-            credit: credit,
-            title: "Update Credit"
-        });
-    } catch(err) {
-        res.status(400).send("Unable to find credit in the database");
-    }
-});
 
-// routes for updating sales
-router.get("/addCredit/:id", async (req, res) =>{
-    try{
-        const credit = await Credit.findOne({ _id: req.params.id });
-        res.render("credit_sales", {
-            credit: credit,
-            title: "Update Credit"
-        });
-    } catch(err) {
-        res.status(400).send("Unable to find credit in the database");
+
+
+
+router.post("/edit_credit/:id", async (req, res) => {
+    try {
+    await Credit.findOneAndUpdate({ _id: req.params.id }, req.body);
+    res.redirect("/creditList");
+    } catch (err) {
+        console.error(err); // Log the error for debugging
+    res.status(404).send("Unable to update item in the database");
     }
-});
-router.post("/edit_credit/:id", async (req, res) =>{
-    try{
-        const credit = await Credit.findOne({ _id: req.params.id });
-        res.render("edit_credits", {
-            credit: credit,
-            title: "Update Credit"
-        });
-    } catch(err) {
-        res.status(400).send("Unable to find credit in the database");
-    }
-});
+    });
+
+
+
+
 
 
     //delete credits list

@@ -41,18 +41,20 @@ nav.navbar.navbar-expand-xl
             a.dropdown-item(href='creditList') Credit List
       ul.navbar-nav
         li.nav-item
-          a.nav-link.d-block(href='login.html')
+          a.nav-link.d-block(href='logoutkgl')
             | Sales, 
             b Logout
 .container.mt-5
   .tm-bg-primary-dark.tm-block.tm-block-products
     .tm-product-table-container
       h2.tm-block-title Sales List
+      h2.tm-block-title #{Totalpay.total}
       table.table.table-hover.tm-table-small.tm-product-table
         thead
           tr
             th Produce Name
             th Tonnage (Kg)
+            th  Produce Type
             th Amount Paid (UGX)
             th Buyer's Name
             th Sales Agent's Name
@@ -65,15 +67,18 @@ nav.navbar.navbar-expand-xl
           if sales.length
             each sale in sales
               tr
-                td #{sale.producename ? sale.producename.producename : 'N/A'}  
-                td #{sale.saleTonnage} 
+                td #{sale.producename.producename} 
+                td #{sale.saleTonnage}
+                td #{sale.produceType} 
                 td #{sale.amountPaid}  
                 td #{sale.buyerName}
-                td #{sale.salesAgent ? sale.salesAgent.username : 'N/A'}  
+                td #{sale.salesAgent.username}  
                 td #{moment(sale.dateTime).format('DD-MM-YYYY')}  
                 td #{sale.storeBranch} 
                 td
-                  a.btn.btn-primary.btn-sm(href=`/edit_Sale/${sale._id}`) Update
+                  a.btn.btn-primary.btn-sm(href=`/edit_sale/${sale._id}`) Update
+                td
+                  a.btn.btn-primary.btn-sm(href='/receipt/'+sale.id) Make Receipt
                 td
                   form(method="post" action='/deleteSale')
                     input(type="hidden", name="id", value=sale._id)

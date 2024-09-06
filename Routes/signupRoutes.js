@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router();
 
-const sign = require('../Models/signup')
 
 router.get("/addUser", (req, res) => {
     res.render("signup");

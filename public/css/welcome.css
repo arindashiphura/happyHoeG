@@ -9,6 +9,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 .overlay {
     position: absolute;
