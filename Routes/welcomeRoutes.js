@@ -5,12 +5,15 @@ const router = express.Router();
 
 
 // Route for the welcome page (GET request)
+const path = require('path');
+
 router.get('/', (req, res) => {
-    res.render('welcome');  // Render 'welcome.pug'
+    res.sendFile(path.join(__dirname, '../views', 'index.html'));  // Serve 'index.html'
 });
 
-router.get('/homepage', (req, res) => {
-    res.render('homepage');  // Render 'welcome.pug'
+
+router.get('/', (req, res) => {
+    res.render('welcome');  // Render 'welcome.pug'
 });
 
 
