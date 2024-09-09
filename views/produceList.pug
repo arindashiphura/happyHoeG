@@ -79,6 +79,7 @@ nav.navbar.navbar-expand-xl
                 th(scope='col') Action
                 th
                 th
+                th
             tbody
               if produces.length
                 each produce in produces
@@ -95,6 +96,8 @@ nav.navbar.navbar-expand-xl
                     td #{produce.contact}
                     td
                       a.btn.btn-primary.btn-sm(href='/addSale/'+produce._id) Make Sale
+                    td
+                      a.btn.btn-primary.btn-sm(href='/credit/'+produce._id) Make Credit
                     td
                       a.btn.btn-primary.btn-sm(href='/edit_produce/' + produce._id) Update
                     td

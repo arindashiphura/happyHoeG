@@ -5,64 +5,161 @@ const router = express.Router();
 
 // Import the  models
 const Credit = require("../Models/credit");
+const Signupkgl = require('../Models/signupkgl');
+const Produce = require('../Models/produce');
 
 
 
-// Route to render the credit page
-router.get('/credit', (req, res)=>{
-    res.render('credit_sales', { title: 'Add Credit' });  // 'Credit' is now a string
-});
 
-// Route to handle the form submission to add new credit
-router.post('/credit', async (req, res)=>{
+//routes for mking a credit
+router.get("/credit/:id", async(req, res) => {
     try {
-        const newCredit = new Credit(req.body);
-        await newCredit.save();                 
-        res.redirect("/creditList");
-          // 'Credit' should be capitalized to match the model
-}catch (err) {
-    res.status(400).send("Unable to save credit in the db");
-    console.log("Add credit error", err);
-}
-});
+    const agents = await Signupkgl.find({ role: "sales-agent" });
+    const produce = await Produce.findOne({ _id: req.params.id })
+    console.log(produce)
+    console.log("Requested ID:", req.params.id);
 
-
-// get all credits information frm the db
-router.get('/creditList', async (req, res)=>{
-try{
-    const creditItems = await Credit.find().sort({$natural: -1});
-    res.render("creditList",{
-        title: "Credit List",
-        credits: creditItems
+    res.render("credit_sales", {
+    title: "Credit",
+    agents: agents,
+    produce: produce
     });
-}catch(err){
-    res.status(400).send("Unable to find items in the database");
-    // console.log("Error fetching produce", error);
-}
-});
-
-
-
-
-
-
-
-
-//route for editing credit
-router.get("/edit_credit/:id", async (req, res) =>{
-    try{
-        const credit = await Credit.findOne({ _id: req.params.id });
-        res.render("edit_credits", {
-            credit: credit,
-            title: "Update Credit"
-        });
-    } catch(err) {
-        res.status(400).send("Unable to find credit in the database");
+    } catch (error) {
+    console.log(error);
+        res.status(400).send("Unable to find sales agents in the database");
     }
-});
+    });
+    
+    router.post('/credit/:id', async (req, res) => {
+    try {
+    const { creditTonnage } = req.body;
+    // saleTonnage is the same as req.body.saleTonnage, it's an input name in the add sale pug file
+    const produce = await Produce.findById({ _id: req.params.id });
+    if (!produce) {
+    return res.status(404).send('produce not found');
+    }                     
+    
+    if (produce.tonnage < creditTonnage ) {
+    return res.status(400).send(`Not enough tones in stock,there are ${produce.tonnage} Kgs in stock`);
+    }
+    if (produce && produce.tonnage > 0) {
+    const newcredit = new Credit(req.body);
+    await newcredit.save();
+    produce.tonnage -= creditTonnage; // short form of what is below
+    // produce.tonnage = produce.tonnage - saleTonnage // long form of the above
+    await produce.save();
+    res.redirect("/creditList");
+    } else {
+    return res.status(404).json({ error: 'Produce out of stock' });
+    }
+    } catch (error) {
+    console.error('Error saling produce:', error);
+    return res.status(400).json({ error: 'Internal server error' });
+    }
+    });
+    
+    // retrieve sales from the database
+    router.get("/creditList", async (req, res) => {
+        try {
+            // Fetching the sales data from the database and populating the necessary fields
+            const credits = await Credit.find()
+                .sort({ $natural: -1 }) // Sorting the sales in reverse order of insertion
+                .populate("produceName", "producename") // Populating the producename field from the related Produce model
+                .populate("salesAgentName", "username") // Populating the salesAgent field from the related Signupkgl model
 
 
-// route for posting edit credit
+                // Calculating the total sales amount by aggregating the 'amountPaid' field
+                let totalCredits = await Credit.aggregate([
+                    {
+                      $group: {
+                        _id: null,  // Grouping by null will aggregate all documents together
+                        total: { $sum: "$amountPaid" }  // Ensure "amountPaid" is the correct field name
+                      }
+                    }
+                  ]);
+                  
+    
+            // Rendering the salesList template and passing the fetched sales data to it
+            res.render("creditList", {
+                title: "Credit List",
+                credits: credits, // Correctly passing the sales data to the template
+
+                Totalpay: totalCredits[0], 
+            });
+        } catch (error) {
+            // Handling any errors that occur during the process
+            res.status(400).send("Unable to find items in the database");
+            console.log(error); // Logging the error for debugging purposes
+        }
+    });
+    
+
+
+    
+
+
+
+    function formatDate(date) {
+        return date.toISOString().slice(0, 16); // Format to 'YYYY-MM-DDTHH:MM'
+    }
+    
+    // Route to get the sale edit form
+    router.get('/edit_credit/:id', async (req, res) => {
+        try {
+            // Fetch sale by ID
+            const credit = await Credit.findById(req.params.id)
+                .populate('produceName', 'producename')
+                .populate('salesAgentName', 'username') // Ensure you have 'salesAgent' populated
+    
+            if (!credit) {
+                return res.status(404).send('Credit not found');
+            }
+    
+            // Fetch agents for the dropdown
+            const agents = await Signupkgl.find();
+    
+            // Format date for the input field
+            const formattedDate = formatDate(credit.dueDate);
+    
+            // Render the edit form with the sale data and agents
+            res.render('edit_credits', {
+                credit,
+                formattedDate,
+                agents,
+                title: 'Update Credits',
+            });
+        } catch (err) {
+            console.log(Credit); // Verify that sale.storeBranch is present and contains the expected value
+            console.error('Error fetching sale:', err);
+            res.status(500).send('Unable to fetch credit details');
+        }
+    });
+
+
+   
+
+
+    
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // route for posting edit credit
 
 
 

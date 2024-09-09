@@ -24,8 +24,8 @@ const creditSchema = new mongoose.Schema({
     type: Number,
   },
   salesAgentName: {
-    type: String,
-    trim: true,
+    type: mongoose.Schema.Types.ObjectId,  
+    ref: "Signupkgl", // Referencing another model (sales agent)    trim: true,
   },
   dueDate: {
     type: Date,
@@ -36,14 +36,15 @@ const creditSchema = new mongoose.Schema({
     trim: true,
   },
   produceName: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Produce",
     trim: true,
   },
   produceType: {
     type: String,
     trim: true,
   },
-  tonnage: {
+  creditTonnage: {
     type: Number,
 trim: true,
   },

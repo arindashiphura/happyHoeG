@@ -17,9 +17,13 @@ html(lang='en')
       form(action='/login' method='POST')
         label(for='email') Email Address
         input#email(type='email' name='email' required='')
+        span#emailErrror 
         
         label(for='password') Password
         input#password(type='password' name='password' required='')
+        span#passwordError 
+
+        p.remember-me
         
         button.login-btn(type='submit') Login
 
@@ -27,4 +31,4 @@ html(lang='en')
           a(href='/addUsers' style='color: green; cursor: pointer;') Create an account
           |  to get started.
 
-    script(src='/js/logout.js')
+    script(src='/js/login.js')

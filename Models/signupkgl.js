@@ -17,11 +17,8 @@ const signupkglSchema = new mongoose.Schema({
     branch:{
         type: String,
         trim:true,
-    },
-    password:{
-        type: String,
-        trim:true,
-    },
+    }
+    
 });
 signupkglSchema.plugin(passportLocalMongoose, {
     usernameField: "email",

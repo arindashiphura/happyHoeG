@@ -88,14 +88,14 @@ nav.navbar.navbar-expand-xl
                     td #{credit.amountperkg}
                     td #{credit.amountDue}
                     td #{credit.branch}
-                    td #{credit.salesAgentName}
-                    td #{credit.dueDate}
-                    td #{credit.produceName}
+                    td #{credit.salesAgentName.username}  
+                    td #{moment(credit.dueDate).format('DD-MM-YYYY')}  
+                    td #{credit.produceName.producename} 
                     td #{credit.produceType}
-                    td #{credit.tonnage}
-                    td #{credit.dispatchDate}
+                    td #{credit.creditTonnage}
+                    td #{moment(credit.dispatchDate).format('DD-MM-YYYY')}  
                     td
-                      a.btn.btn-primary.btn-sm(href=`/credit`) Make Credit
+                      a.btn.btn-primary.btn-sm(href='/receipt/'+credit.id) Make Receipt
                     td
                       a.btn.btn-primary.btn-sm(href=`/edit_credit/${credit._id}`) Update
                     td

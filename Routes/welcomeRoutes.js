@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/', (req, res) => {
-    res.render('welcome');  // Render 'welcome.pug'
+router.get('/homepage', (req, res) => {
+    res.render('homepage');  // Render 'welcome.pug'
 });
 
 

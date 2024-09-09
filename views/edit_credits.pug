@@ -13,7 +13,7 @@ head
   link(rel='stylesheet' href='/css/bootstrap.min.css')
   // https://getbootstrap.com/
   link(rel='stylesheet' href='/css/templatemo-style.css')
-  link(rel='stylesheet' href='/css/add-produce.css')
+  link(rel='stylesheet' href='/css/credit.css')
   //
     Product Admin CSS Template
     https://templatemo.com/tm-524-product-admin
@@ -63,7 +63,7 @@ nav.navbar.navbar-expand-xl
             h2.tm-block-title.d-inline-block edit credits
         // <div class="row tm-edit-product-row">
         // <div class="col-xl-6 col-lg-6 col-md-12">
-        form#creditForm(action=`/edit_credit/${credit._id}` method="POST") 
+        form#creditForm(action='/edit_credit/' + credit._id method="POST" name='editCredit') 
           // <div class="form-group mb-3">
           .form-group
             label(for='buyerName') Name of the Buyer:
@@ -85,19 +85,23 @@ nav.navbar.navbar-expand-xl
               option(value='maganjo' selected=credit.branch=='maganjo') Maganjo
           .form-group
             label(for='salesAgentName') Sales Agent Name:
-            input#salesAgentName(type='text' name='salesAgent' value=credit.salesAgentName)
+            select#salesAgentName(type='text' name='salesAgent')
+              if agents.length 
+                each agent in agents 
+                  option(value=agent._id) #{agent.username}
           .form-group
             label(for='dueDate') Due Date:
             input#dueDate(type='date' name='dueDate' value=credit.dueDate)
           .form-group
             label(for='produceName') Produce Name:
-            input#produceName(type='text' name='producename' value=credit.produceName)
+            select#produceName(type='text' name='producename')
+              option #{credit.produceName.producename}
           .form-group
             label(for='produceType') Produce Type:
             input#produceType(type='text' name='producetype' value=credit.produceType)
           .form-group
             label(for='tonnage') Tonnage:
-            input#tonnage(type='number' name='tonnage' value=credit.tonnage)
+            input#tonnage(type='number' name='creditTonnage' value=credit.creditTonnage)
           .form-group
             label(for='amountperkg') Amount perkger kg (UGX):
             input#amountperkg(type='text' name='amountperkg' value=credit.amountperkg)
@@ -119,7 +123,7 @@ footer.tm-footer.row.tm-mt-small
         |             Design: 
         a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
   script(src='js/jquery-3.3.1.min.js')
-  script(src='js/add-credits.js')
+  script(src='/js/add-credits.js')
   script(src='jquery-ui-datepicker/jquery-ui.min.js')
   script(src='js/bootstrap.min.js')
   script.
