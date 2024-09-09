@@ -13,7 +13,7 @@ head
   link(rel='stylesheet' href='/css/bootstrap.min.css')
   // https://getbootstrap.com/
   link(rel='stylesheet' href='/css/templatemo-style.css')
-  link(rel='stylesheet' href='/css/edit-produce.css')
+  link(rel='stylesheet' href='/css/add-produce.css')
   //
     Product Admin CSS Template
     https://templatemo.com/tm-524-product-admin
@@ -60,7 +60,7 @@ nav.navbar.navbar-expand-xl
       .tm-bg-primary-dark.tm-block.tm-block-h-auto
         h2.tm-block-title.d-inline-block Edit Product
         // <div class="col-xl-6 col-lg-6 col-md-12">
-        form#add-book-form.tm-edit-product-form(action='/edit_produce/' + produce._id method='POST' name='editProduce')
+        form#add-produce-form(action='/edit_produce/' + produce._id method='POST' name='editProduce')
           .form-group
             label(for='name') Name of Produce:
             select#name(name='producename')
@@ -150,13 +150,11 @@ footer.tm-footer.row.tm-mt-small
         b 2024
         |  All rights reserved. 
         |             Design: 
-        a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
+        a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
   script(src='js/jquery-3.3.1.min.js')
-  // https://jquery.com/download/
   script(src='jquery-ui-datepicker/jquery-ui.min.js')
-  // https://jqueryui.com/download/
   script(src='js/bootstrap.min.js')
-  // https://getbootstrap.com/
+  script(src='/js/addproduce.js')
   script.
     $(function() {
     $("#expire_date").datepicker({

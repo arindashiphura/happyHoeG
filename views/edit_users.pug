@@ -63,7 +63,7 @@ nav.navbar.navbar-expand-xl
             h2.tm-block-title.d-inline-block edit Users
         // <div class="row tm-edit-product-row">
         // <div class="col-xl-6 col-lg-6 col-md-12">
-        form#edit-form(action=`/edit_users?id=${signupkgl._id}` method='POST' name='edituser')
+        form#edit-form(action=`/edit_users/` + signupkgl._id method='POST' name='edituser')
           // <div class="form-group mb-3">
           label(for='username') Username:
           input#username(type='text' name='username' value=signupkgl.username required)
@@ -97,7 +97,7 @@ footer.tm-footer.row.tm-mt-small
         b 2018
         |  All rights reserved. 
         |             Design: 
-        a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
+        a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
   script(src='js/jquery-3.3.1.min.js')
   script(src='js/add-produce.js')
   // https://jquery.com/download/

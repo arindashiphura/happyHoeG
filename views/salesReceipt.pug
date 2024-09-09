@@ -1,113 +1,100 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  title Manager
-  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
-  // https://fonts.google.com/specimen/Roboto
-  link(rel='stylesheet' href='/css/fontawesome.min.css')
-  // https://fontawesome.com/
-  link(rel='stylesheet' href='/jquery-ui-datepicker/jquery-ui.min.css' type='text/css')
-  // http://api.jqueryui.com/datepicker/
-  link(rel='stylesheet' href='/css/bootstrap.min.css')
-  // https://getbootstrap.com/
-  link(rel='stylesheet' href='/css/templatemo-style.css')
-  link(rel='stylesheet' href='/css/receipt.css')
-  //
-    Product Admin CSS Template
-    https://templatemo.com/tm-524-product-admin
-nav.navbar.navbar-expand-xl
-  .container.h-100
-    a.navbar-brand(href='agentsDashboard')
-      h1.tm-site-title.mb-0 Agents dashboard
-    button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-      i.fas.fa-bars.tm-nav-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.mx-auto.h-100
-        li.nav-item
-          a.nav-link(href='agentsDashboard')
-            i.fas.fa-tachometer-alt
-            |  Dashboard
-            span.sr-only (current)
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-            i.far.fa-file-alt
-            span
-              | Sales 
-              i.fas.fa-angle-down
-          .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='salesList') Sales List
-            a.dropdown-item(href='Procurements') Procurements
-            a.dropdown-item(href='addSale') Add Sales
-      ul.navbar-nav
-        li.nav-item
-          a.nav-link.d-block(href='login.html')
-            | Manager, 
-            b Logout
-.container.tm-mt-big.tm-mb-big
-    .col-xl-9.col-lg-10.col-md-12.col-sm-12.mx-auto
-      //- .tm-bg-primary-dark.tm-block.tm-block-h-auto
-        .row
-          .col-12
-        // <div class="row tm-edit-product-row">
-        // <div class="col-xl-6 col-lg-6 col-md-12">
-      .containers
-        .header
-          h2 Happy Hoe Grocery KGL 
-          p www.happyhoegrocery.com
-          p P.O BOX 534 
-          p Kampala Matuga-Maganjo
-          p 0778 456 7890/0788896932
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    title Manager
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
+    link(rel='stylesheet' href='/css/fontawesome.min.css')
+    link(rel='stylesheet' href='/jquery-ui-datepicker/jquery-ui.min.css' type='text/css')
+    link(rel='stylesheet' href='/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/css/templatemo-style.css')
+    link(rel='stylesheet' href='/css/receipt.css')
+  body
+    nav.navbar.navbar-expand-xl
+      .container.h-100
+        a.navbar-brand(href='agentsDashboard')
+          h1.tm-site-title.mb-0 Agents dashboard
+        button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+          i.fas.fa-bars.tm-nav-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.mx-auto.h-100
+            li.nav-item
+              a.nav-link(href='agentsDashboard')
+                i.fas.fa-tachometer-alt
+                |  Dashboard
+                span.sr-only (current)
+            li.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                i.far.fa-file-alt
+                span
+                  | Sales 
+                  i.fas.fa-angle-down
+              .dropdown-menu(aria-labelledby='navbarDropdown')
+                a.dropdown-item(href='salesList') Sales List
+                a.dropdown-item(href='Procurements') Procurements
+                a.dropdown-item(href='addSale') Add Sales
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link.d-block(href='login.html')
+                | Manager, 
+                b Logout
 
-        table
-          tr
-            th.table-left Date of sale :
-            td.table-right  #{moment(sale.dateTime).format('DD-MM-YYYY')}
-          tr
-            th.table-left Tonnage (kg):
-            td.table-right #{sale.saleTonnage}
-          tr
-            th.table-left Amount Paid (UGX):
-            td.table-right #{sale.amountPaid}
-          tr
-            th.table-left Produce Name:
-            td.table-right #{sale.producename.producename}
-          tr
-            th.table-left Branch Name:
-            td.table-right #{sale.storeBranch}
-          tr
-            th.table-left Buyers Name:
-            td.table-right #{sale.buyerName}
-          tr
-            th.table-left Sales Agent:
-            td.table-right #{sale.salesAgent.username}
-          tr
-          tr
-          tr
-          tr 
-           
+    .container.tm-mt-big.tm-mb-big
+      .col-xl-9.col-lg-10.col-md-12.col-sm-12.mx-auto
+        .containers
+          .header
+            h2 Happy Hoe Grocery KGL 
+            p www.happyhoegrocery.com
+            p P.O BOX 534 
+            p Kampala Matuga-Maganjo
+            p 0778 456 7890/0788896932
 
-        .back-link
-          a(href='/salesList') Back
+          table
+            tr
+              th.table-left Date of sale:
+              td.table-right #{moment(sale.dateTime).format('DD-MM-YYYY')}
+            tr
+              th.table-left Tonnage (kg):
+              td.table-right #{sale.saleTonnage}
+            tr
+              th.table-left Amount Paid (UGX):
+              td.table-right #{sale.amountPaid}
+            tr
+              th.table-left Produce Name:
+              td.table-right #{sale.producename.producename}
+            tr
+              th.table-left Branch Name:
+              td.table-right #{sale.storeBranch}
+            tr
+              th.table-left Buyers Name:
+              td.table-right #{sale.buyerName}
+            tr
+              th.table-left Sales Agent:
+              td.table-right #{sale.salesAgent.username}
+          // Add Print Receipt Button
+    button#btn-print(type='button') Print Receipt
 
+    footer.tm-footer.row.tm-mt-small
+      .col-12.font-weight-light
+        p.text-center.text-white.mb-0.px-4.small
+          | Copyright &copy;
+          b 2018
+          | All rights reserved. Design: 
+          a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
 
-footer.tm-footer.row.tm-mt-small
-  .col-12.font-weight-light
-    p.text-center.text-white.mb-0.px-4.small
-        |Copyright &copy; 
-        b 2018
-        |  All rights reserved. 
-        |             Design: 
-        a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
-  script(src='js/jquery-3.3.1.min.js')
-  script(src='js/add-produce.js')
-  // https://jquery.com/download/
-  script(src='jquery-ui-datepicker/jquery-ui.min.js')
-  // https://jqueryui.com/download/
-  script(src='/js/bootstrap.min.js')
-  // https://getbootstrap.com/
-  script.
-    $(function() {
-    $("#expire_date").datepicker();
-    });
+    script(src='js/jquery-3.3.1.min.js')
+    script(src='js/add-produce.js')
+    script(src='jquery-ui-datepicker/jquery-ui.min.js')
+    script(src='/js/bootstrap.min.js')
+    script.
+      $(function() {
+        $("#expire_date").datepicker();
+      });
+
+    // Print Receipt Script
+    script.
+      document.getElementById('btn-print').addEventListener('click', function() {
+        window.print();
+      });

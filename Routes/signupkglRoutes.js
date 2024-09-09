@@ -85,6 +85,31 @@ router.post("/addUsers", async (req, res) => {
                   res.status(400).send("Unable to find item in the database");
               }
           });
+
+
+
+
+
+           // route  posting editing user in the db
+           router.post("/edit_users/:id", async (req, res) => {
+            try {
+                const updatedUser = await Signupkgl.findOneAndUpdate(
+                    { _id: req.params.id },
+                    req.body,
+                    { new: true } // Return the updated document
+                );
+        
+                if (!updatedUser) {
+                    return res.status(404).send("User not found");
+                }
+        
+                res.redirect("/userList");
+            } catch (err) {
+                console.error(err); // Log the error for debugging
+                res.status(500).send("Unable to update item in the database"); // More appropriate status code
+            }
+        });
+        
           
         
           

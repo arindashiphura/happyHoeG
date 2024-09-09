@@ -96,7 +96,15 @@ router.get("/edit_produce/:id", async (req, res) => {
 
 
 
-
+// //route for updating produce
+//     router.post("/edit_Produce/:id", async (req, res) => {
+//         try {
+//             await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
+//             res.redirect("/produceList");
+//         } catch (err) {
+//             res.status(404).send("Unable to update item in the database");
+//         }
+//     });
     
 
 

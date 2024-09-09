@@ -63,7 +63,7 @@ nav.navbar.navbar-expand-xl
             h2.tm-block-title.d-inline-block edit credits
         // <div class="row tm-edit-product-row">
         // <div class="col-xl-6 col-lg-6 col-md-12">
-        form#editCreditForm(action=`/edit_credit/${credit._id}` method="POST") 
+        form#creditForm(action=`/edit_credit/${credit._id}` method="POST") 
           // <div class="form-group mb-3">
           .form-group
             label(for='buyerName') Name of the Buyer:
@@ -99,6 +99,9 @@ nav.navbar.navbar-expand-xl
             label(for='tonnage') Tonnage:
             input#tonnage(type='number' name='tonnage' value=credit.tonnage)
           .form-group
+            label(for='amountperkg') Amount perkger kg (UGX):
+            input#amountperkg(type='text' name='amountperkg' value=credit.amountperkg)
+          .form-group
             label(for='amountDue') Amount Due (UGX):
             input#amountDue(type='text' name='amountDue' value=credit.amountDue)
           .form-group
@@ -114,14 +117,11 @@ footer.tm-footer.row.tm-mt-small
         b 2018
         |  All rights reserved. 
         |             Design: 
-        a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
+        a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
   script(src='js/jquery-3.3.1.min.js')
-  script(src='js/add-produce.js')
-  // https://jquery.com/download/
+  script(src='js/add-credits.js')
   script(src='jquery-ui-datepicker/jquery-ui.min.js')
-  // https://jqueryui.com/download/
   script(src='js/bootstrap.min.js')
-  // https://getbootstrap.com/
   script.
     $(function() {
     $("#expire_date").datepicker();

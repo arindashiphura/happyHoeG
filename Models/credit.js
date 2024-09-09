@@ -15,6 +15,10 @@ const creditSchema = new mongoose.Schema({
   },
   contacts: {
     type: String,
+    type: String,
+  },
+  amountperkg: {
+    type: Number,
   },
   amountDue: {
     type: Number,

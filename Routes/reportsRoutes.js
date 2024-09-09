@@ -6,7 +6,7 @@ const Produce = require('../Models/produce');
 router.get("/reports", async (req, res) => {
     req.session.user = req.user;
     try {
-        // Instantiate a crop variable to select a crop
+        // Instantiate a crop variable to select a crop, or default to an empty string
         let selectedProduce = req.query.searchProduce || '';
 
         // Query for returning all tonnage and revenue of a produce
@@ -34,16 +34,19 @@ router.get("/reports", async (req, res) => {
             }}
         ]);
 
-        // Aggregate data for the selected crop
-        let totalCrop = await Produce.aggregate([
-            { $match: { producename: selectedProduce } },
-            { $group: {
-                _id: "$producename",
-                stockQuantity: { $sum: "$tonnage" },
-                totalExpense: { $sum: "$totalcost" },
-                totalProjectedRevenue: { $sum: { $multiply: ["$sellingPriceperkg", "$tonnage"] } }
-            }}
-        ]);
+        // Aggregate data for the selected crop (only if a crop is selected)
+        let totalCrop = [];
+        if (selectedProduce) {
+            totalCrop = await Produce.aggregate([
+                { $match: { producename: selectedProduce } },
+                { $group: {
+                    _id: "$producename",
+                    stockQuantity: { $sum: "$tonnage" },
+                    totalExpense: { $sum: "$totalcost" },
+                    totalProjectedRevenue: { $sum: { $multiply: ["$sellingpriceperkg", "$tonnage"] } }
+                }}
+            ]);
+        }
 
         // Provide default values if no data is returned
         const defaultData = {
@@ -57,12 +60,19 @@ router.get("/reports", async (req, res) => {
             produces: items,
             totalcereals: totalCereals[0] || defaultData,
             totallegumes: totalLegumes[0] || defaultData,
-            totalcrop: totalCrop[0] || defaultData,
+            totalcrop: totalCrop[0] || defaultData, // If no crop is selected or found, return default values
         });
     } catch (error) {
         res.status(400).send("Unable to find items in the database");
-        console.log(error);
+        console.log(error.message); // Log the specific error message for easier debugging
     }
 });
+
+
+
+
+
+
+
 
 module.exports = router;

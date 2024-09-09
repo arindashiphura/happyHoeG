@@ -52,7 +52,7 @@ nav.navbar.navbar-expand-xl
             a.dropdown-item(href='creditList') creditList
       ul.navbar-nav
         li.nav-item
-          a.nav-link.d-block(href='logoutkgl')
+          a.nav-link.d-block(href='login.html')
             | Sales, 
             b Logout
 .container.tm-mt-big.tm-mb-big
@@ -68,18 +68,22 @@ nav.navbar.navbar-expand-xl
           div
             label(for='buyerName') Name of the Buyer:
             input#buyerName(type='text' name='buyerName')
+            span#buyerNameError
           
           div
             label(for='nationalId') National ID (NIN):
             input#nationalId(type='text' name='nationalId')
+            span#nationalIdError
           
           div
             label(for='location') Location:
             input#location(type='text' name='location')
+            span#locationError
           
           div
             label(for='contacts') Contacts (Phone):
-            input#contacts(type='tel' name='contacts' placeholder='+256XXXXXXXXX')
+            input#contacts(type='tel' name='contacts' )
+            span#contactsError
           
           div
             label(for='branch') Branch Name:
@@ -87,34 +91,47 @@ nav.navbar.navbar-expand-xl
               option(value='') Select Branch
               option(value='matuga') Matuga
               option(value='maganjo') Maganjo
+            span#branchError
           
           div
             label(for='salesAgentName') Sales Agent Name:
             input#salesAgentName(type='text' name='salesAgentName')
+            span#salesAgentNameError
           
           div
             label(for='dueDate') Due Date:
             input#dueDate(type='date' name='dueDate')
+            span#dueDateError
           
           div
             label(for='produceName') Produce Name:
             input#produceName(type='text' name='produceName')
+            span#produceNameError
           
           div
             label(for='produceType') Produce Type:
             input#produceType(type='text' name='produceType')
+            span#produceTypeError
           
           div
             label(for='tonnage') Tonnage:
             input#tonnage(type='number' name='tonnage')
+            span#tonnageError
+          
+          div
+            label(for='amountperkg') Amount Due per kg(UGX):
+            input#amountperkg(type='text' name='amountprkg')
+            span#amountDueError
           
           div
             label(for='amountDue') Amount Due (UGX):
             input#amountDue(type='text' name='amountDue')
+            span#amountDueError
           
           div
             label(for='dispatchDate') Date of Dispatch:
             input#dispatchDate(type='date' name='dispatchDate')
+            span#dispatchDateError
           
           button(type='submit') Submit
 
@@ -126,14 +143,11 @@ footer.tm-footer.row.tm-mt-small
         b 2018
         |  All rights reserved. 
         |             Design: 
-        a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
+        a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
   script(src='js/jquery-3.3.1.min.js')
-  script(src='js/add-produce.js')
-  // https://jquery.com/download/
+  script(src='js/add-credits.js')
   script(src='jquery-ui-datepicker/jquery-ui.min.js')
-  // https://jqueryui.com/download/
   script(src='js/bootstrap.min.js')
-  // https://getbootstrap.com/
   script.
     $(function() {
     $("#expire_date").datepicker();

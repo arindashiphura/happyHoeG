@@ -12,31 +12,6 @@ const Signupkgl = require('../Models/signupkgl');
 router.get("/procurements", async (req, res)=>{
     try{
         const produceItems = await Produce.find().sort({$natural: -1}); //this line is for sorting  the new produce
-        
-
-        // let totalGrainMaize = await Produce.aggregate([
-        //     { $match: { producename: "GrainMaize" } }, // Match documents with producename = GrainMaize
-        //     { 
-        //         $group: {
-        //             _id: null, // Group all matching documents together
-        //             totalQuantity: { $sum: "$tonnage" }, // Sum the tonnage field
-        //             totalSelling: { $sum: "$sellingpriceperkg" } // Sum the sellingpriceperkg field
-        //         }
-        //     }
-        // ]);
-        
-
-
-        // let totalGrainMaizeSell = await Sale.aggregate([
-        //     { $match: { producename: "GrainMaize" } }, // Match documents with producename = GrainMaize
-        //     { 
-        //         $group: {
-        //             _id: null, // Group all matching documents together
-        //             totalQuantity: { $sum: "$tonnage" } // Sum the tonnage field
-        //         }
-        //     }
-        // ]);
-        
         res.render("procurements",{
             title: "produce List",
             produces: produceItems,
@@ -164,6 +139,32 @@ router.get("/branch", async (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+async function aggregateMatugaProduce() {
+  try {
+    const matugaData = await Produce.aggregate([
+      { $match: { branchName: "Matuga" } }, // Filter for Matuga branch
+      {
+        $group: {
+          _id: null, // Group all data
+          totalTonnage: { $sum: "$tonnage" }, // Sum up the tonnage
+          totalCost: { $sum: "$cost" }, // Sum up the cost
+          count: { $sum: 1 } // Count the number of records
+        }
+      }
+    ]);
+
+    console.log(matugaData);
+  } catch (error) {
+    console.error("Error in aggregation:", error);
+  }
+}
 
       
 

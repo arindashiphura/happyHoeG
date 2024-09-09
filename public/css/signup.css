@@ -64,6 +64,11 @@ input, select {
   font-size: 1rem;
 }
 
+.form-group span {
+  color: red; /* Set error message text color to red */
+  display: block; /* Ensure error messages are displayed on a new line */
+}
+
 button {
   width: 100%;
   padding: 15px;

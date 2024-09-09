@@ -6,7 +6,6 @@ html(lang="en")
     title Sign Up - Happy Hoe Grocery
     link(rel="stylesheet" href="css/signup.css")
     
-      
   body
     // Video Background
     video.video-background(autoplay muted loop)
@@ -22,30 +21,38 @@ html(lang="en")
           .form-row
             .form-group.left
               label(for='username') Username:
-              input#username(type='text' name='username' placeholder='Enter Username' required='')
+              input#username(type='text' name='username'  )
+              span#usernameError
             .form-group.left
               label(for="email") Email Address:
-              input#email(type="email" name="email" required)
+              input#email(type="email" name="email" )
+              span#emailError
             .form-group.left
               label(for="password") Password:
-              input#password(type="password" name="password" required)
+              input#password(type="password" name="password" )
+              span#passwordError
+            .form-group.right
+              label(for="corfirmpassword") Confirm Password:
+              input#corfirmpassword(type="password" name="corfirmpassword" )
+              span#confirmPasswordError
             .form-group.right
               label(for="role") Select Your Role:
               select#role(name="role" required)
-                option(value="" disabled selected)
-                option(value="admin") Admin
+                option(value="" disabled selected) -- Select Role --
                 option(value="manager") Manager
                 option(value="sales-agent") Sales Agent
+                span#roleError
             .form-group.right
               label(for="branch") Select Your Branch:
               select#branch(name="branch" required)
-                option(value="" disabled selected)
+                option(value="" disabled selected) -- Select Branch --
                 option(value="maganjo") Maganjo
                 option(value="matuga") Matuga
-            .form-group.right.checkbox-group
-              input#terms(type="checkbox" name="terms" required)
-              label(for="terms") I agree to the 
+                span#branchError
           button(type="submit") Sign Up
         a(href="login") Already have an account? Login here
       #error-message
-    script(src="signupkgl.js")
+
+    script(src="/js/signupkgl.js")
+  
+      

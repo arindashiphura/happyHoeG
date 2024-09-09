@@ -1,125 +1,114 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  title Manager
-  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
-  // https://fonts.google.com/specimen/Roboto
-  link(rel='stylesheet' href='/css/fontawesome.min.css')
-  // https://fontawesome.com/
-  link(rel='stylesheet' href='jquery-ui-datepicker/jquery-ui.min.css' type='text/css')
-  // http://api.jqueryui.com/datepicker/
-  link(rel='stylesheet' href='/css/bootstrap.min.css')
-  // https://getbootstrap.com/
-  link(rel='stylesheet' href='/css/templatemo-style.css')
-  link(rel='stylesheet' href='/css/add-produce.css')
-  //
-    Product Admin CSS Template
-    https://templatemo.com/tm-524-product-admin
-nav.navbar.navbar-expand-xl
-  .container.h-100
-    a.navbar-brand(href='agentsDashboard')
-      h1.tm-site-title.mb-0 SalesAgents Dashboard
-    button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-      i.fas.fa-bars.tm-nav-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.mx-auto.h-100
-        li.nav-item
-          a.nav-link(href='agentsDashboard')
-            i.fas.fa-tachometer-alt
-            |  Dashboard
-            span.sr-only (current)
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-            i.far.fa-file-alt
-            span
-              | Reports 
-              i.fas.fa-angle-down
-          .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='#') Daily Report
-            a.dropdown-item(href='#') Weekly Report
-            a.dropdown-item(href='#') Yearly Report
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-            i.far.fa-file-alt
-            span
-              | Sales 
-              i.fas.fa-angle-down
-          .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='produce') Add produce
-            a.dropdown-item(href='Procurements') Procurements
-            a.dropdown-item(href='creditList') creditList
-      ul.navbar-nav
-        li.nav-item
-          a.nav-link.d-block(href='logoutkgl')
-            | Sales, 
-            b Logout
-.container.tm-mt-big.tm-mb-big
-    .col-xl-9.col-lg-10.col-md-12.col-sm-12.mx-auto
-      .tm-bg-primary-dark.tm-block.tm-block-h-auto
-        .row
-          .col-12
-            h2.tm-block-title.d-inline-block Make Sales 
-        // <div class="row tm-edit-product-row">
-        // <div class="col-xl-6 col-lg-6 col-md-12">
-        form#produceFor(action=`/addSale/${produce._id}` method='POST' name='addSale')
-          // <div class="form-group mb-3">
-          div
-            label(for='produceName') Produce Name:
-            select#producename(name='producename' required='')
-              option(value=produce._id) #{produce.producename}
-          div
-            label(for='produceType') Produce Type:
-            input#produceType(name='produceType' )
-            span#produceTypeError.error
-          div
-            label(for='tonnage') Tonnage (in kgs):
-            input#tonnage(type='number' name='saleTonnage' )
-            span#tonnageError.error
-          div
-            label(for='amountPaid') Amount Paid (in UGX):
-            input#amountPaid(type='number' name='amountPaid' )
-            span#amountPaidError.error
-          div
-            label(for='buyerName') Buyer&apos;s Name:
-            input#buyerName(type='text' name='buyerName')
-            span#buyerNameError.error
-          div
-            label(for='salesAgent') Sales Agent&apos;s Name:
-            select#salesAgentName(name='salesAgent' )
-              if agents.length 
-                each agent in agents 
-                  option(value=agent._id) #{agent.username}
-            span#salesAgentNameError.error
-          div
-            label(for='Salesdate') Date and Time:
-            input#dateTime(type='datetime-local' name='Salesdate' )
-            span#dateTimeError.error
-          div
-            label(for='branch') Branch Name:
-            select#branch(name='storeBranch' required='')
-              option(value='' disabled='' selected='') Select Branch
-              option(value='Matuga') Matuga
-              option(value='Mganjo') Mganjo
-            span#branchError.error
-            button.btn.btn-primary(type='submit') Make a sale
-footer.tm-footer.row.tm-mt-small
-  .col-12.font-weight-light
-    p.text-center.text-white.mb-0.px-4.small
-        |Copyright &copy; 
-        b 2018
-        |  All rights reserved. 
-        |             Design: 
-        a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
-  script(src='js/jquery-3.3.1.min.js')
-  script(src='js/add-produce.js')
-  // https://jquery.com/download/
-  script(src='jquery-ui-datepicker/jquery-ui.min.js')
-  // https://jqueryui.com/download/
-  script(src='js/bootstrap.min.js')
-  // https://getbootstrap.com/
-  script.
-    $(function() {
-    $("#expire_date").datepicker();
-    });
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    title Manager
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
+    link(rel='stylesheet' href='/css/fontawesome.min.css')
+    link(rel='stylesheet' href='jquery-ui-datepicker/jquery-ui.min.css' type='text/css')
+    link(rel='stylesheet' href='/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/css/templatemo-style.css')
+    link(rel='stylesheet' href='/css/add-produce.css')
+  body
+    nav.navbar.navbar-expand-xl
+      .container.h-100
+        a.navbar-brand(href='agentsDashboard')
+          h1.tm-site-title.mb-0 SalesAgents Dashboard
+        button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+          i.fas.fa-bars.tm-nav-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.mx-auto.h-100
+            li.nav-item
+              a.nav-link(href='agentsDashboard')
+                i.fas.fa-tachometer-alt
+                | Dashboard
+                span.sr-only (current)
+            li.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                i.far.fa-file-alt
+                span
+                  | Reports
+                  i.fas.fa-angle-down
+              .dropdown-menu(aria-labelledby='navbarDropdown')
+                a.dropdown-item(href='#') Daily Report
+                a.dropdown-item(href='#') Weekly Report
+                a.dropdown-item(href='#') Yearly Report
+            li.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                i.far.fa-file-alt
+                span
+                  | Sales
+                  i.fas.fa-angle-down
+              .dropdown-menu(aria-labelledby='navbarDropdown')
+                a.dropdown-item(href='produce') Add produce
+                a.dropdown-item(href='Procurements') Procurements
+                a.dropdown-item(href='creditList') creditList
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link.d-block(href='logoutkgl')
+                | Sales,
+                b Logout
+    .container.tm-mt-big.tm-mb-big
+      .col-xl-9.col-lg-10.col-md-12.col-sm-12.mx-auto
+        .tm-bg-primary-dark.tm-block.tm-block-h-auto
+          .row
+            .col-12
+              h2.tm-block-title.d-inline-block Make Sales
+          form#salesForm(action=`/addSale/${produce._id}` method='POST' name='addSale')
+            div
+              label(for='produceName') Produce Name:
+              select#producename(name='producename' required='')
+                option(value=produce._id) #{produce.producename}
+            div
+              label(for='produceType') Produce Type:
+              input#produceType(name='produceType')
+              span#produceTypeError
+            div
+              label(for='tonnage') Tonnage (in kgs):
+              input#tonnage(type='number' name='saleTonnage')
+              span#tonnageError
+            div
+              label(for='amountPaid') Amount Paid (in UGX):
+              input#amountPaid(type='number' name='amountPaid')
+              span#amountPaidError
+            div
+              label(for='buyerName') Buyer&apos;s Name:
+              input#buyerName(type='text' name='buyerName')
+              span#buyerNameError
+            div
+              label(for='salesAgent') Sales Agent&apos;s Name:
+              select#salesAgentName(name='salesAgent')
+                if agents.length
+                  each agent in agents
+                    option(value=agent._id) #{agent.username}
+              span#salesAgentNameError
+            div
+              label(for='Salesdate') Date and Time:
+              input#dateTime(type='datetime-local' name='Salesdate')
+              span#dateTimeError
+            div
+              label(for='branch') Branch Name:
+              select#branch(name='storeBranch' required='')
+                option(value='' disabled='' selected='') Select Branch
+                option(value='Matuga') Matuga
+                option(value='Mganjo') Mganjo
+              span#branchError
+              button.btn.btn-primary(type='submit') Make a sale
+    footer.tm-footer.row.tm-mt-small
+      .col-12.font-weight-light
+        p.text-center.text-white.mb-0.px-4.small
+          | Copyright &copy;
+          b 2018
+          | All rights reserved.
+          | Design:
+          a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
+    script(src='js/jquery-3.3.1.min.js')
+    script(src='/js/addsales.js')
+    script(src='jquery-ui-datepicker/jquery-ui.min.js')
+    script(src='js/bootstrap.min.js')
+    script.
+      $(function() {
+        $("#expire_date").datepicker();
+      });
