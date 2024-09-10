@@ -95,7 +95,7 @@ nav.navbar.navbar-expand-xl
                     td #{credit.creditTonnage}
                     td #{moment(credit.dispatchDate).format('DD-MM-YYYY')}  
                     td
-                      a.btn.btn-primary.btn-sm(href='/receipt/'+credit.id) Make Receipt
+                      a.btn.btn-primary.btn-sm(href='/receipts/'+credit.id) Make Receipt
                     td
                       a.btn.btn-primary.btn-sm(href=`/edit_credit/${credit._id}`) Update
                     td

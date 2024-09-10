@@ -138,31 +138,7 @@ router.get("/credit/:id", async(req, res) => {
 
    
 
-
-    
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // // route for posting edit credit
-
-
-
 
 router.post("/edit_credit/:id", async (req, res) => {
     try {
@@ -189,4 +165,38 @@ router.post("/edit_credit/:id", async (req, res) => {
             }
             });
 
+
+
+
+            router.get('/receipts/:id', async (req, res) => {
+                try {
+                    // Fetch sale by ID
+                    const credit = await Credit.findById(req.params.id)
+                        .populate('produceName', 'producename')
+                        .populate('salesAgentName', 'username') // Ensure you have 'creditsAgent' populated
+        
+            
+                    if (!credit) {
+                        return res.status(404).send('Credit not found');
+                    }
+            
+                    // Fetch agents for the dropdown
+                    const agents = await Signupkgl.find();
+            
+                    // Format date for the input field
+                    const formattedDate = formatDate(credit.dueDate);
+            
+                    // Render the edit form with the credit data and agents
+                    res.render('creditReceipt', {
+                        credit,
+                        formattedDate,
+                        agents,
+                        title: 'Receipt',
+                    });
+                } catch (err) {
+                    console.log(Credit); // Verify that credit.storeBranch is present and contains the expected value
+                    console.error('Error fetching credit:', err);
+                    res.status(500).send('Unable to fetch credit details');
+                }
+            });
 module.exports = router;

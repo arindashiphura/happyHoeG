@@ -140,12 +140,28 @@ const Produce = require('../Models/produce');
 
 
     // post updated sale
-    router.post("/edit_sale/:id", async(req, res) => {
+    router.post("/edit_sale/:id", async (req, res) => {
         try {
-            await Sale.findOneAndUpdate({ _id: req.params.id},req.body);
-            res.redirect("/salesList");
-        }catch (err) {
-            res.status(404).send("Unable to update item in the database");
+            // Find the Produce by its name (from req.body)
+            const produce = await Produce.findOne({ producename: req.body.producename });
+    
+            if (!produce) {
+                return res.status(404).send("Produce not found");
+            }
+    
+            // Update the sale by setting producename as the ObjectId of the found Produce
+            await Sale.findOneAndUpdate(
+                { _id: req.params.id }, 
+                { 
+                    ...req.body, 
+                    producename: produce._id // Set the producename as ObjectId
+                }
+            );
+    
+            res.redirect("/salesList"); // Redirect after successful update
+        } catch (err) {
+            console.error(err); // Log the error for debugging
+            res.status(500).send("Unable to update item in the database");
         }
     });
 

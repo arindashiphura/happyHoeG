@@ -54,31 +54,33 @@ html
 
             br
             br
-            h4   RECEIPT
-
+            h4 RECEIPT
 
           table
             tr
-              th.table-left Date of sale:
-              td.table-right #{moment(sale.dateTime).format('DD-MM-YYYY')}
+              th.table-left Date of credit:
+              td.table-right #{moment(credit.dueDate).format('DD-MM-YYYY')}
+            tr
+              th.table-left Date of Dispatch:
+              td.table-right #{moment(credit.dispatchDate).format('DD-MM-YYYY')}
             tr
               th.table-left Tonnage (kg):
-              td.table-right #{sale.saleTonnage}
+              td.table-right #{credit.creditTonnage}
             tr
               th.table-left Amount Paid (UGX):
-              td.table-right #{sale.amountPaid}
+              td.table-right #{credit.amountDue}
             tr
               th.table-left Produce Name:
-              td.table-right #{sale.producename.producename}
+              td.table-right #{credit.produceName.producename}
             tr
               th.table-left Branch Name:
-              td.table-right #{sale.storeBranch}
+              td.table-right #{credit.branch}
             tr
               th.table-left Buyers Name:
-              td.table-right #{sale.buyerName}
+              td.table-right #{credit.buyerName}
             tr
               th.table-left Sales Agent:
-              td.table-right #{sale.salesAgent.username}
+              td.table-right #{credit.salesAgentName.username}
           // Add Print Receipt Button
     button#btn-print(type='button') Print Receipt
 
