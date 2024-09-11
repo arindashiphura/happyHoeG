@@ -1,9 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login');
+
+
+
+
 const Produce = require('../Models/produce');
 
+
+
+
+
 // Reports route
-router.get("/reports", async (req, res) => {
+router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     req.session.user = req.user;
     try {
         // Instantiate a crop variable to select a crop, or default to an empty string

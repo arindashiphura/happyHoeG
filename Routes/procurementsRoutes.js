@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login');
+
 
 
 // Importing models
@@ -9,7 +11,7 @@ const Signupkgl = require('../Models/signupkgl');
 
 
 //get all produce frm the db
-router.get("/procurements", async (req, res)=>{
+router.get("/procurements", connectEnsureLogin.ensureLoggedIn(), async (req, res)=>{
     try{
         const produceItems = await Produce.find().sort({$natural: -1}); //this line is for sorting  the new produce
         res.render("procurements",{
@@ -27,7 +29,7 @@ router.get("/procurements", async (req, res)=>{
 
 
 // get produce update form
-router.get("/edit_produce/:id", async (req, res) => {
+router.get("/edit_produce/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     try {
     const produce = await Produce.findOne({ _id: req.params.id });
     res.render("edit_produce", {
@@ -40,7 +42,7 @@ router.get("/edit_produce/:id", async (req, res) => {
     });
 
 //route for getting the edit file
-    router.get("/update_produce/:id", async (req, res) => {
+    router.get("/update_produce/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
         try {
         const item = await Produce.findOne({ _id: req.params.id });
         res.render("edit_produce", {
@@ -56,7 +58,7 @@ router.get("/edit_produce/:id", async (req, res) => {
 
     
     // route editing produce in the edit file
-    router.post("/update_produce/:id", async (req, res) => {
+    router.post("/update_produce/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     try {
     await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
     res.redirect("/procurements");
@@ -68,15 +70,15 @@ router.get("/edit_produce/:id", async (req, res) => {
 
 
 
-//route for updating produce
-    router.post("/edit_produce/:id", async (req, res) => {
-        try {
-            await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
-            res.redirect("/procurements");
-        } catch (err) {
-            res.status(404).send("Unable to update item in the database");
-        }
-    });
+// //route for updating produce
+//     router.post("/edit_produce/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+//         try {
+//             await Produce.findOneAndUpdate({ _id: req.query.id }, req.body);
+//             res.redirect("/procurements");
+//         } catch (err) {
+//             res.status(404).send("Unable to update item in the database");
+//         }
+//     });
     
 
 

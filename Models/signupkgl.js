@@ -17,7 +17,11 @@ const signupkglSchema = new mongoose.Schema({
     branch:{
         type: String,
         trim:true,
-    }
+    },
+    hasPermissionToRecord: { 
+        type: Boolean, 
+        default: false 
+    } // Permission flag
     
 });
 signupkglSchema.plugin(passportLocalMongoose, {

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login');
+
 
 
 
@@ -12,7 +14,7 @@ const Produce = require('../Models/produce');
 
 
 //routes for mking a credit
-router.get("/credit/:id", async(req, res) => {
+router.get("/credit/:id", connectEnsureLogin.ensureLoggedIn(), async(req, res) => {
     try {
     const agents = await Signupkgl.find({ role: "sales-agent" });
     const produce = await Produce.findOne({ _id: req.params.id })
@@ -30,7 +32,7 @@ router.get("/credit/:id", async(req, res) => {
     }
     });
     
-    router.post('/credit/:id', async (req, res) => {
+    router.post('/credit/:id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     try {
     const { creditTonnage } = req.body;
     // saleTonnage is the same as req.body.saleTonnage, it's an input name in the add sale pug file
@@ -59,7 +61,7 @@ router.get("/credit/:id", async(req, res) => {
     });
     
     // retrieve sales from the database
-    router.get("/creditList", async (req, res) => {
+    router.get("/creditList", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
         try {
             // Fetching the sales data from the database and populating the necessary fields
             const credits = await Credit.find()
@@ -104,7 +106,7 @@ router.get("/credit/:id", async(req, res) => {
     }
     
     // Route to get the sale edit form
-    router.get('/edit_credit/:id', async (req, res) => {
+    router.get('/edit_credit/:id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
         try {
             // Fetch sale by ID
             const credit = await Credit.findById(req.params.id)
@@ -140,7 +142,7 @@ router.get("/credit/:id", async(req, res) => {
 
 // // route for posting edit credit
 
-router.post("/edit_credit/:id", async (req, res) => {
+router.post("/edit_credit/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     try {
     await Credit.findOneAndUpdate({ _id: req.params.id }, req.body);
     res.redirect("/creditList");
@@ -168,7 +170,7 @@ router.post("/edit_credit/:id", async (req, res) => {
 
 
 
-            router.get('/receipts/:id', async (req, res) => {
+            router.get('/receipts/:id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
                 try {
                     // Fetch sale by ID
                     const credit = await Credit.findById(req.params.id)

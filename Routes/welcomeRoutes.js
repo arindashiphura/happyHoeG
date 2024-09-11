@@ -17,9 +17,9 @@ router.get('/homepage', (req, res) => {
 });
 
 
-router.get('/agentsDashboard', (req, res) => {
-    res.render('agentsDashboard');  // Render 'welcome.pug'
-});
+// router.get('/agentsDashboard', (req, res) => {
+//     res.render('agentsDashboard');  // Render 'welcome.pug'
+// });
 
 
 

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login');
+
 
 // Importing models
 const Sale = require('../Models/sale');
@@ -12,7 +14,7 @@ const Produce = require('../Models/produce');
 
   // Routes for making sale
 
-  router.get("/addSale/:id", async(req, res) => {
+  router.get("/addSale/:id", connectEnsureLogin.ensureLoggedIn(), async(req, res) => {
     try {
     const agents = await Signupkgl.find({ role: "sales-agent" });
     const produce = await Produce.findOne({ _id: req.params.id })
@@ -30,7 +32,7 @@ const Produce = require('../Models/produce');
     }
     });
     
-    router.post('/addSale/:id', async (req, res) => {
+    router.post('/addSale/:id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     try {
     const { saleTonnage } = req.body;
     // saleTonnage is the same as req.body.saleTonnage, it's an input name in the add sale pug file
@@ -59,7 +61,7 @@ const Produce = require('../Models/produce');
     });
     
     // retrieve sales from the database
-    router.get("/salesList", async (req, res) => {
+    router.get("/salesList", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
         try {
             // Fetching the sales data from the database and populating the necessary fields
             const sales = await Sale.find()
@@ -93,7 +95,40 @@ const Produce = require('../Models/produce');
         }
     });
     
-
+           //agentsDashboard
+           router.get("/agentsDashboard", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+            try {
+                // Fetching the sales data from the database and populating the necessary fields
+                const sales = await Sale.find()
+                    .sort({ $natural: -1 }) // Sorting the sales in reverse order of insertion
+                    .populate("producename", "producename") // Populating the producename field from the related Produce model
+                    .populate("salesAgent", "username") // Populating the salesAgent field from the related Signupkgl model
+    
+    
+                    // Calculating the total sales amount by aggregating the 'amountPaid' field
+                    let totalSales = await Sale.aggregate([
+                        {
+                          $group: {
+                            _id: null,  // Grouping by null will aggregate all documents together
+                            total: { $sum: "$amountPaid" }  // Ensure "amountPaid" is the correct field name
+                          }
+                        }
+                      ]);
+                      
+        
+                // Rendering the agentsDashboard template and passing the fetched sales data to it
+                res.render("agentsDashboard", {
+                    title: "Sales List",
+                    sales: sales, // Correctly passing the sales data to the template
+    
+                    Totalpay: totalSales[0], 
+                });
+            } catch (error) {
+                // Handling any errors that occur during the process
+                res.status(400).send("Unable to find items in the database");
+                console.log(error); // Logging the error for debugging purposes
+            }
+        });
 
     
 
@@ -104,7 +139,7 @@ const Produce = require('../Models/produce');
     }
     
     // Route to get the sale edit form
-    router.get('/edit_sale/:id', async (req, res) => {
+    router.get('/edit_sale/:id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
         try {
             // Fetch sale by ID
             const sale = await Sale.findById(req.params.id)
@@ -140,7 +175,7 @@ const Produce = require('../Models/produce');
 
 
     // post updated sale
-    router.post("/edit_sale/:id", async (req, res) => {
+    router.post("/edit_sale/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
         try {
             // Find the Produce by its name (from req.body)
             const produce = await Produce.findOne({ producename: req.body.producename });
@@ -182,7 +217,7 @@ const Produce = require('../Models/produce');
 
 
     // sales receipt
-    router.get('/receipt/:id', async (req, res) => {
+    router.get('/receipt/:id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
         try {
             // Fetch sale by ID
             const sale = await Sale.findById(req.params.id)

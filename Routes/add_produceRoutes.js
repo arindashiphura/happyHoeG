@@ -1,18 +1,19 @@
 
 const express = require('express');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login');
 
 // Importing models
 const Produce = require('../Models/produce');
 const Signupkgl = require('../Models/signupkgl');
 
 // Route for rendering the add-produce page
-router.get('/produce', (req, res) => {
+router.get('/produce', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     res.render('add_produce', { title: 'Add Produce' });  // 'Add Produce' is now a string
 });
 
 // Route for handling the form submission to add new produce
-router.post('/produce', async (req, res) => {
+router.post('/produce', connectEnsureLogin.ensureLoggedIn(),  async (req, res) => {
     try {
         const newProduce = new Produce(req.body);  // 'Produce' should be capitalized to match the model
         await newProduce.save();
@@ -26,7 +27,7 @@ router.post('/produce', async (req, res) => {
 
 
 //get all produce frm the db
-router.get("/produceList", async (req, res)=>{
+router.get("/produceList", connectEnsureLogin.ensureLoggedIn(),  async (req, res)=>{
     try{
         const produceItems = await Produce.find().sort({$natural: -1}); //this line is for sorting  the new produce
         res.render("produceList",{
@@ -54,7 +55,7 @@ router.get('/stock', async (req, res) => {
 
 
 // get produce update form
-router.get("/edit_produce/:id", async (req, res) => {
+router.get("/edit_produce/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     try {
     const produce = await Produce.findOne({ _id: req.params.id });
     res.render("edit_produce", {
@@ -126,8 +127,9 @@ router.get("/edit_produce/:id", async (req, res) => {
 
         
 
-      
 
+
+       
 module.exports = router;
 
 
