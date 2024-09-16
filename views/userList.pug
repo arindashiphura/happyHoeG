@@ -36,8 +36,7 @@ nav.navbar.navbar-expand-xl
               i.fas.fa-angle-down
           .dropdown-menu(aria-labelledby='navbarDropdown')
             a.dropdown-item(href='usersList') UsersList
-            a.dropdown-item(href='#') Weekly Report
-            a.dropdown-item(href='#') Yearly Report
+            a.dropdown-item(href='report') Yearly Report
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             i.far.fa-file-alt
@@ -95,12 +94,4 @@ footer.tm-footer.row.tm-mt-small
       |           Design: 
       a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
 script(src='js/jquery-3.3.1.min.js')
-// https://jquery.com/download/
 script(src='js/bootstrap.min.js')
-// https://getbootstrap.com/
-script.
-  $(function() {
-  $(".tm-product-name").on("click", function() {
-  window.location.href = "edit-product.html";
-  });
-  });

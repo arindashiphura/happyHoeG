@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('salesForm').addEventListener('submit', function (event) {
+  document.getElementById('editSale').addEventListener('submit', function (event) {
     let valid = true;
 
     // Produce Name Validation
@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const produceNameError = document.getElementById('produceNameError');
     if (produceName.value === '') {
       produceNameError.textContent = 'Please select a produce.';
+      produceNameError.style = "color:red";
       valid = false;
     } else {
       produceNameError.textContent = '';
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const produceTypeError = document.getElementById('produceTypeError');
     if (produceType.value.length < 2) {
       produceTypeError.textContent = 'Produce type must be at least 2 characters long.';
+      produceTypeError.style = "color:red";
       valid = false;
     } else {
       produceTypeError.textContent = '';
@@ -25,18 +27,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Tonnage Validation
     const tonnage = document.getElementById('tonnage');
     const tonnageError = document.getElementById('tonnageError');
-    if (tonnage.value === '' || tonnage.value.length < 3 || isNaN(tonnage.value)) {
-      tonnageError.textContent = 'Tonnage must be a number and at least 3 characters long.';
+    if (tonnage.value === '' || isNaN(tonnage.value) || tonnage.value <= 0) {
+      tonnageError.textContent = 'Tonnage must be a valid number greater than 0.'; 
+      tonnageError.style = "color:red";
       valid = false;
     } else {
       tonnageError.textContent = '';
     }
 
+   
     // Amount Paid Validation
     const amountPaid = document.getElementById('amountPaid');
     const amountPaidError = document.getElementById('amountPaidError');
-    if (amountPaid.value === '' || amountPaid.value.length < 5 || isNaN(amountPaid.value)) {
-      amountPaidError.textContent = 'Amount paid must be a number and at least 5 characters long.';
+    if (amountPaid.value === '' || isNaN(amountPaid.value) || amountPaid.value <= 0) {
+      amountPaidError.textContent = 'Amount paid must be a valid number.';
+      amountPaidError.style = "color:red";
       valid = false;
     } else {
       amountPaidError.textContent = '';
@@ -47,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const buyerNameError = document.getElementById('buyerNameError');
     if (!/^[a-zA-Z0-9 ]{2,}$/.test(buyerName.value)) {
       buyerNameError.textContent = 'Buyer\'s name must be alphanumeric and at least 2 characters long.';
+      buyerNameError.style = "color:red";
       valid = false;
     } else {
       buyerNameError.textContent = '';
@@ -57,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const salesAgentNameError = document.getElementById('salesAgentNameError');
     if (salesAgentName.value === '') {
       salesAgentNameError.textContent = 'Please select a sales agent.';
+      salesAgentNameError.style = "color:red";
       valid = false;
     } else {
       salesAgentNameError.textContent = '';
@@ -67,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dateTimeError = document.getElementById('dateTimeError');
     if (dateTime.value === '') {
       dateTimeError.textContent = 'Please select date and time.';
+      dateTimeError.style = "color:red";
       valid = false;
     } else {
       dateTimeError.textContent = '';
@@ -77,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const branchError = document.getElementById('branchError');
     if (branch.value === '') {
       branchError.textContent = 'Please select a branch.';
+      branchError.style = "color:red";
       valid = false;
     } else {
       branchError.textContent = '';
@@ -86,4 +95,27 @@ document.addEventListener('DOMContentLoaded', function() {
       event.preventDefault(); // Stop form submission if validation fails
     }
   });
+
+  // Select the necessary elements from the form
+  const tonnageInput = document.getElementById('tonnage');
+  const costInput = document.getElementById('pricePerTon'); // Reference correct price input
+  const totalCostInput = document.getElementById('amountPaid');
+
+  // Function to calculate the total cost
+  function calculateTotalCost() {
+    const tonnage = parseFloat(tonnageInput.value);
+    const pricePerTon = parseFloat(costInput.value);
+
+    // Ensure the inputs are valid numbers
+    if (!isNaN(tonnage) && !isNaN(pricePerTon)) {
+      const totalCost = tonnage * pricePerTon;
+      totalCostInput.value = totalCost.toFixed(2); // Set the total cost input value
+    } else {
+      totalCostInput.value = ''; // Clear the total cost if inputs are invalid
+    }
+  }
+
+  // Event listeners to trigger the calculation when input values change
+  tonnageInput.addEventListener('input', calculateTotalCost);
+  costInput.addEventListener('input', calculateTotalCost);
 });

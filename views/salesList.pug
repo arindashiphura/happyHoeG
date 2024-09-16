@@ -24,18 +24,17 @@ nav.navbar.navbar-expand-xl
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             i.far.fa-file-alt
-            span Reports 
-              i.fas.fa-angle-down
-          .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='#') Daily Report
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-            i.far.fa-file-alt
             span Products 
               i.fas.fa-angle-down
           .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='credit') make credit
-            a.dropdown-item(href='Procurements') Procurements
+            a.dropdown-item(href='sale') Procurements
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            i.far.fa-file-alt
+            span Sales 
+              i.fas.fa-angle-down
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='salesList') Sales List
             a.dropdown-item(href='creditList') Credit List
       ul.navbar-nav
         li.nav-item
@@ -53,6 +52,7 @@ nav.navbar.navbar-expand-xl
             th Produce Name
             th Tonnage (Kg)
             th  Produce Type
+            th price Per Ton
             th Amount Paid (UGX)
             th Buyer's Name
             th Sales Agent's Name
@@ -67,7 +67,8 @@ nav.navbar.navbar-expand-xl
               tr
                 td #{sale.producename.producename} 
                 td #{sale.saleTonnage}
-                td #{sale.produceType} 
+                td #{sale.produceType}
+                td #{sale.pricePerTon} 
                 td #{sale.amountPaid}  
                 td #{sale.buyerName}
                 td #{sale.salesAgent.username}  
@@ -91,14 +92,9 @@ footer.tm-footer.row.tm-mt-small
       |  All rights reserved. 
       | Design: 
       a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
-script(src='js/jquery-3.3.1.min.js')
-script(src='js/bootstrap.min.js')
-script.
-  $(function() {
-    $(".tm-product-name").on("click", function() {
-      window.location.href = "edit-product.html";
-    });
-  });
+script(src='/js/jquery-3.3.1.min.js')
+script(src='/js/bootstrap.min.js')
+
 
 
 

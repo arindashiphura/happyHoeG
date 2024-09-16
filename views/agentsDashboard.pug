@@ -7,11 +7,11 @@ html
     title happyhoegrocery
     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
     // https://fonts.google.com/specimen/Roboto
-    link(rel='stylesheet' href='css/fontawesome.min.css')
+    link(rel='stylesheet' href='/css/fontawesome.min.css')
     // https://fontawesome.com/
-    link(rel='stylesheet' href='css/bootstrap.min.css')
+    link(rel='stylesheet' href='/css/bootstrap.min.css')
     // https://getbootstrap.com/
-    link(rel='stylesheet' href='css/templatemo-style.css')
+    link(rel='stylesheet' href='/css/templatemo-style.css')
     // Product Admin CSS Template
     // https://templatemo.com/tm-524-product-admin
 
@@ -30,18 +30,11 @@ html
                   i.fas.fa-tachometer-alt
                   | Dashboard
                   span.sr-only (current)
-              li.nav-item.dropdown
-                a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                  i.far.fa-file-alt
-                  span
-                    | Reports 
-                    i.fas.fa-angle-down
-                .dropdown-menu(aria-labelledby='navbarDropdown')
-                  a.dropdown-item(href='reports') Daily Report
+             
               li.nav-item
                 a.nav-link(href='salesList')
                   i.fas.fa-shopping-cart
-                  | Products
+                  | Sales
               li.nav-item.dropdown
                 a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                   i.far.fa-file-alt
@@ -49,7 +42,7 @@ html
                     | Products 
                     i.fas.fa-angle-down
                 .dropdown-menu(aria-labelledby='navbarDropdown')
-                  a.dropdown-item(href='procurements') Procurements
+                  a.dropdown-item(href='sale') Procurements
                   a.dropdown-item(href='creditList') Credit List
             ul.navbar-nav
               li.nav-item
@@ -116,35 +109,7 @@ html
           a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
 
     script(src='js/jquery-3.3.1.min.js')
-    // https://jquery.com/download/
     script(src='js/moment.min.js')
-    // https://momentjs.com/
     script(src='js/Chart.min.js')
-    // http://www.chartjs.org/docs/latest/
     script(src='js/bootstrap.min.js')
-    // https://getbootstrap.com/
-    script(src='js/tooplate-scripts.js')
-    script.
-      Chart.defaults.global.defaultFontColor = 'white';
-      let ctxLine,
-      ctxBar,
-      ctxPie,
-      optionsLine,
-      optionsBar,
-      optionsPie,
-      configLine,
-      configBar,
-      configPie,
-      lineChart,
-      barChart, 
-      pieChart;
-      // DOM is ready
-      $(function () {
-        drawLineChart(); // Line Chart
-        drawBarChart(); // Bar Chart
-        drawPieChart(); // Pie Chart
-        $(window).resize(function () {
-          updateLineChart();
-          updateBarChart();
-        });
-      })
+    

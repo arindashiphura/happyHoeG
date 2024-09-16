@@ -69,7 +69,6 @@ const Produce = require('../Models/produce');
                 .populate("producename", "producename") // Populating the producename field from the related Produce model
                 .populate("salesAgent", "username") // Populating the salesAgent field from the related Signupkgl model
 
-
                 // Calculating the total sales amount by aggregating the 'amountPaid' field
                 let totalSales = await Sale.aggregate([
                     {

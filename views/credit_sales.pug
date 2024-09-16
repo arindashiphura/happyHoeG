@@ -34,16 +34,6 @@ nav.navbar.navbar-expand-xl
           a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             i.far.fa-file-alt
             span
-              | Reports 
-              i.fas.fa-angle-down
-          .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='#') Daily Report
-            a.dropdown-item(href='#') Weekly Report
-            a.dropdown-item(href='#') Yearly Report
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-            i.far.fa-file-alt
-            span
               | Sales 
               i.fas.fa-angle-down
           .dropdown-menu(aria-labelledby='navbarDropdown')
@@ -89,8 +79,8 @@ nav.navbar.navbar-expand-xl
             label(for='branch') Branch Name:
             select#branch(name='branch')
               option(value='') Select Branch
-              option(value='matuga') Matuga
-              option(value='maganjo') Maganjo
+              option(value='MATUGA') Matuga
+              option(value='MAGANJO') Maganjo
             span#branchError
           
           div
@@ -125,7 +115,7 @@ nav.navbar.navbar-expand-xl
           div
             label(for='amountperkg') Amount Due per kg(UGX):
             input#amountperkg(type='text' name='amountprkg')
-            span#amountDueError
+            span#amountperkgError
           
           div
             label(for='amountDue') Amount Due (UGX):

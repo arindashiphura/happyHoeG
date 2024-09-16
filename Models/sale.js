@@ -4,8 +4,7 @@ const saleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Produce",
     trim: true,
-},
-
+    },
     produceType:{
         type: String,
         trim: true,  // Added trim to remove leading/trailing spaces
@@ -13,6 +12,10 @@ const saleSchema = new mongoose.Schema({
     saleTonnage: {
         type: Number, // If you mean weight in tons or kg, this might be better as a Number
         trim: true,
+    },
+    pricePerTon:{
+        type: Number, //
+         trim: true, 
     },
     amountPaid: {
         type: Number,  // Changed to Number assuming it represents currency

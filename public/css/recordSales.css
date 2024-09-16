@@ -30,7 +30,7 @@
   /* Style the inputs and selects */
   input, select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
   }
   
@@ -70,3 +70,10 @@
     color: rgb(42, 198, 21);
   }
   
+  #error{
+    
+      color: red;
+      margin-top: 10px;
+      font-size: 14px;
+    
+  }

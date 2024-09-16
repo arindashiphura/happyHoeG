@@ -6,7 +6,7 @@ html
     meta(http-equiv='X-UA-Compatible' content='ie=edge')
     title Manager
     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
-    link(rel='stylesheet' href='css/fontawesome.min.css')
+    link(rel='stylesheet' href='/css/fontawesome.min.css')
     link(rel='stylesheet' href='jquery-ui-datepicker/jquery-ui.min.css' type='text/css')
     link(rel='stylesheet' href='/css/bootstrap.min.css')
     link(rel='stylesheet' href='/css/templatemo-style.css')
@@ -118,8 +118,8 @@ html
               label(for='branch') Branch of Storage:
               select#branch(name='storebranch')
                 option(value='') Select Store Branch
-                option(value='maganjo') Maganjo Store
-                option(value='matuga') Matuga Store
+                option(value='MAGANJO') Maganjo Store
+                option(value='MATUGA') Matuga Store
               small#pbranchErr.error
             .form-group
               label(for='contact') Source Contact:
@@ -144,7 +144,4 @@ html
     script(src='/jquery-ui-datepicker/jquery-ui.min.js')
     script(src='/js/bootstrap.min.js')
     script(src='/js/addproduce.js')
-    script.
-      $(function() {
-        $("#expire_date").datepicker();
-      })
+    

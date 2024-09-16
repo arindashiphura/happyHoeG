@@ -29,20 +29,10 @@ html
               a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                 i.far.fa-file-alt
                 span
-                  | Reports
-                  i.fas.fa-angle-down
-              .dropdown-menu(aria-labelledby='navbarDropdown')
-                a.dropdown-item(href='#') Daily Report
-                a.dropdown-item(href='#') Weekly Report
-                a.dropdown-item(href='#') Yearly Report
-            li.nav-item.dropdown
-              a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                i.far.fa-file-alt
-                span
                   | Sales
                   i.fas.fa-angle-down
               .dropdown-menu(aria-labelledby='navbarDropdown')
-                a.dropdown-item(href='produce') Add produce
+                a.dropdown-item(href='creditList') credit List
                 a.dropdown-item(href='Procurements') Procurements
                 a.dropdown-item(href='creditList') creditList
           ul.navbar-nav
@@ -56,20 +46,25 @@ html
           .row
             .col-12
               h2.tm-block-title.d-inline-block Make Sales
-          form#salesForm(action=`/addSale/${produce._id}` method='POST' name='addSale')
+          form#editSale(action=`/addSale/${produce._id}` method='POST' name='addSale')
             div
               label(for='produceName') Produce Name:
-              select#producename(name='producename' required='')
+              select#producename(name='producename' required='true')
                 option(value=produce._id) #{produce.producename}
+              span#produceNameError
             div
               label(for='produceType') Produce Type:
               input#produceType(name='produceType')
               span#produceTypeError
             div
-              label(for='tonnage') Tonnage (in kgs):
+              label(for='tonnage') Tonnage (kgs):
               input#tonnage(type='number' name='saleTonnage')
               span#tonnageError
             div
+              label(for='pricePerTon') Price per Ton ( UGX):
+              input#pricePerTon(type='number' name='pricePerTon' required='true')
+              span#pricePerTonError
+            div 
               label(for='amountPaid') Amount Paid (in UGX):
               input#amountPaid(type='number' name='amountPaid')
               span#amountPaidError
@@ -90,12 +85,12 @@ html
               span#dateTimeError
             div
               label(for='branch') Branch Name:
-              select#branch(name='storeBranch' required='')
+              select#branch(name='storeBranch' required='true')
                 option(value='' disabled='' selected='') Select Branch
-                option(value='Matuga') Matuga
-                option(value='Mganjo') Mganjo
+                option(value='MATUGA') Matuga
+                option(value='MAGANJO') Maganjo
               span#branchError
-              button.btn.btn-primary(type='submit') Make a sale
+            button.btn.btn-primary(type='submit') Make a sale
     footer.tm-footer.row.tm-mt-small
       .col-12.font-weight-light
         p.text-center.text-white.mb-0.px-4.small
@@ -104,11 +99,9 @@ html
           | All rights reserved.
           | Design:
           a.tm-footer-link(rel='nofollow noopener' href='https://arindashiphura.github.io/Arinda-web/') Arinda@Shiphura
-    script(src='js/jquery-3.3.1.min.js')
+    script(src='/js/jquery-3.3.1.min.js')
     script(src='/js/addsales.js')
-    script(src='jquery-ui-datepicker/jquery-ui.min.js')
-    script(src='js/bootstrap.min.js')
-    script.
-      $(function() {
-        $("#expire_date").datepicker();
-      });
+    script(src='/jquery-ui-datepicker/jquery-ui.min.js')
+    script(src='/js/bootstrap.min.js')
+   
+      

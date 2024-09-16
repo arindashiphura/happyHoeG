@@ -7,7 +7,7 @@
   
   .stock-card {
     background-color: white;
-    padding: 100px;
+    padding: 120px;
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(15, 224, 7, 0.1);
     text-align: center;
@@ -22,7 +22,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px; /* Adjusts the spacing between cards */
-    padding: 200px;
+    padding: 100px;
   }
   
 

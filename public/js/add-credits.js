@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const buyerNameError = document.getElementById('buyerNameError');
       const namePattern = /^[a-zA-Z0-9\s]{2,}$/; // Allows alphanumeric and spaces, at least 2 characters
       if (!namePattern.test(buyerName.value.trim())) {
-        buyerNameError.textContent = 'Name of the Buyer must be at least 2 characters long and alphanumeric.';
+        buyerNameError.textContent = 'Name of the Buyer must be at least 2 characters .';
+        buyerNameError.style = "color:red";
         valid = false;
       } else {
         buyerNameError.textContent = '';
@@ -20,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const nationalIdError = document.getElementById('nationalIdError');
       const ninPattern = /^[A-Z0-9]{13,}$/; // Adjust this pattern according to the NIN format
       if (!ninPattern.test(nationalId.value.trim())) {
-        nationalIdError.textContent = 'National ID must be at least 13 characters long and alphanumeric.';
+        nationalIdError.textContent = 'National ID must be at least 13 characters .';
+        nationalIdError.style = "color:red";
         valid = false;
       } else {
         nationalIdError.textContent = '';
@@ -30,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const location = document.getElementById('location');
       const locationError = document.getElementById('locationError');
       if (!namePattern.test(location.value.trim())) {
-        locationError.textContent = 'Location must be at least 2 characters long and alphanumeric.';
+        locationError.textContent = 'Location must be at least 2 characters .';
+        locationError.style = "color:red";
         valid = false;
       } else {
         locationError.textContent = '';
@@ -41,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const phonePattern = /^\+256\d{9}$/; // Corrected regex pattern
       if (!phonePattern.test(contacts.value.trim())) {
         contactsError.textContent = 'Please enter a valid phone number in the format +256XXXXXXXXX.';
+        contactsError.style = "color:red";
         valid = false;
       } else {
         contactsError.textContent = '';
@@ -51,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const branchError = document.getElementById('branchError');
       if (branch.value === '') {
         branchError.textContent = 'Please select a branch.';
+        branchError.style = "color:red";
         valid = false;
       } else {
         branchError.textContent = '';
@@ -60,7 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const salesAgentName = document.getElementById('salesAgentName');
       const salesAgentNameError = document.getElementById('salesAgentNameError');
       if (!namePattern.test(salesAgentName.value.trim())) {
-        salesAgentNameError.textContent = 'Sales Agent Name must be at least 2 characters long and alphanumeric.';
+        salesAgentNameError.textContent = 'Sales Agent Name must be at least 2 characters .';
+        salesAgentNameError.style = "color:red";
         valid = false;
       } else {
         salesAgentNameError.textContent = '';
@@ -71,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const dueDateError = document.getElementById('dueDateError');
       if (dueDate.value === '') {
         dueDateError.textContent = 'Due Date is required.';
+        dueDateError.style = "color:red";
         valid = false;
       } else {
         dueDateError.textContent = '';
@@ -80,7 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const produceName = document.getElementById('produceName');
       const produceNameError = document.getElementById('produceNameError');
       if (!namePattern.test(produceName.value.trim())) {
-        produceNameError.textContent = 'Produce Name must be at least 2 characters long and alphanumeric.';
+        produceNameError.textContent = 'Produce Name must be at least 2 characters .';
+        produceNameError.style = "color:red";
         valid = false;
       } else {
         produceNameError.textContent = '';
@@ -90,7 +98,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const produceType = document.getElementById('produceType');
       const produceTypeError = document.getElementById('produceTypeError');
       if (!namePattern.test(produceType.value.trim())) {
-        produceTypeError.textContent = 'Produce Type must be at least 2 characters long and alphanumeric.';
+        produceTypeError.textContent = 'Produce Type must be at least 2 .';
+        produceTypeError.style = "color:red";
         valid = false;
       } else {
         produceTypeError.textContent = '';
@@ -101,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const tonnageError = document.getElementById('tonnageError');
       if (tonnage.value.trim() === '' || isNaN(tonnage.value) || tonnage.value <= 0) {
         tonnageError.textContent = 'Tonnage must be a numeric value greater than 0.';
+        tonnageError.style = "color:red";
         valid = false;
       } else {
         tonnageError.textContent = '';
@@ -110,10 +120,22 @@ document.addEventListener('DOMContentLoaded', function () {
       const amountDue = document.getElementById('amountDue');
       const amountDueError = document.getElementById('amountDueError');
       if (amountDue.value.trim() === '' || isNaN(amountDue.value) || amountDue.value.length < 5) {
-        amountDueError.textContent = 'Amount Due must be a numeric value with at least 5 digits.';
+        amountDueError.textContent = 'Amount Due  at least 5 digits.';
+        amountDueError.style = "color:red";
         valid = false;
       } else {
         amountDueError.textContent = '';
+      }
+
+      // Amount Due Validation (numeric, at least 5 digits)
+      const amountperkg = document.getElementById('amountperkg');
+      const amountperkgError = document.getElementById('amountperkgError');
+      if (amountperkg.value.trim() === '' || isNaN(amountperkg.value) || amountperkg.value.length < 3) {
+        amountperkgError.textContent = 'Amount Due  at least 3 digits.';
+        amountperkgError.style = "color:red";
+        valid = false;
+      } else {
+        amountperkgError.textContent = '';
       }
   
       // Dispatch Date Validation (must be a valid date)
@@ -121,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const dispatchDateError = document.getElementById('dispatchDateError');
       if (dispatchDate.value === '') {
         dispatchDateError.textContent = 'Dispatch Date is required.';
+        dispatchDateError.style = "color:red";
         valid = false;
       } else {
         dispatchDateError.textContent = '';

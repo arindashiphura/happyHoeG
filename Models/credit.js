@@ -51,7 +51,11 @@ trim: true,
   dispatchDate: {
     type: Date,
 trim: true,
-  }
+  },
+  trusted: { 
+    type: Boolean,
+    default: false
+   }  // Trusted buyer status
 });
 
 module.exports = mongoose.model('Credit', creditSchema);

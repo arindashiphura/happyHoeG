@@ -39,13 +39,26 @@ router.get("/produceList", connectEnsureLogin.ensureLoggedIn(),  async (req, res
     }
 });
 
+//get all produce frm the db
+router.get("/sale",   async (req, res)=>{
+    try{
+        const produceItems = await Produce.find().sort({$natural: -1}); //this line is for sorting  the new produce
+        res.render("sale",{
+            title: "produce List",
+            produces: produceItems
+        });
+    }catch(err){
+        res.status(400).send("Unable to find items in the database");
+    }
+});
+
 
 //stock
 router.get('/stock', async (req, res) => {
     try {
         let produces = await Produce.find(); // Fetch procurement data
         // Ensure there are exactly six items
-        produces = produces.slice(0, 6); // Limit to six items if necessary
+        produces = produces.slice(0, 12); // Limit to six items if necessary
         res.render('stock', { produces });
     } catch (err) {
         res.status(500).send(err.message);

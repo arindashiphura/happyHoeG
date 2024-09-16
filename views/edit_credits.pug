@@ -34,16 +34,6 @@ nav.navbar.navbar-expand-xl
           a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             i.far.fa-file-alt
             span
-              | Reports 
-              i.fas.fa-angle-down
-          .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='#') Daily Report
-            a.dropdown-item(href='#') Weekly Report
-            a.dropdown-item(href='#') Yearly Report
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-            i.far.fa-file-alt
-            span
               | Sales 
               i.fas.fa-angle-down
           .dropdown-menu(aria-labelledby='navbarDropdown')
@@ -81,8 +71,8 @@ nav.navbar.navbar-expand-xl
             label(for='branch') Branch Name:
             select#branch(name='branch')
               option(value='') Select Branch
-              option(value='matuga' selected=credit.branch=='matuga') Matuga
-              option(value='maganjo' selected=credit.branch=='maganjo') Maganjo
+              option(value='matuga' selected=credit.branch=='MATUGA') Matuga
+              option(value='maganjo' selected=credit.branch=='MAGANJO') Maganjo
           .form-group
             label(for='salesAgentName') Sales Agent Name:
             select#salesAgentName(type='text' name='salesAgent')
@@ -103,7 +93,7 @@ nav.navbar.navbar-expand-xl
             label(for='tonnage') Tonnage:
             input#tonnage(type='number' name='creditTonnage' value=credit.creditTonnage)
           .form-group
-            label(for='amountperkg') Amount perkger kg (UGX):
+            label(for='amountperkg') Amount per kg (UGX):
             input#amountperkg(type='text' name='amountperkg' value=credit.amountperkg)
           .form-group
             label(for='amountDue') Amount Due (UGX):
