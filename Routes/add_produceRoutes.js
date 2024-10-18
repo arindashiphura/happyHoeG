@@ -7,6 +7,8 @@ const connectEnsureLogin = require('connect-ensure-login');
 const Produce = require('../Models/produce');
 const Signupkgl = require('../Models/signupkgl');
 
+
+
 // Route for rendering the add-produce page
 router.get('/produce', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     res.render('add_produce', { title: 'Add Produce' });  // 'Add Produce' is now a string
